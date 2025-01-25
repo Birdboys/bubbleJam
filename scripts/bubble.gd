@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var bubbleCol := $bubbleCol
 @onready var bubHurtBox := $bubbleHurtBox
 @onready var bubCollectBox := $bubbleCollectBox
-@export var bubble_scale := 2.0
+@export var bubble_scale := 1.0
 
 var bubble_rise_speed := 125.0
 var bubble_stop_speed := 650.0
@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 	
 func updateScale(delta):
 	bubble_scale -= bubble_deflate_speed * delta
-	scale = Vector2.ONE * bubble_scale
+	scale = 3 * Vector2.ONE * bubble_scale
 
 func updateRotation(delta):
 	current_rotation = move_toward(current_rotation, 0.0, bubble_rot_friction*delta)
@@ -42,7 +42,7 @@ func popBubble(enemy: Area2D):
 func collectBubble(bub: Area2D):
 	var added_air_val = bub.air_val
 	bubble_scale += added_air_val
-	bubble_scale = clampf(bubble_scale, 0.0, 2.0)
+	bubble_scale = clampf(bubble_scale, 0.0, 1.0)
 	bub.queue_free()
 	
 func pushBubble(push_dir, push_dist):
