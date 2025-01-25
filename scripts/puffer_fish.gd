@@ -1,16 +1,19 @@
 extends CharacterBody2D
 
+enum puffer_states {PUFFED, EMPTY, DAMAGED}
+
 @onready var pufferSprite := $pufferSprite
 @onready var pufferCol := $pufferCol
 @onready var pufferHitBox := $pufferHitBox
 @onready var pufferHurtBox := $pufferHurtBox
+@onready var pufferAnim := $pufferAnim
 @onready var puffed_sprite := preload("res://assets/temp/puffer.png")
 @onready var empty_sprite := preload("res://assets/temp/puffer.png")
 @export var puffer_scale := 1.0
-
-enum puffer_states {PUFFED, EMPTY, DAMAGED}
-var current_state := puffer_states.PUFFED
+@export var current_state := puffer_states.PUFFED
+var puff_recharge_time := 1.0
 var puff_cooldown := 1.0
+var damage_timeout := 0.5
 
 var hp := 3
 
@@ -21,20 +24,16 @@ func _ready() -> void:
 	updateScale()
 	
 func _process(delta: float) -> void:
+	position = get_global_mouse_position()
+	
 	match current_state:
 		puffer_states.PUFFED:
 			if Input.is_action_just_pressed("puff"):
 				doPuff()
 		puffer_states.EMPTY:
 			updateScale()
-	handleMovement()
-
-func handleMovement():
-	match current_state:
-		puffer_states.PUFFED, puffer_states.EMPTY: 
-			position = get_global_mouse_position()
-		_:
-			pass
+		puffer_states.DAMAGED:
+			updateScale()
 
 func handleRotation(bubble_pos):
 	pufferSprite.rotation = transform.looking_at(bubble_pos).get_rotation()
@@ -49,20 +48,24 @@ func updateRot(bubble_pos):
 	var relative_bubble_pos = to_local(bubble_pos)
 	
 func doPuff():
+	emit_signal("do_puff")
+	pufferEmpty()
+	
+
+func pufferFull():
+	current_state = puffer_states.PUFFED
+	
+func pufferEmpty():
 	current_state = puffer_states.EMPTY
 	pufferSprite.texture = empty_sprite
 	puffer_scale = 0.0
-	emit_signal("do_puff")
-	var puff_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT)
-	puff_tween.tween_property(self, "puffer_scale", 1.0, puff_cooldown)
-	puff_tween.tween_callback(resetPuff)
-	
-func resetPuff():
-	current_state = puffer_states.PUFFED
-	pufferSprite.texture = puffed_sprite
-	puffer_scale = 1.0
+	updateScale()
+	pufferAnim.play("charge")
 	
 func pufferHurt(obstacle: Area2D):
-	print("PUFFER WAS HIT")
+	if current_state == puffer_states.DAMAGED: return
 	hp -= 1
-	#if hp == 0: quit()
+	if hp == 0: get_tree().quit()
+	current_state = puffer_states.DAMAGED
+	pufferAnim.play("damage")
+	

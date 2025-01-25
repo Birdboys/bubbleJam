@@ -35,6 +35,7 @@ puff={
 2d_physics/layer_2="player"
 2d_physics/layer_3="bubbles"
 2d_physics/layer_4="obstacles"
+2d_physics/layer_5="puffer"
 
 [rendering]
 

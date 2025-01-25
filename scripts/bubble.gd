@@ -37,7 +37,6 @@ func updateRotation(delta):
 
 func popBubble(enemy: Area2D):
 	print("BUBBLE POPPED")
-	pass
 
 func collectBubble(bub: Area2D):
 	var added_air_val = bub.air_val
