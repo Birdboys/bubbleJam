@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvcffxxqrpo18"]
+
+[ext_resource type="Script" path="res://scripts/puffer_fish.gd" id="1_6c7g5"]
+[ext_resource type="Texture2D" uid="uid://bx5id20fjlon4" path="res://assets/temp/puffer.png" id="2_d8n6v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8xa1"]
+radius = 100.0
+
+[node name="pufferFish" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_6c7g5")
+
+[node name="pufferSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_d8n6v")
+
+[node name="pufferCol" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CircleShape2D_h8xa1")
+
+[node name="pufferHitBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="hitBoxCol" type="CollisionShape2D" parent="pufferHitBox"]
+rotation = -1.5708
+shape = SubResource("CircleShape2D_h8xa1")
+debug_color = Color(0.877335, 0, 0.204278, 0.42)
+
+[node name="pufferHurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="hitBoxCol" type="CollisionShape2D" parent="pufferHurtBox"]
+rotation = -1.5708
+shape = SubResource("CircleShape2D_h8xa1")
