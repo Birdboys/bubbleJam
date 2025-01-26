@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dqryax7e1nmkx"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dqryax7e1nmkx"]
+
+[ext_resource type="FontFile" uid="uid://dgyja8ov6mcho" path="res://assets/Sniglet-ExtraBold.ttf" id="1_jijwp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wdtir"]
 
@@ -11,6 +13,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0cy3"]
 
 [resource]
+default_font = ExtResource("1_jijwp")
 mainButton/base_type = &"Button"
 mainButton/colors/font_color = Color(0.411765, 0.941176, 0.780392, 1)
 mainButton/colors/font_hover_color = Color(0, 0.776471, 0.74902, 1)
@@ -23,6 +26,7 @@ mainButton/styles/pressed = SubResource("StyleBoxEmpty_y0cy3")
 subLabel/base_type = &"Label"
 subLabel/colors/font_color = Color(0.411765, 0.941176, 0.780392, 1)
 subLabel/font_sizes/font_size = 32
+subLabel/fonts/font = ExtResource("1_jijwp")
 timerLabel/base_type = &"Label"
 timerLabel/colors/font_color = Color(1, 1, 1, 1)
 timerLabel/font_sizes/font_size = 48

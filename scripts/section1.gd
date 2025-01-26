@@ -4,6 +4,7 @@ extends Node2D
 @onready var bubble := $bubble
 @onready var cam := $playerCam
 @onready var camTrigger := $camTrigger
+@onready var timerLabel := $uiLayer/uiMargin/timerLabel
 @onready var death_bubble_scene := preload("res://scenes/death_bubble.tscn")
 @onready var death_puffer_scene := preload("res://scenes/death_puffer.tscn")
 
@@ -11,6 +12,7 @@ var cam_move_speed := 750.0
 var cam_follow = false
 var is_playing = true
 var finished = false
+var game_time := 0.0
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -21,6 +23,8 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if is_playing:
+		game_time += delta
+		timerLabel.text = str(int(game_time))
 		puffer.handleRotation(bubble.position)
 		if cam_follow: cam.position = cam.position.move_toward(bubble.position, cam_move_speed*delta)
 
