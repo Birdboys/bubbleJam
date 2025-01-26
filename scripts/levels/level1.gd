@@ -15,11 +15,14 @@ var finished = false
 var game_time := 0.0
 var coins_collected := 0
 var current_level
+var puffer_hp := 0
 
 func _ready() -> void:
+	DeathScreen.resetGameData()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	puffer.do_puff.connect(handlePuff)
 	puffer.coin_collected.connect(coinCollected)
+	puffer.death.connect(handleDeath)
 	bubble.death.connect(handleDeath)
 	winZone.body_entered.connect(handleWin)
 	get_tree().create_timer(2.0).timeout.connect(startGame)
@@ -58,6 +61,7 @@ func handleWin(_bub):
 func handleDeath():
 	if not is_playing: return
 	is_playing = false
+	puffer_hp = puffer.hp
 	# instantiate fake bubble and puffer to animate
 	var death_bubble = death_bubble_scene.instantiate()
 	var death_puffer = death_puffer_scene.instantiate()
@@ -85,4 +89,5 @@ func handleDeath():
 	get_tree().create_timer(1.0).timeout.connect(deathScreen.bind(false))
 
 func deathScreen(win:bool):
-	DeathScreen.showDeathScreen(win, game_time, coins_collected)
+	DeathScreen.showDeathScreen(win, game_time, coins_collected, puffer_hp)
+	
