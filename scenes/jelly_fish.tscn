@@ -1,15 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://df0un3ra580el"]
+[gd_scene load_steps=7 format=3 uid="uid://caivuw1yrylwx"]
 
 [ext_resource type="Script" path="res://scripts/jelly_fish.gd" id="1_81y60"]
 [ext_resource type="Texture2D" uid="uid://baipwh42kx636" path="res://assets/temp/jelly.png" id="1_bogvf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6upv3"]
 radius = 90.0
-height = 430.0
+height = 560.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgvgn"]
-radius = 200.0
-height = 560.0
+radius = 160.0
+height = 556.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sogxw"]
 size = Vector2(640, 240)
@@ -34,6 +34,7 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="hurtBoxCol" type="CollisionShape2D" parent="jellyFishHurtBox"]
+position = Vector2(0, 38)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_cgvgn")
 debug_color = Color(0.974472, 0.160233, 3.85046e-07, 0.42)

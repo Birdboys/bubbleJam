@@ -8,8 +8,8 @@ extends StaticBody2D
 @export var time_offset := 0.0
 
 var on := false
-var time_on := 3.0
-var time_off := 6.0
+@export var time_on := 2
+@export var time_off := 5.0
 
 
 

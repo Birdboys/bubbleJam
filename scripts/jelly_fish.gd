@@ -9,7 +9,7 @@ extends StaticBody2D
 var bubble_detect_time := 2.0
 var bounce_force := 1250.0
 var pushing := false
-var push_distance := 2
+@export var push_distance := 2
 
 func _ready() -> void:
 	jellyDetector.body_entered.connect(bubbleEnteredArea)
