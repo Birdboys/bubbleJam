@@ -22,7 +22,7 @@ func reset():
 	
 func handleMainButton(b):
 	match b:
-		"play": get_tree().change_scene_to_file("res://scenes/levels/level3.tscn")
+		"play": get_tree().change_scene_to_file("res://scenes/levels/level1.tscn")
 		"settings":
 			mainStuff.visible = false
 			settingStuff.visible = true
