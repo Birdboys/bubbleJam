@@ -46,7 +46,6 @@ start={
 2d_physics/layer_3="bubbles"
 2d_physics/layer_4="obstacles"
 2d_physics/layer_5="puffer"
-2d_physics/layer_6="camera_trigger"
 
 [rendering]
 
