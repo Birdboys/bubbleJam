@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://duew7u1ij35jj"]
+[gd_scene load_steps=14 format=4 uid="uid://duew7u1ij35jj"]
 
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_51e5y"]
 [ext_resource type="Texture2D" uid="uid://d1wufi0db30i8" path="res://assets/section1/background.png" id="2_qg5s7"]
@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://da1y6457akk57" path="res://scenes/bubble.tscn" id="5_7yxvs"]
 [ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="6_xbwmr"]
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="7_r4k7q"]
-[ext_resource type="PackedScene" path="res://scenes/whale.tscn" id="8_alxlb"]
+[ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="8_alxlb"]
+[ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="9_80bck"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ipsy5"]
 scenes/1/scene = ExtResource("7_r4k7q")
@@ -18,6 +19,8 @@ tile_size = Vector2i(200, 200)
 sources/1 = SubResource("TileSetScenesCollectionSource_ipsy5")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w1gr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wk6w2"]
 
 [node name="level1" type="Node2D"]
 script = ExtResource("1_51e5y")
@@ -93,3 +96,44 @@ collision_mask = 4
 
 [node name="winCol" type="CollisionShape2D" parent="winZone"]
 shape = SubResource("RectangleShape2D_8w1gr")
+
+[node name="leftWall" type="StaticBody2D" parent="."]
+position = Vector2(-2181, -1172)
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="leftWall"]
+texture_repeat = 2
+texture = ExtResource("9_80bck")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="leftWall"]
+shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="rightWall" type="StaticBody2D" parent="."]
+position = Vector2(2399, -1172)
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="rightWall"]
+texture_repeat = 2
+texture = ExtResource("9_80bck")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="rightWall"]
+shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="bottomWall" type="StaticBody2D" parent="."]
+position = Vector2(61, 2693)
+rotation = 1.57079
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="bottomWall"]
+visible = false
+texture_repeat = 2
+texture = ExtResource("9_80bck")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="bottomWall"]
+shape = SubResource("RectangleShape2D_wk6w2")
