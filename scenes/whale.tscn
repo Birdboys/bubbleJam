@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://q0f6xfqtlwoc"]
 
 [ext_resource type="Script" path="res://scripts/whale.gd" id="1_p0d53"]
-[ext_resource type="Texture2D" uid="uid://vksrgnnqcjdr" path="res://assets/temp/whale_closed.png" id="2_rrpg6"]
+[ext_resource type="Texture2D" uid="uid://bsxuh1jehlfdl" path="res://assets/orca_closed.png" id="2_vitdy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tcrce"]
 radius = 1200.0
@@ -13,7 +13,8 @@ size = Vector2(320, 320)
 script = ExtResource("1_p0d53")
 
 [node name="whaleSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_rrpg6")
+scale = Vector2(1.885, 1.885)
+texture = ExtResource("2_vitdy")
 
 [node name="whale" type="Area2D" parent="."]
 

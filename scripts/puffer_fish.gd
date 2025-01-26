@@ -58,6 +58,7 @@ func updateScale():
 	pufferCol.scale = new_scale
 	pufferHitBox.scale = new_scale
 	pufferHurtBox.scale = new_scale
+	pufferCoinBox.scale = new_scale
 
 func updateRot(bubble_pos):
 	var relative_bubble_pos = to_local(bubble_pos)

@@ -3,8 +3,8 @@ extends Node2D
 @onready var suckArea := $suckArea
 @onready var biteArea := $biteArea
 @onready var whaleSprite := $whaleSprite
-@onready var open_sprite := preload("res://assets/temp/whale_open.png")
-@onready var closed_sprite := preload("res://assets/temp/whale_closed.png")
+@onready var open_sprite := preload("res://assets/orca_open.png")
+@onready var closed_sprite := preload("res://assets/orca_open.png")
 
 var suck_strength := 300.0
 var open := false

@@ -59,7 +59,7 @@ bubble_scale = 0.75
 
 [node name="playerCam" type="Camera2D" parent="."]
 position = Vector2(0, 127)
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.05, 0.05)
 limit_left = -2100
 limit_right = 2300
 limit_bottom = 2500
@@ -119,17 +119,17 @@ path_points = Array[Vector2]([Vector2(0, 0), Vector2(2000, 0)])
 [node name="lionFish6" parent="obstacles" instance=ExtResource("11_jixip")]
 position = Vector2(-1300, -4200)
 rotation = -4.71239
-path_points = Array[Vector2]([Vector2(0, 0), Vector2(2000, 0)])
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(0, 2000)])
 
 [node name="lionFish7" parent="obstacles" instance=ExtResource("11_jixip")]
 position = Vector2(-1000, -4200)
 rotation = -4.71239
-path_points = Array[Vector2]([Vector2(0, 0), Vector2(1600, 0)])
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(0, 1600)])
 
 [node name="lionFish8" parent="obstacles" instance=ExtResource("11_jixip")]
 position = Vector2(-700, -4200)
 rotation = -4.71239
-path_points = Array[Vector2]([Vector2(0, 0), Vector2(1200, 0)])
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(0, 1200)])
 
 [node name="lionFish4" parent="obstacles" instance=ExtResource("11_jixip")]
 position = Vector2(100, -900)
