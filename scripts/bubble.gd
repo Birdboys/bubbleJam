@@ -52,6 +52,9 @@ func updateOtter(delta):
 	
 func updateVel(v):
 	current_velocity = v
+
+func modifyVel(m):
+	current_velocity += m
 	
 func popBubble(enemy: Area2D):
 	if not is_playing: return

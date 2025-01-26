@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://q0f6xfqtlwoc"]
+
+[ext_resource type="Script" path="res://scripts/whale.gd" id="1_p0d53"]
+[ext_resource type="Texture2D" uid="uid://vksrgnnqcjdr" path="res://assets/temp/whale_closed.png" id="2_rrpg6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tcrce"]
+radius = 1200.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hynl"]
+size = Vector2(320, 320)
+
+[node name="whale" type="Node2D"]
+script = ExtResource("1_p0d53")
+
+[node name="whaleSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_rrpg6")
+
+[node name="whale" type="Area2D" parent="."]
+
+[node name="suckArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="suckCol" type="CollisionShape2D" parent="suckArea"]
+shape = SubResource("CircleShape2D_tcrce")
+debug_color = Color(0.536233, 0.567861, 0.0872636, 0.42)
+
+[node name="biteArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="biteCol" type="CollisionShape2D" parent="biteArea"]
+shape = SubResource("RectangleShape2D_8hynl")
+debug_color = Color(0.963474, 0.163579, 0.261141, 0.42)
