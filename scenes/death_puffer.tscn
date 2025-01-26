@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://be2h3vfvoslnq"]
+
+[ext_resource type="Texture2D" uid="uid://d3te3bf70bw4a" path="res://assets/puffer/puffer_neutral.png" id="1_7olrj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsrt3"]
+
+[node name="death_puffer" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xsrt3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7olrj")
