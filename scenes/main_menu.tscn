@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://da6ke420c6aw0"]
+[gd_scene load_steps=7 format=3 uid="uid://da6ke420c6aw0"]
 
 [ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="1_whtj7"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_8f0e4"]
 [ext_resource type="Script" path="res://scripts/ui/main_stuff.gd" id="3_u8u57"]
+[ext_resource type="Script" path="res://scripts/ui/setting_stuff.gd" id="4_hkfs7"]
+[ext_resource type="Script" path="res://scripts/ui/credit_stuff.gd" id="5_ijyop"]
+[ext_resource type="Script" path="res://scripts/ui/tutorial_stuff.gd" id="6_tv0q5"]
 
 [node name="mainMenu" type="Control"]
 layout_mode = 3
@@ -76,26 +79,30 @@ theme_type_variation = &"mainButton"
 text = "CREDITS"
 
 [node name="settingStuff" type="VBoxContainer" parent="uiMargin"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 32
+script = ExtResource("4_hkfs7")
 
 [node name="titleLabel" type="Label" parent="uiMargin/settingStuff"]
 layout_mode = 2
+size_flags_vertical = 2
 theme_type_variation = &"titleLabel"
 text = "SETTINGS"
 horizontal_alignment = 1
 
-[node name="sliders" type="HBoxContainer" parent="uiMargin/settingStuff"]
+[node name="music" type="HBoxContainer" parent="uiMargin/settingStuff"]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/separation = 8
 
-[node name="musicLabel" type="Label" parent="uiMargin/settingStuff/sliders"]
+[node name="musicLabel" type="Label" parent="uiMargin/settingStuff/music"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"subLabel"
 text = "MUSIC:"
 
-[node name="musicSlider" type="HSlider" parent="uiMargin/settingStuff/sliders"]
+[node name="musicSlider" type="HSlider" parent="uiMargin/settingStuff/music"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -103,20 +110,83 @@ size_flags_stretch_ratio = 2.0
 theme_type_variation = &"hSlider"
 value = 50.0
 
-[node name="sliders2" type="HBoxContainer" parent="uiMargin/settingStuff"]
+[node name="sound" type="HBoxContainer" parent="uiMargin/settingStuff"]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/separation = 8
 
-[node name="soundLabel" type="Label" parent="uiMargin/settingStuff/sliders2"]
+[node name="soundLabel" type="Label" parent="uiMargin/settingStuff/sound"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"subLabel"
 text = "SOUND:"
 
-[node name="soundSlider" type="HSlider" parent="uiMargin/settingStuff/sliders2"]
+[node name="soundSlider" type="HSlider" parent="uiMargin/settingStuff/sound"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 2.0
 theme_type_variation = &"hSlider"
 value = 50.0
+
+[node name="backButton" type="Button" parent="uiMargin/settingStuff"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_type_variation = &"subButton"
+text = "BACK"
+
+[node name="creditStuff" type="VBoxContainer" parent="uiMargin"]
+layout_mode = 2
+theme_override_constants/separation = 32
+script = ExtResource("5_ijyop")
+
+[node name="titleLabel" type="Label" parent="uiMargin/creditStuff"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_type_variation = &"titleLabel"
+text = "CREDITS"
+horizontal_alignment = 1
+
+[node name="credits" type="ScrollContainer" parent="uiMargin/creditStuff"]
+layout_mode = 2
+
+[node name="creditCont" type="VBoxContainer" parent="uiMargin/creditStuff/credits"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="uiMargin/creditStuff/credits/creditCont"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="uiMargin/creditStuff/credits/creditCont/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"subLabel"
+text = "adsdadsadassadas"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="uiMargin/creditStuff/credits/creditCont/HBoxContainer"]
+layout_mode = 2
+
+[node name="backButton" type="Button" parent="uiMargin/creditStuff"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_type_variation = &"subButton"
+text = "BACK"
+
+[node name="tutorialStuff" type="VBoxContainer" parent="uiMargin"]
+layout_mode = 2
+theme_override_constants/separation = 32
+script = ExtResource("6_tv0q5")
+
+[node name="titleLabel" type="Label" parent="uiMargin/tutorialStuff"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_type_variation = &"titleLabel"
+text = "TUTORIAL"
+horizontal_alignment = 1
+
+[node name="backButton" type="Button" parent="uiMargin/tutorialStuff"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_type_variation = &"subButton"
+text = "BACK"

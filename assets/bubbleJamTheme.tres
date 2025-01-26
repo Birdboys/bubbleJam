@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dqryax7e1nmkx"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dqryax7e1nmkx"]
 
 [ext_resource type="FontFile" uid="uid://dgyja8ov6mcho" path="res://assets/Sniglet-ExtraBold.ttf" id="1_jijwp"]
 
@@ -23,6 +23,8 @@ content_margin_bottom = 16.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0cy3"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8jpy"]
+
 [resource]
 default_font = ExtResource("1_jijwp")
 hSlider/base_type = &"HSlider"
@@ -41,6 +43,14 @@ mainButton/styles/hover = SubResource("StyleBoxEmpty_usgql")
 mainButton/styles/hover_pressed = SubResource("StyleBoxEmpty_1yi3y")
 mainButton/styles/normal = SubResource("StyleBoxEmpty_rxnfd")
 mainButton/styles/pressed = SubResource("StyleBoxEmpty_y0cy3")
+subButton/base_type = &"Button"
+subButton/colors/font_color = Color(0.411765, 0.941176, 0.780392, 1)
+subButton/colors/font_hover_color = Color(0, 0.776471, 0.74902, 1)
+subButton/font_sizes/font_size = 32
+subButton/styles/focus = SubResource("StyleBoxEmpty_k8jpy")
+subButton/styles/hover = SubResource("StyleBoxEmpty_k8jpy")
+subButton/styles/normal = SubResource("StyleBoxEmpty_k8jpy")
+subButton/styles/pressed = SubResource("StyleBoxEmpty_k8jpy")
 subLabel/base_type = &"Label"
 subLabel/colors/font_color = Color(0.411765, 0.941176, 0.780392, 1)
 subLabel/font_sizes/font_size = 32
