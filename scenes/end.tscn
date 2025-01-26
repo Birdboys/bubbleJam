@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqwhs1x3vj6o1"]
+[gd_scene load_steps=9 format=3 uid="uid://cqwhs1x3vj6o1"]
 
+[ext_resource type="Script" path="res://scripts/end.gd" id="1_f8b57"]
 [ext_resource type="Texture2D" uid="uid://vgqoqmoxiwh1" path="res://assets/temp/end_scene.png" id="1_jros6"]
 [ext_resource type="Texture2D" uid="uid://b3v8s6q1uggjl" path="res://assets/otter.png" id="2_q4g1g"]
 [ext_resource type="Texture2D" uid="uid://d3te3bf70bw4a" path="res://assets/puffer/puffer_neutral.png" id="3_mtw7e"]
+[ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="4_nuqq0"]
 
 [sub_resource type="Animation" id="Animation_n0kmj"]
 length = 0.001
@@ -152,6 +154,7 @@ _data = {
 }
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_f8b57")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -178,3 +181,47 @@ texture = ExtResource("3_mtw7e")
 libraries = {
 "": SubResource("AnimationLibrary_2p156")
 }
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="ui"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("4_nuqq0")
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ui/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"titleLabel"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+text = "YOU WON"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ui/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"subLabel"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+text = "THANKS FOR PLAYING"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="ui/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_type_variation = &"subButton"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+text = "MAIN MENU"
