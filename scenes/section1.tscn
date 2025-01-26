@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://pt7due4xyqpn"]
+[gd_scene load_steps=10 format=4 uid="uid://pt7due4xyqpn"]
 
 [ext_resource type="Script" path="res://scripts/section1.gd" id="1_htjc4"]
 [ext_resource type="Texture2D" uid="uid://ddnak4xxamf6e" path="res://assets/temp/ocean.png" id="2_n03sg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://da1y6457akk57" path="res://scenes/bubble.tscn" id="4_b856s"]
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="5_3qjoi"]
 [ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scenes/coin.tscn" id="5_5wrda"]
+[ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="7_r3hvj"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_cyq3t"]
 scenes/1/scene = ExtResource("5_3qjoi")
@@ -53,3 +54,27 @@ tile_map_data = PackedByteArray("AAD9//P/AQAAAAAAAQD8//P/AQAAAAAAAQADAPT/AQAAAAA
 tile_set = SubResource("TileSet_xukv3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="uiLayer" type="CanvasLayer" parent="."]
+
+[node name="uiMargin" type="MarginContainer" parent="uiLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_r3hvj")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="timerLabel" type="Label" parent="uiLayer/uiMargin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_type_variation = &"timerLabel"
+text = "0"
+horizontal_alignment = 2

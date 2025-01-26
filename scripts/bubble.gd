@@ -44,7 +44,7 @@ func updateRotation(delta):
 	bubbleSprite.rotate(current_rotation)
 
 func updateOtter(delta):
-	otterSprite.rotate(current_rotation/5.0)
+	otterSprite.rotate(-current_rotation/5.0)
 	otterSprite.rotation = move_toward(otterSprite.rotation, 0.0, bubble_rot_friction*10.0*delta)
 	otterSprite.rotation = clampf(otterSprite.rotation, -PI/5, PI/5)
 	otterSprite.position = position
