@@ -47,7 +47,7 @@ func popBubble(enemy: Area2D):
 
 func collectBubble(bub: Area2D):
 	var added_air_val = bub.air_val
-	bubble_scale += added_air_val
+	bubble_scale += added_air_val/16.0
 	bubble_scale = clampf(bubble_scale, 0.0, 1.0)
 	bub.queue_free()
 	AudioHandler.playSound("absorbs")

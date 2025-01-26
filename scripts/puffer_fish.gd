@@ -14,6 +14,7 @@ enum puffer_states {PUFFED, EMPTY, DAMAGED, IDLE}
 var puff_recharge_time := 1.0
 var puff_cooldown := 1.0
 var damage_timeout := 0.5
+var fish_speed := 10000.0
 
 var hp := 3
 
@@ -26,8 +27,7 @@ func _ready() -> void:
 	#pufferEmpty()
 	
 func _process(delta: float) -> void:
-	position = get_global_mouse_position()
-	
+	handleMovement(delta)
 	match current_state:
 		puffer_states.PUFFED:
 			if Input.is_action_just_pressed("puff"):
@@ -37,6 +37,13 @@ func _process(delta: float) -> void:
 		puffer_states.DAMAGED:
 			updateScale()
 
+func handleMovement(delta):
+	var new_pos = get_global_mouse_position()
+	var new_dir = position.direction_to(new_pos)
+	var new_dist = position.distance_to(new_pos)
+	velocity = new_dir * fish_speed * clamp(new_dist, 0, 50)/50
+	move_and_slide()
+	
 func handleRotation(bubble_pos):
 	pufferSprite.rotation = transform.looking_at(bubble_pos).get_rotation()
 	pufferSprite.flip_v = position.x > bubble_pos.x
@@ -47,6 +54,7 @@ func updateScale():
 	pufferSprite.scale = new_scale
 	pufferCol.scale = new_scale
 	pufferHitBox.scale = new_scale
+	pufferHurtBox.scale = new_scale
 
 func updateRot(bubble_pos):
 	var relative_bubble_pos = to_local(bubble_pos)
