@@ -11,7 +11,6 @@ enum puffer_states {PUFFED, EMPTY, DAMAGED, IDLE}
 @onready var out_sprite := preload("res://assets/puffer/puffer_hold.png")
 @onready var in_sprite := preload("res://assets/puffer/puffer_in.png")
 @onready var neutral_sprite := preload("res://assets/puffer/puffer_neutral.png")
-
 @export var puffer_scale := 0.0
 @export var current_state := puffer_states.IDLE
 var puff_recharge_time := 1.0
@@ -22,6 +21,7 @@ var fish_speed := 10000.0
 var hp := 3
 
 signal do_puff
+signal death
 
 func _ready() -> void:
 	pufferHurtBox.area_entered.connect(pufferHurt)
@@ -77,7 +77,7 @@ func pufferEmpty():
 func pufferHurt(obstacle: Area2D):
 	if current_state == puffer_states.DAMAGED or current_state == puffer_states.IDLE: return
 	hp -= 1
-	if hp == 0: get_tree().quit()
+	if hp == 0: death.emit()
 	current_state = puffer_states.DAMAGED
 	pufferAnim.play("damage")
 	AudioHandler.playSound("puff_hurt")

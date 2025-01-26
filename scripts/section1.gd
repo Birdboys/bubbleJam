@@ -16,7 +16,11 @@ var prev_mouse_pos : Vector2
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	puffer.do_puff.connect(handlePuff)
+<<<<<<< HEAD
+	bubble.death.connect(handleDeath)
+=======
 	camTrigger.body_exited.connect(startCamTracking)
+>>>>>>> 84efa02f26bd553cf53c8b4420f6166a3145206c
 	get_tree().create_timer(2.0).timeout.connect(startGame)
 	prev_mouse_pos = get_global_mouse_position()
 	
@@ -33,6 +37,9 @@ func handlePuff():
 	var push_dir = -(bubble.position.direction_to(puffer.position).normalized())
 	var push_dist = bubble.position.distance_to(puffer.position)
 	bubble.pushBubble(push_dir, push_dist)
+
+func handleDeath():
+	print("me die")
 
 func startGame():
 	puffer.pufferEmpty()

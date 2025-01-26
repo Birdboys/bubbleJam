@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var otterSprite := $otterSprite
 @export var bubble_scale := 1.0
 
+signal death
 var bubble_rise_speed := 125.0
 var bubble_stop_speed := 650.0
 var bubble_deflate_speed := 0 #0.075
@@ -56,7 +57,7 @@ func popBubble(enemy: Area2D):
 	if not is_playing: return
 	print("BUBBLE POPPED")
 	AudioHandler.playSound("pops")
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	death.emit()
 
 func collectBubble(bub: Area2D):
 	var added_air_val = bub.air_val
@@ -72,4 +73,4 @@ func pushBubble(push_dir, push_dist):
 	if push_dir.x >= 0:
 		current_rotation = PI/32.0 * dist_mod
 	else:
-		current_rotation = -PI/32.0 * dist_mod
+		current_rotation = -PI/32.0 * dist_mod	
