@@ -1,0 +1,168 @@
+[gd_scene load_steps=16 format=4 uid="uid://bkkietp58s1r2"]
+
+[ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_es6tv"]
+[ext_resource type="Texture2D" uid="uid://d1wufi0db30i8" path="res://assets/section1/background.png" id="2_v87gk"]
+[ext_resource type="Texture2D" uid="uid://cvqpilc3ibhqj" path="res://assets/section1/midground.png" id="3_tsw4l"]
+[ext_resource type="PackedScene" uid="uid://cvcffxxqrpo18" path="res://scenes/puffer_fish.tscn" id="4_xsgk4"]
+[ext_resource type="PackedScene" uid="uid://da1y6457akk57" path="res://scenes/bubble.tscn" id="5_lrf04"]
+[ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="6_ct6c7"]
+[ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="7_f6f65"]
+[ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="8_xwok7"]
+[ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="9_gfmp2"]
+[ext_resource type="PackedScene" uid="uid://caivuw1yrylwx" path="res://scenes/jelly_fish.tscn" id="9_u8caq"]
+[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scenes/coin.tscn" id="10_bhyfi"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ipsy5"]
+scenes/1/scene = ExtResource("7_f6f65")
+scenes/3/scene = ExtResource("8_xwok7")
+
+[sub_resource type="TileSet" id="TileSet_nmgb3"]
+tile_size = Vector2i(200, 200)
+sources/1 = SubResource("TileSetScenesCollectionSource_ipsy5")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w1gr"]
+size = Vector2(4385, 237)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wk6w2"]
+
+[node name="level1" type="Node2D"]
+script = ExtResource("1_es6tv")
+
+[node name="bgLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="background" type="Sprite2D" parent="bgLayer"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(100, -1400)
+texture = ExtResource("2_v87gk")
+region_enabled = true
+region_rect = Rect2(0, 0, 4200, 7800)
+
+[node name="midgroundPara" type="Parallax2D" parent="."]
+z_index = -1
+scroll_scale = Vector2(0.45, 0.45)
+scroll_offset = Vector2(0, -1400)
+
+[node name="midground" type="Sprite2D" parent="midgroundPara"]
+texture = ExtResource("3_tsw4l")
+
+[node name="pufferFish" parent="." instance=ExtResource("4_xsgk4")]
+position = Vector2(-292, 1743)
+current_state = 3
+
+[node name="bubble" parent="." instance=ExtResource("5_lrf04")]
+position = Vector2(-58, 2200)
+bubble_scale = 0.75
+
+[node name="playerCam" type="Camera2D" parent="."]
+position = Vector2(0, 127)
+zoom = Vector2(0.2, 0.2)
+limit_left = -2100
+limit_right = 2300
+limit_bottom = 2500
+
+[node name="uiLayer" type="CanvasLayer" parent="."]
+
+[node name="uiMargin" type="MarginContainer" parent="uiLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("6_ct6c7")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="timerLabel" type="Label" parent="uiLayer/uiMargin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_type_variation = &"subLabel"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "0"
+
+[node name="obstacles" type="Node2D" parent="."]
+
+[node name="urchinLayer" type="TileMapLayer" parent="obstacles"]
+use_parent_material = true
+position = Vector2(0, 1900)
+tile_map_data = PackedByteArray("AAD2//r/AQAAAAAAAQD3//n/AQAAAAAAAQD3//j/AQAAAAAAAQD4//j/AQAAAAAAAQD4//f/AQAAAAAAAQD4//b/AQAAAAAAAQD3//T/AQAAAAAAAQD4//X/AQAAAAAAAQD3//X/AQAAAAAAAQD2//X/AQAAAAAAAQD2//T/AQAAAAAAAQD2//b/AQAAAAAAAQD3//b/AQAAAAAAAQD3//f/AQAAAAAAAQD2//f/AQAAAAAAAQD2//j/AQAAAAAAAQD2//n/AQAAAAAAAQD+//b/AQAAAAAAAQD+//X/AQAAAAAAAQD+//T/AQAAAAAAAQD///T/AQAAAAAAAQD///P/AQAAAAAAAQAAAPP/AQAAAAAAAQABAPP/AQAAAAAAAQABAPT/AQAAAAAAAQACAPT/AQAAAAAAAQACAPX/AQAAAAAAAQACAPb/AQAAAAAAAQABAPb/AQAAAAAAAQABAPf/AQAAAAAAAQAAAPf/AQAAAAAAAQAAAPj/AQAAAAAAAQD///j/AQAAAAAAAQD///f/AQAAAAAAAQD///b/AQAAAAAAAQD///X/AQAAAAAAAQAAAPX/AQAAAAAAAQAAAPT/AQAAAAAAAQABAPX/AQAAAAAAAQAAAPb/AQAAAAAAAQAKAPL/AQAAAAAAAQAJAPL/AQAAAAAAAQAJAPP/AQAAAAAAAQAJAPT/AQAAAAAAAQAJAPX/AQAAAAAAAQAJAPb/AQAAAAAAAQAJAPf/AQAAAAAAAQAJAPj/AQAAAAAAAQAJAPn/AQAAAAAAAQAJAPr/AQAAAAAAAQAJAPv/AQAAAAAAAQAKAPv/AQAAAAAAAQAKAPz/AQAAAAAAAQAIAPn/AQAAAAAAAQAIAPj/AQAAAAAAAQAIAPf/AQAAAAAAAQAIAPb/AQAAAAAAAQAIAPX/AQAAAAAAAQAIAPT/AQAAAAAAAQAKAPT/AQAAAAAAAQAKAPX/AQAAAAAAAQAKAPb/AQAAAAAAAQAKAPf/AQAAAAAAAQAKAPj/AQAAAAAAAQAKAPn/AQAAAAAAAQAKAPr/AQAAAAAAAQAKAPP/AQAAAAAAAQD5/+z/AQAAAAAAAQD5/+v/AQAAAAAAAQD6/+v/AQAAAAAAAQD6/+r/AQAAAAAAAQD5/+r/AQAAAAAAAQD7/+v/AQAAAAAAAQD7/+z/AQAAAAAAAQD6/+z/AQAAAAAAAQD7/+r/AQAAAAAAAQD6/+3/AQAAAAAAAQD7/+3/AQAAAAAAAQD8/+v/AQAAAAAAAQD9/+v/AQAAAAAAAQD8/+r/AQAAAAAAAQD8/+n/AQAAAAAAAQD7/+n/AQAAAAAAAQD6/+n/AQAAAAAAAQADAOz/AQAAAAAAAQACAOv/AQAAAAAAAQACAOr/AQAAAAAAAQADAOr/AQAAAAAAAQAEAOr/AQAAAAAAAQAEAOn/AQAAAAAAAQAEAOv/AQAAAAAAAQAEAOz/AQAAAAAAAQADAOv/AQAAAAAAAQAFAOj/AQAAAAAAAQAEAOj/AQAAAAAAAQAEAOf/AQAAAAAAAQADAOf/AQAAAAAAAQADAOj/AQAAAAAAAQADAOn/AQAAAAAAAQAFAOr/AQAAAAAAAQAFAOv/AQAAAAAAAQAFAOn/AQAAAAAAAQD2/93/AQAAAAAAAQD3/93/AQAAAAAAAQD4/93/AQAAAAAAAQD5/93/AQAAAAAAAQD6/93/AQAAAAAAAQD7/97/AQAAAAAAAQD8/97/AQAAAAAAAQD9/97/AQAAAAAAAQD+/97/AQAAAAAAAQD+/9//AQAAAAAAAQD//9//AQAAAAAAAQAAAN//AQAAAAAAAQABAN//AQAAAAAAAQABAOD/AQAAAAAAAQAAAOD/AQAAAAAAAQD//+D/AQAAAAAAAQD+/+D/AQAAAAAAAQD+/+H/AQAAAAAAAQD9/+H/AQAAAAAAAQD6/+H/AQAAAAAAAQD5/+H/AQAAAAAAAQD4/+H/AQAAAAAAAQD3/+H/AQAAAAAAAQD3/+D/AQAAAAAAAQD3/9//AQAAAAAAAQD2/+H/AQAAAAAAAQD2/+D/AQAAAAAAAQD2/9//AQAAAAAAAQD2/97/AQAAAAAAAQD3/97/AQAAAAAAAQD4/97/AQAAAAAAAQD5/97/AQAAAAAAAQD4/9//AQAAAAAAAQD4/+D/AQAAAAAAAQD6/97/AQAAAAAAAQD9/9//AQAAAAAAAQD9/+D/AQAAAAAAAQD4/+L/AQAAAAAAAQD3/+L/AQAAAAAAAQD2/+L/AQAAAAAAAQD2/+P/AQAAAAAAAQA=")
+tile_set = SubResource("TileSet_nmgb3")
+
+[node name="jellyFish" parent="obstacles" instance=ExtResource("9_u8caq")]
+position = Vector2(1839, -867)
+rotation = -0.768863
+push_distance = 4
+
+[node name="jellyFish2" parent="obstacles" instance=ExtResource("9_u8caq")]
+position = Vector2(-1119, -2006)
+rotation = 3.55815
+push_distance = 6
+
+[node name="jellyFish3" parent="obstacles" instance=ExtResource("9_u8caq")]
+position = Vector2(1950, -4574)
+rotation = -1.57163
+push_distance = 6
+
+[node name="coin" parent="obstacles" instance=ExtResource("10_bhyfi")]
+position = Vector2(-1198, -4491)
+
+[node name="winZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="winCol" type="CollisionShape2D" parent="winZone"]
+position = Vector2(111.5, -5338)
+shape = SubResource("RectangleShape2D_8w1gr")
+
+[node name="leftWall" type="StaticBody2D" parent="."]
+position = Vector2(-2181, -1172)
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="leftWall"]
+texture_repeat = 2
+texture = ExtResource("9_gfmp2")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="leftWall"]
+shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="rightWall" type="StaticBody2D" parent="."]
+position = Vector2(2399, -1172)
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="rightWall"]
+texture_repeat = 2
+texture = ExtResource("9_gfmp2")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="rightWall"]
+shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="bottomWall" type="StaticBody2D" parent="."]
+position = Vector2(61, 2693)
+rotation = 1.57079
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="bottomWall"]
+visible = false
+texture_repeat = 2
+texture = ExtResource("9_gfmp2")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="bottomWall"]
+shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="coin" parent="." instance=ExtResource("10_bhyfi")]
+position = Vector2(-1705, -2130)
+
+[node name="coin2" parent="." instance=ExtResource("10_bhyfi")]
+position = Vector2(1460, -3641)

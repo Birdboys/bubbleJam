@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://duew7u1ij35jj"]
+[gd_scene load_steps=15 format=4 uid="uid://duew7u1ij35jj"]
 
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_51e5y"]
 [ext_resource type="Texture2D" uid="uid://d1wufi0db30i8" path="res://assets/section1/background.png" id="2_qg5s7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="7_r4k7q"]
 [ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="8_alxlb"]
 [ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="9_80bck"]
+[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scenes/coin.tscn" id="10_jdby7"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ipsy5"]
 scenes/1/scene = ExtResource("7_r4k7q")
@@ -89,7 +90,7 @@ text = "0"
 [node name="urchinLayer" type="TileMapLayer" parent="obstacles"]
 use_parent_material = true
 position = Vector2(0, 1900)
-tile_map_data = PackedByteArray("AAD5//v/AQAAAAAAAQD+//b/AQAAAAAAAQAGAPf/AQAAAAAAAQAGAP3/AQAAAAAAAQAEAPD/AQAAAAAAAQAHAOj/AQAAAAAAAQD4/+b/AQAAAAAAAQD9/93/AQAAAAAAAQD3/+D/AQAAAAAAAQD9/+//AQAAAAAAAQD3//b/AQAAAAAAAQAKAPL/AQAAAAAAAQAJAOP/AQAAAAAAAQD3/+3/AQAAAAAAAQABAOn/AQAAAAAAAQD9/+P/AQAAAAAAAQADAOH/AQAAAAAAAQAIAN3/AQAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAD5//v/AQAAAAAAAQD+//b/AQAAAAAAAQAGAPf/AQAAAAAAAQAGAP3/AQAAAAAAAQAEAPD/AQAAAAAAAQAHAOj/AQAAAAAAAQD4/+b/AQAAAAAAAQD9/93/AQAAAAAAAQD3/+D/AQAAAAAAAQD3//b/AQAAAAAAAQAKAPL/AQAAAAAAAQAJAOP/AQAAAAAAAQD3/+3/AQAAAAAAAQABAOn/AQAAAAAAAQD9/+P/AQAAAAAAAQADAOH/AQAAAAAAAQAIAN3/AQAAAAAAAQD6//H/AQAAAAAAAQA=")
 tile_set = SubResource("TileSet_nmgb3")
 
 [node name="winZone" type="Area2D" parent="."]
@@ -141,3 +142,12 @@ region_rect = Rect2(0, 0, 400, 10000)
 
 [node name="wallCol" type="CollisionShape2D" parent="bottomWall"]
 shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="coin" parent="." instance=ExtResource("10_jdby7")]
+position = Vector2(1260, -3695)
+
+[node name="coin2" parent="." instance=ExtResource("10_jdby7")]
+position = Vector2(-1058, -2284)
+
+[node name="coin3" parent="." instance=ExtResource("10_jdby7")]
+position = Vector2(917, -389)
