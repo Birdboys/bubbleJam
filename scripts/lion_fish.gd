@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @onready var fishFollow := $fishPath/fishFollow
 @onready var fishPath := $fishPath
+@onready var fishSprite := $lionFishSprite
 @export var path_points : Array[Vector2]
 @export var follow_speed := 300.0
 
@@ -14,12 +15,14 @@ func _ready() -> void:
 		path_curve.add_point(point)
 	fishPath.curve = path_curve
 	original_position = position
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
 	fishFollow.progress += follow_speed * delta * (1 if forward else -1)
 	if fishFollow.progress_ratio == 0.0:
 		forward = true
-	if fishFollow.progress_ratio == 1.0:
+		fishSprite.flip_h = false
+	if fishFollow.progress_ratio >= 1.0:
 		forward = false
-	position = fishFollow.position
-	print(fishFollow.position)
+		fishSprite.flip_h = true
+	position = original_position + fishFollow.position
+	#print(fishFollow.progress_ratio)

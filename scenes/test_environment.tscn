@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwl48rps53nei"]
+[gd_scene load_steps=8 format=3 uid="uid://bwl48rps53nei"]
 
 [ext_resource type="Script" path="res://scripts/test_environment.gd" id="1_66d0o"]
 [ext_resource type="PackedScene" uid="uid://cvcffxxqrpo18" path="res://scenes/puffer_fish.tscn" id="1_nwbpb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ddnak4xxamf6e" path="res://assets/temp/ocean.png" id="4_ctwtv"]
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="5_ks4oj"]
 [ext_resource type="PackedScene" uid="uid://rtqqgxot481" path="res://scenes/collect_bubble.tscn" id="6_cwxk8"]
+[ext_resource type="PackedScene" uid="uid://cvuik8t15iku5" path="res://scenes/lion_fish.tscn" id="7_4ibie"]
 
 [node name="testEnvironment" type="Node2D"]
 script = ExtResource("1_66d0o")
@@ -83,3 +84,7 @@ air_val = 3
 [node name="collectBubble4" parent="collectBubbles" instance=ExtResource("6_cwxk8")]
 position = Vector2(800, -800)
 air_val = 1
+
+[node name="lionFish" parent="." instance=ExtResource("7_4ibie")]
+position = Vector2(-600, -200)
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(1200, 0)])

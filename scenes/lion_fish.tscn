@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/lion_fish.gd" id="1_cjaqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpptu"]
+size = Vector2(160, 160)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_siegq"]
 radius = 80.0
@@ -12,21 +13,25 @@ height = 360.0
 [sub_resource type="Curve2D" id="Curve2D_my0sd"]
 
 [node name="lionFish" type="StaticBody2D"]
+collision_mask = 0
 script = ExtResource("1_cjaqw")
 
-[node name="lionFish" type="Sprite2D" parent="."]
+[node name="lionFishSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_2f0an")
 
 [node name="lionFishCol" type="CollisionShape2D" parent="."]
+position = Vector2(0, 39)
 shape = SubResource("RectangleShape2D_jpptu")
 
 [node name="lionFishHurtBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
 
 [node name="hurtBoxCol" type="CollisionShape2D" parent="lionFishHurtBox"]
 shape = SubResource("CapsuleShape2D_siegq")
 
 [node name="fishPath" type="Path2D" parent="."]
-top_level = true
 curve = SubResource("Curve2D_my0sd")
 
 [node name="fishFollow" type="PathFollow2D" parent="fishPath"]
+loop = false
