@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvokbrpxp023b"]
 
-[ext_resource type="Texture2D" uid="uid://bjggycgditbgt" path="res://assets/temp/eel_lightning.png" id="1_vltxj"]
+[ext_resource type="Texture2D" uid="uid://dnvfehl3kjcfj" path="res://assets/electricity.png" id="1_hgect"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5vya"]
 size = Vector2(200, 100)
@@ -11,7 +11,7 @@ collision_mask = 0
 
 [node name="electricitySprite" type="Sprite2D" parent="."]
 position = Vector2(100, 0)
-texture = ExtResource("1_vltxj")
+texture = ExtResource("1_hgect")
 
 [node name="electricityCol" type="CollisionShape2D" parent="."]
 position = Vector2(100, 0)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://6agdkbsdai4d"]
 
 [ext_resource type="Script" path="res://scripts/eel.gd" id="1_wpoxq"]
-[ext_resource type="Texture2D" uid="uid://dci7fol2r02ap" path="res://assets/temp/eel.png" id="2_xf8ko"]
+[ext_resource type="Texture2D" uid="uid://1gup66gelu7a" path="res://assets/eel_neutral.png" id="2_vfono"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w3yis"]
 radius = 140.0
@@ -16,8 +16,8 @@ script = ExtResource("1_wpoxq")
 shape = SubResource("CircleShape2D_w3yis")
 
 [node name="eelSprite" type="Sprite2D" parent="."]
-position = Vector2(0, -22)
-texture = ExtResource("2_xf8ko")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_vfono")
 
 [node name="eelHurtBox" type="Area2D" parent="."]
 collision_layer = 8

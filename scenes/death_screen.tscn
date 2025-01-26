@@ -95,6 +95,21 @@ size_flags_horizontal = 10
 theme_type_variation = &"subLabel"
 text = "0/3"
 
+[node name="hpCount" type="HBoxContainer" parent="deathScreenMargin/deathScreenPanel/margin/bubble"]
+layout_mode = 2
+
+[node name="hpLabel" type="Label" parent="deathScreenMargin/deathScreenPanel/margin/bubble/hpCount"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_type_variation = &"subLabel"
+text = "HP:"
+
+[node name="hpData" type="Label" parent="deathScreenMargin/deathScreenPanel/margin/bubble/hpCount"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_type_variation = &"subLabel"
+text = "0/3"
+
 [node name="lossButtons" type="VBoxContainer" parent="deathScreenMargin/deathScreenPanel/margin/bubble"]
 visible = false
 layout_mode = 2

@@ -19,6 +19,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	puffer.do_puff.connect(handlePuff)
 	puffer.coin_collected.connect(coinCollected)
+	puffer.death.connect(handleDeath)
 	bubble.death.connect(handleDeath)
 	winZone.body_entered.connect(handleWin)
 	get_tree().create_timer(2.0).timeout.connect(startGame)
@@ -74,7 +75,7 @@ func handleDeath():
 	get_tree().create_timer(1.0).timeout.connect(deathScreen.bind(false))
 
 func deathScreen(win:bool):
-	DeathScreen.showDeathScreen(win, game_time, coins_collected)
+	DeathScreen.showDeathScreen(win, game_time, coins_collected, puffer.hp)
 
 func startGame():
 	puffer.pufferEmpty()

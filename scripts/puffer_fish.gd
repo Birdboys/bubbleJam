@@ -93,7 +93,9 @@ func pufferEmpty():
 func pufferHurt(obstacle: Area2D):
 	if current_state == puffer_states.DAMAGED or current_state == puffer_states.IDLE: return
 	hp -= 1
-	if hp == 0: death.emit()
+	print(hp)
+	if hp <= 0: 
+		emit_signal("death")
 	current_state = puffer_states.DAMAGED
 	pufferAnim.play("damage")
 	AudioHandler.playSound("puff_hurt")
