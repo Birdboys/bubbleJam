@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cppibnxi6p8lb"]
 
 [ext_resource type="Script" path="res://scripts/turtle.gd" id="1_ce5jl"]
-[ext_resource type="Texture2D" uid="uid://cvlbof3ml4roe" path="res://assets/temp/turtle.png" id="1_lmo61"]
+[ext_resource type="Texture2D" uid="uid://blw2iiynu4o8r" path="res://assets/turtle.png" id="2_7m0pq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l58o6"]
 radius = 80.0
@@ -18,7 +18,7 @@ collision_mask = 0
 script = ExtResource("1_ce5jl")
 
 [node name="turtleSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_lmo61")
+texture = ExtResource("2_7m0pq")
 
 [node name="turtleCol" type="CollisionShape2D" parent="."]
 rotation = -1.57079
