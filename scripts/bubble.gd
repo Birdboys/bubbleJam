@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var bubHurtBox := $bubbleHurtBox
 @onready var bubCollectBox := $bubbleCollectBox
 @onready var otterSprite := $otterSprite
+@onready var otter := preload("res://assets/otter.png")
+@onready var otter_balled := preload("res://assets/otter_balled.png")
 @export var bubble_scale := 1.0
 
 signal death
@@ -39,7 +41,8 @@ func updateScale(delta):
 	bubble_scale = clamp(bubble_scale, 0.0, 1.0)
 	scale = 3 * Vector2.ONE * bubble_scale
 	otterSprite.scale = 3 * Vector2.ONE * bubble_scale
-
+	otterSprite.texture = otter if bubble_scale > 0.4 else otter_balled
+	
 func updateRotation(delta):
 	current_rotation = move_toward(current_rotation, 0.0, bubble_rot_friction*delta)
 	bubbleSprite.rotate(current_rotation)

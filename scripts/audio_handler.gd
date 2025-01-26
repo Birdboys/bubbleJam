@@ -22,8 +22,8 @@ func populateQueues():
 		var new_2d_player = AudioStreamPlayer2D.new()
 		soundQueue.add_child(new_player)
 		soundQueue2D.add_child(new_2d_player)
-		new_player.bus = "soundEffects"
-		new_2d_player.bus = "soundEffects"
+		new_player.bus = "soundEffect"
+		new_2d_player.bus = "soundEffect"
 		players.append(new_player)
 		players_2d.append(new_2d_player)
 		new_2d_player.finished.connect(reset2DPlayer.bind(x))

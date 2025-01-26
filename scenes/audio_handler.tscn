@@ -11,3 +11,4 @@ script = ExtResource("1_11g53")
 [node name="soundEffect2DQueue" type="Node" parent="."]
 
 [node name="bgMusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"musicBG"

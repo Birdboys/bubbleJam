@@ -65,7 +65,7 @@ func doPuff():
 	pufferAnim.play("puff")
 
 func doesPuffConnect(pos):
-	puffRay.target_position = pos
+	puffRay.target_position = to_local(pos)
 	puffRay.force_raycast_update()
 	print("TRYING TO CONNECT")
 	if puffRay.is_colliding():
