@@ -18,11 +18,10 @@ script = ExtResource("1_htjc4")
 
 [node name="ocean" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(0, -1800)
-scale = Vector2(2, 2)
+position = Vector2(100, -1400)
 texture = ExtResource("2_n03sg")
 region_enabled = true
-region_rect = Rect2(0, 0, 4200, 2560)
+region_rect = Rect2(0, 0, 4200, 7800)
 
 [node name="pufferFish" parent="." instance=ExtResource("3_v822l")]
 current_state = 3
@@ -33,9 +32,8 @@ position = Vector2(0, 600)
 [node name="playerCam" type="Camera2D" parent="."]
 zoom = Vector2(0.25, 0.25)
 
-[node name="urchins" type="Node2D" parent="."]
+[node name="level" type="Node2D" parent="."]
 
-[node name="TileMap" type="TileMap" parent="urchins"]
+[node name="urchinLayer" type="TileMapLayer" parent="level"]
+use_parent_material = true
 tile_set = SubResource("TileSet_xukv3")
-format = 2
-layer_0/tile_data = PackedInt32Array(-327681, 1, 65536, -393216, 1, 65536, -393215, 1, 65536, -393214, 1, 65536, -393213, 1, 65536, -393212, 1, 65536, -393211, 1, 65536, -393210, 1, 65536)
