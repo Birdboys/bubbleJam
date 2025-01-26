@@ -60,6 +60,7 @@ func updateRot(bubble_pos):
 	
 func doPuff():
 	emit_signal("do_puff")
+	current_state = puffer_states.EMPTY
 	pufferAnim.play("puff")
 	
 
