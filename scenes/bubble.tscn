@@ -7,12 +7,14 @@
 radius = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i7meq"]
-radius = 100.0
+radius = 90.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_odgtg"]
 radius = 100.0
 
 [node name="bubble" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_d4vj7")
 
 [node name="bubbleCol" type="CollisionShape2D" parent="."]
@@ -27,6 +29,7 @@ collision_mask = 24
 
 [node name="bubbleHurtCol" type="CollisionShape2D" parent="bubbleHurtBox"]
 shape = SubResource("CircleShape2D_i7meq")
+debug_color = Color(0.992386, 0, 0.252742, 0.42)
 
 [node name="bubbleCollectBox" type="Area2D" parent="."]
 collision_layer = 0

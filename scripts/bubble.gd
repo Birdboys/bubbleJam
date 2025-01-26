@@ -37,12 +37,15 @@ func updateRotation(delta):
 
 func popBubble(enemy: Area2D):
 	print("BUBBLE POPPED")
+	AudioHandler.playSound("pops")
+	#get_tree().reload_current_scene()
 
 func collectBubble(bub: Area2D):
 	var added_air_val = bub.air_val
 	bubble_scale += added_air_val
 	bubble_scale = clampf(bubble_scale, 0.0, 1.0)
 	bub.queue_free()
+	AudioHandler.playSound("absorbs")
 	
 func pushBubble(push_dir, push_dist):
 	print("BUBBLE PUSHED")

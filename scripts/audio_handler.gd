@@ -8,7 +8,7 @@ extends Node
 @onready var queue_length := 10
 @onready var queue_index := 0
 @onready var queue_2d_index := 0
-@onready var audio_num_vars = {
+@onready var audio_num_vars = {"pops":2, "puff_hurt":2, "absorbs":2
 }
 
 var music_tween

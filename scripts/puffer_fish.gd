@@ -22,6 +22,7 @@ signal do_puff
 func _ready() -> void:
 	pufferHurtBox.area_entered.connect(pufferHurt)
 	updateScale()
+	pufferEmpty()
 	
 func _process(delta: float) -> void:
 	position = get_global_mouse_position()
@@ -43,6 +44,7 @@ func updateScale():
 	var new_scale = Vector2.ONE + (Vector2.ONE * puffer_scale)
 	pufferSprite.scale = new_scale
 	pufferCol.scale = new_scale
+	pufferHitBox.scale = new_scale
 
 func updateRot(bubble_pos):
 	var relative_bubble_pos = to_local(bubble_pos)
@@ -68,4 +70,5 @@ func pufferHurt(obstacle: Area2D):
 	if hp == 0: get_tree().quit()
 	current_state = puffer_states.DAMAGED
 	pufferAnim.play("damage")
+	AudioHandler.playSound("puff_hurt")
 	
