@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://duew7u1ij35jj"]
+[gd_scene load_steps=12 format=4 uid="uid://duew7u1ij35jj"]
 
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_51e5y"]
 [ext_resource type="Texture2D" uid="uid://d1wufi0db30i8" path="res://assets/section1/background.png" id="2_qg5s7"]
@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://da1y6457akk57" path="res://scenes/bubble.tscn" id="5_7yxvs"]
 [ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="6_xbwmr"]
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="7_r4k7q"]
+[ext_resource type="PackedScene" path="res://scenes/whale.tscn" id="8_alxlb"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ipsy5"]
 scenes/1/scene = ExtResource("7_r4k7q")
+scenes/3/scene = ExtResource("8_alxlb")
 
 [sub_resource type="TileSet" id="TileSet_nmgb3"]
 tile_size = Vector2i(200, 200)
