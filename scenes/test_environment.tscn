@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwl48rps53nei"]
+[gd_scene load_steps=9 format=3 uid="uid://bwl48rps53nei"]
 
 [ext_resource type="Script" path="res://scripts/test_environment.gd" id="1_66d0o"]
 [ext_resource type="PackedScene" uid="uid://cvcffxxqrpo18" path="res://scenes/puffer_fish.tscn" id="1_nwbpb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="5_ks4oj"]
 [ext_resource type="PackedScene" uid="uid://rtqqgxot481" path="res://scenes/collect_bubble.tscn" id="6_cwxk8"]
 [ext_resource type="PackedScene" uid="uid://cppibnxi6p8lb" path="res://scenes/turtle.tscn" id="8_6c6d7"]
+[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scenes/coin.tscn" id="8_iknth"]
 
 [node name="testEnvironment" type="Node2D"]
 script = ExtResource("1_66d0o")
@@ -88,3 +89,6 @@ air_val = 1
 [node name="turtle" parent="." instance=ExtResource("8_6c6d7")]
 position = Vector2(-400, -200)
 path_points = Array[Vector2]([Vector2(0, 0), Vector2(800, 0)])
+
+[node name="coinSprite" parent="." instance=ExtResource("8_iknth")]
+position = Vector2(464, 35)
