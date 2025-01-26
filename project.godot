@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 AudioHandler="*res://scenes/audio_handler.tscn"
+DeathScreen="*res://scenes/death_screen.tscn"
 
 [display]
 
