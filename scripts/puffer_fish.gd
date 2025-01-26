@@ -63,7 +63,6 @@ func doPuff():
 	current_state = puffer_states.EMPTY
 	pufferAnim.play("puff")
 	
-
 func pufferFull():
 	current_state = puffer_states.PUFFED
 	pufferSprite.texture = puffed_sprite

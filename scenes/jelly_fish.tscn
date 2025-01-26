@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://df0un3ra580el"]
+
+[ext_resource type="Script" path="res://scripts/jelly_fish.gd" id="1_81y60"]
+[ext_resource type="Texture2D" uid="uid://baipwh42kx636" path="res://assets/temp/jelly.png" id="1_bogvf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6upv3"]
+radius = 90.0
+height = 430.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgvgn"]
+radius = 200.0
+height = 560.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sogxw"]
+size = Vector2(640, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lu0k3"]
+size = Vector2(600, 400)
+
+[node name="jellyFish" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_81y60")
+
+[node name="jellyFishSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_bogvf")
+
+[node name="jellyFishCol" type="CollisionShape2D" parent="."]
+position = Vector2(0, -84)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_6upv3")
+
+[node name="jellyFishHurtBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="hurtBoxCol" type="CollisionShape2D" parent="jellyFishHurtBox"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_cgvgn")
+debug_color = Color(0.974472, 0.160233, 3.85046e-07, 0.42)
+
+[node name="jellyFishPushBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="pushCol" type="CollisionShape2D" parent="jellyFishPushBox"]
+position = Vector2(0, -120)
+shape = SubResource("RectangleShape2D_sogxw")
+debug_color = Color(0.278551, 0.631575, 0, 0.42)
+
+[node name="jellyDetectorArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="detectorCol" type="CollisionShape2D" parent="jellyDetectorArea"]
+position = Vector2(0, -400)
+shape = SubResource("RectangleShape2D_lu0k3")
+
+[node name="bubbleTimer" type="Timer" parent="."]
