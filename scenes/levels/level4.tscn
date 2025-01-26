@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://6i87n3ywxqsh" path="res://scenes/coral.tscn" id="8_jiott"]
 [ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="8_weaji"]
 [ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="9_rqsvn"]
-[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scenes/coin.tscn" id="10_18xrt"]
+[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scripts/coin.tscn" id="10_18xrt"]
 [ext_resource type="PackedScene" uid="uid://cvuik8t15iku5" path="res://scenes/lion_fish.tscn" id="11_jixip"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ekdma"]

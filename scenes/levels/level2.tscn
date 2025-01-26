@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="8_xwok7"]
 [ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="9_gfmp2"]
 [ext_resource type="PackedScene" uid="uid://caivuw1yrylwx" path="res://scenes/jelly_fish.tscn" id="9_u8caq"]
-[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scenes/coin.tscn" id="10_bhyfi"]
+[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scripts/coin.tscn" id="10_bhyfi"]
 [ext_resource type="PackedScene" uid="uid://6agdkbsdai4d" path="res://scenes/eel.tscn" id="11_m5se4"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ipsy5"]
@@ -118,6 +118,12 @@ position = Vector2(-1603, 93)
 electricity_length = 5
 time_on = 4
 
+[node name="coin2" parent="obstacles" instance=ExtResource("10_bhyfi")]
+position = Vector2(-1705, -2130)
+
+[node name="coin3" parent="obstacles" instance=ExtResource("10_bhyfi")]
+position = Vector2(1460, -3641)
+
 [node name="winZone" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
@@ -166,9 +172,3 @@ region_rect = Rect2(0, 0, 400, 10000)
 
 [node name="wallCol" type="CollisionShape2D" parent="bottomWall"]
 shape = SubResource("RectangleShape2D_wk6w2")
-
-[node name="coin" parent="." instance=ExtResource("10_bhyfi")]
-position = Vector2(-1705, -2130)
-
-[node name="coin2" parent="." instance=ExtResource("10_bhyfi")]
-position = Vector2(1460, -3641)

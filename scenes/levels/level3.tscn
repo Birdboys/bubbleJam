@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cvqpilc3ibhqj" path="res://assets/section1/midground.png" id="3_paafv"]
 [ext_resource type="PackedScene" uid="uid://cvcffxxqrpo18" path="res://scenes/puffer_fish.tscn" id="4_vb1vo"]
 [ext_resource type="PackedScene" uid="uid://da1y6457akk57" path="res://scenes/bubble.tscn" id="5_x02qv"]
-[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scenes/coin.tscn" id="6_78t2m"]
+[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scripts/coin.tscn" id="6_78t2m"]
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="7_d6l2b"]
 [ext_resource type="PackedScene" uid="uid://6agdkbsdai4d" path="res://scenes/eel.tscn" id="8_1pbv2"]
 [ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="8_2l6m2"]
