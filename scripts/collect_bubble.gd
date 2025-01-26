@@ -4,3 +4,8 @@ extends Area2D
 
 func _ready() -> void:
 	scale = Vector2.ONE * air_val/4.0
+	area_entered.connect(popped)
+
+func popped(puffer: Area2D):
+	AudioHandler.playSound("pops")
+	queue_free()

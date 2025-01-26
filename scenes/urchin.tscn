@@ -1,16 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxhjqvqq6yi0m"]
+[gd_scene load_steps=4 format=3 uid="uid://dxhjqvqq6yi0m"]
 
 [ext_resource type="Texture2D" uid="uid://b64703tokxc83" path="res://assets/temp/urchin.png" id="1_gxlhx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5ilb"]
-size = Vector2(200, 200)
+size = Vector2(180, 180)
 
-[node name="urchin" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7a35"]
+size = Vector2(150, 150)
+
+[node name="urchin" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="urchinHurtBox" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 0
 
-[node name="urchinSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_gxlhx")
+[node name="urchinHurtCol" type="CollisionShape2D" parent="urchinHurtBox"]
+shape = SubResource("RectangleShape2D_a5ilb")
+debug_color = Color(0.912132, 0.248649, 0.408832, 0.42)
 
 [node name="urchinCol" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_a5ilb")
+shape = SubResource("RectangleShape2D_o7a35")
+
+[node name="urchinSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_gxlhx")

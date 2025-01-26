@@ -1,13 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvcffxxqrpo18"]
+[gd_scene load_steps=10 format=3 uid="uid://cvcffxxqrpo18"]
 
 [ext_resource type="Script" path="res://scripts/puffer_fish.gd" id="1_6c7g5"]
 [ext_resource type="Texture2D" uid="uid://bx5id20fjlon4" path="res://assets/temp/puffer.png" id="2_d8n6v"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h8xa1"]
-radius = 100.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtavb"]
+radius = 90.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_al0lt"]
 radius = 90.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2up4t"]
+radius = 100.0
 
 [sub_resource type="Animation" id="Animation_5586f"]
 resource_name = "charge"
@@ -116,7 +119,7 @@ _data = {
 }
 
 [node name="pufferFish" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 16
 script = ExtResource("1_6c7g5")
 puffer_scale = 1.0
 current_state = 1
@@ -126,7 +129,7 @@ texture = ExtResource("2_d8n6v")
 
 [node name="pufferCol" type="CollisionShape2D" parent="."]
 rotation = -1.5708
-shape = SubResource("CircleShape2D_h8xa1")
+shape = SubResource("CircleShape2D_vtavb")
 
 [node name="pufferHitBox" type="Area2D" parent="."]
 collision_layer = 16
@@ -143,7 +146,7 @@ collision_mask = 8
 
 [node name="hitBoxCol" type="CollisionShape2D" parent="pufferHurtBox"]
 rotation = -1.5708
-shape = SubResource("CircleShape2D_h8xa1")
+shape = SubResource("CircleShape2D_2up4t")
 
 [node name="pufferAnim" type="AnimationPlayer" parent="."]
 libraries = {
