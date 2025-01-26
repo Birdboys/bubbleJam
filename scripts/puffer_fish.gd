@@ -23,7 +23,7 @@ var fish_speed := 7500.0
 var hp := 3
 
 signal do_puff
-signal coin_collected
+signal coin_collected 
 signal death
 
 func _ready() -> void:
