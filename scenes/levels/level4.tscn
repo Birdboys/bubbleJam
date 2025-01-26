@@ -1,0 +1,205 @@
+[gd_scene load_steps=17 format=4 uid="uid://bdnuy2d08bnon"]
+
+[ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_r2461"]
+[ext_resource type="Texture2D" uid="uid://b4ifcskqke5mi" path="res://assets/coral/CoralBackgroundFull.png" id="2_ch25b"]
+[ext_resource type="Texture2D" uid="uid://wd8wew24tpxs" path="res://assets/coral/CoralMiddlegroundFull.png" id="3_3ve2e"]
+[ext_resource type="PackedScene" uid="uid://cvcffxxqrpo18" path="res://scenes/puffer_fish.tscn" id="4_g2sju"]
+[ext_resource type="PackedScene" uid="uid://da1y6457akk57" path="res://scenes/bubble.tscn" id="5_8celt"]
+[ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="6_fmfql"]
+[ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="7_hnimg"]
+[ext_resource type="PackedScene" uid="uid://6i87n3ywxqsh" path="res://scenes/coral.tscn" id="8_jiott"]
+[ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="8_weaji"]
+[ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="9_rqsvn"]
+[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scenes/coin.tscn" id="10_18xrt"]
+[ext_resource type="PackedScene" uid="uid://cvuik8t15iku5" path="res://scenes/lion_fish.tscn" id="11_jixip"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ekdma"]
+scenes/1/scene = ExtResource("7_hnimg")
+scenes/2/scene = ExtResource("8_jiott")
+scenes/3/scene = ExtResource("8_weaji")
+
+[sub_resource type="TileSet" id="TileSet_tpv77"]
+tile_size = Vector2i(200, 200)
+sources/1 = SubResource("TileSetScenesCollectionSource_ekdma")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w1gr"]
+size = Vector2(1310, 390)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wk6w2"]
+
+[node name="level4Coral" type="Node2D"]
+script = ExtResource("1_r2461")
+
+[node name="bgLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="background" type="Sprite2D" parent="bgLayer"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(100, -1400)
+texture = ExtResource("2_ch25b")
+region_enabled = true
+region_rect = Rect2(0, 0, 4200, 7800)
+
+[node name="midgroundPara" type="Parallax2D" parent="."]
+z_index = -1
+scroll_scale = Vector2(0.45, 0.45)
+scroll_offset = Vector2(0, -1400)
+
+[node name="midground" type="Sprite2D" parent="midgroundPara"]
+texture = ExtResource("3_3ve2e")
+
+[node name="pufferFish" parent="." instance=ExtResource("4_g2sju")]
+position = Vector2(0, 1635)
+current_state = 3
+
+[node name="bubble" parent="." instance=ExtResource("5_8celt")]
+position = Vector2(0, 2200)
+bubble_scale = 0.75
+
+[node name="playerCam" type="Camera2D" parent="."]
+position = Vector2(0, 127)
+zoom = Vector2(0.2, 0.2)
+limit_left = -2100
+limit_right = 2300
+limit_bottom = 2500
+
+[node name="uiLayer" type="CanvasLayer" parent="."]
+
+[node name="uiMargin" type="MarginContainer" parent="uiLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("6_fmfql")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="timerLabel" type="Label" parent="uiLayer/uiMargin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_type_variation = &"subLabel"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "0"
+
+[node name="obstacles" type="Node2D" parent="."]
+
+[node name="urchinLayer" type="TileMapLayer" parent="obstacles"]
+use_parent_material = true
+position = Vector2(0, 2100)
+tile_map_data = PackedByteArray("AAD8/wEAAQAAAAAAAgD7/wAAAQAAAAAAAgD7////AQAAAAAAAgD7//7/AQAAAAAAAgD7//3/AQAAAAAAAgD7//z/AQAAAAAAAgD6////AQAAAAAAAgD6/wEAAQAAAAAAAgD5/wEAAQAAAAAAAgD7/wEAAQAAAAAAAgD5/wAAAQAAAAAAAgD4/wEAAQAAAAAAAgD8////AQAAAAAAAgD9/wAAAQAAAAAAAgD9/wEAAQAAAAAAAgD6//7/AQAAAAAAAgD5//7/AQAAAAAAAgD5////AQAAAAAAAgD4/wAAAQAAAAAAAgD5//j/AQAAAAAAAgD5//n/AQAAAAAAAgD6//r/AQAAAAAAAgD6//v/AQAAAAAAAgD6//z/AQAAAAAAAgD5//z/AQAAAAAAAgD5//v/AQAAAAAAAgAEAAEAAQAAAAAAAgAEAAAAAQAAAAAAAgAEAP//AQAAAAAAAgAFAP//AQAAAAAAAgAFAP7/AQAAAAAAAgAFAAAAAQAAAAAAAgAEAPn/AQAAAAAAAgAEAPj/AQAAAAAAAgAGAP7/AQAAAAAAAgAGAP//AQAAAAAAAgAGAAAAAQAAAAAAAgAHAAAAAQAAAAAAAgAGAAEAAQAAAAAAAgAHAAEAAQAAAAAAAgAIAAEAAQAAAAAAAgAJAAEAAQAAAAAAAgAFAPn/AQAAAAAAAgAFAPj/AQAAAAAAAgAGAPn/AQAAAAAAAgAGAPj/AQAAAAAAAgAGAPf/AQAAAAAAAgAGAPb/AQAAAAAAAgAFAPb/AQAAAAAAAgAFAPX/AQAAAAAAAgAFAPT/AQAAAAAAAgAGAPX/AQAAAAAAAgAEAPX/AQAAAAAAAgD5//T/AQAAAAAAAgD4//T/AQAAAAAAAgD3//T/AQAAAAAAAgD3//P/AQAAAAAAAgD2//P/AQAAAAAAAgD5//P/AQAAAAAAAgD6//T/AQAAAAAAAgD7//T/AQAAAAAAAgD7//X/AQAAAAAAAgD7//P/AQAAAAAAAgD6//L/AQAAAAAAAgD5//L/AQAAAAAAAgD5//H/AQAAAAAAAgD4//D/AQAAAAAAAgD3//D/AQAAAAAAAgD3//H/AQAAAAAAAgD3//L/AQAAAAAAAgD2//L/AQAAAAAAAgD2//H/AQAAAAAAAgD2//D/AQAAAAAAAgD5//D/AQAAAAAAAgD6//D/AQAAAAAAAgD6//H/AQAAAAAAAgD8//H/AQAAAAAAAgD9//H/AQAAAAAAAgD+//H/AQAAAAAAAgD+//D/AQAAAAAAAgD///D/AQAAAAAAAgD8//L/AQAAAAAAAgD7//L/AQAAAAAAAgAHAO7/AQAAAAAAAgAHAO3/AQAAAAAAAgAIAO3/AQAAAAAAAgAIAO7/AQAAAAAAAgAJAO7/AQAAAAAAAgD+/+//AQAAAAAAAgD9/+//AQAAAAAAAgD9/+7/AQAAAAAAAgD8/+7/AQAAAAAAAgD7/+//AQAAAAAAAgD8/+//AQAAAAAAAgD//+//AQAAAAAAAgD+/+7/AQAAAAAAAgD6/+//AQAAAAAAAgD5/+//AQAAAAAAAgD6/+7/AQAAAAAAAgD7/+7/AQAAAAAAAgD//+7/AQAAAAAAAgAIAO//AQAAAAAAAgAJAO//AQAAAAAAAgAJAPD/AQAAAAAAAgAKAPD/AQAAAAAAAgAKAO//AQAAAAAAAgAKAO7/AQAAAAAAAgALAPH/AQAAAAAAAgALAPL/AQAAAAAAAgAKAPL/AQAAAAAAAgAKAPH/AQAAAAAAAgAHAOr/AQAAAAAAAgD+/+3/AQAAAAAAAgD///H/AQAAAAAAAgAIAOr/AQAAAAAAAgAJAOr/AQAAAAAAAgAIAOn/AQAAAAAAAgAIAOj/AQAAAAAAAgALAOz/AQAAAAAAAgAJAOn/AQAAAAAAAgAIAOf/AQAAAAAAAgAHAOj/AQAAAAAAAgAIAOb/AQAAAAAAAgAIAOX/AQAAAAAAAgAIAOT/AQAAAAAAAgAHAOT/AQAAAAAAAgAHAOP/AQAAAAAAAgAFAOL/AQAAAAAAAgAIAOP/AQAAAAAAAgAJAOT/AQAAAAAAAgAJAOX/AQAAAAAAAgAKAOX/AQAAAAAAAgAKAOb/AQAAAAAAAgAKAOf/AQAAAAAAAgAKAOj/AQAAAAAAAgAKAOn/AQAAAAAAAgAJAOj/AQAAAAAAAgAJAOf/AQAAAAAAAgAGAOT/AQAAAAAAAgAFAOP/AQAAAAAAAgAEAOL/AQAAAAAAAgADAOL/AQAAAAAAAgADAOH/AQAAAAAAAgACAOL/AQAAAAAAAgAHAOL/AQAAAAAAAgAJAOP/AQAAAAAAAgAIAOL/AQAAAAAAAgAHAOH/AQAAAAAAAgAGAOH/AQAAAAAAAgAFAOH/AQAAAAAAAgAFAOD/AQAAAAAAAgAEAOD/AQAAAAAAAgD2/+D/AQAAAAAAAgD2/9//AQAAAAAAAgD3/9//AQAAAAAAAgD3/97/AQAAAAAAAgD4/97/AQAAAAAAAgD5/97/AQAAAAAAAgD6/97/AQAAAAAAAgD7/97/AQAAAAAAAgD7/93/AQAAAAAAAgD8/93/AQAAAAAAAgD9/93/AQAAAAAAAgD9/9z/AQAAAAAAAgD+/9z/AQAAAAAAAgD+/9v/AQAAAAAAAgD8/9z/AQAAAAAAAgD6/93/AQAAAAAAAgD5/93/AQAAAAAAAgAEAN//AQAAAAAAAgAFAN//AQAAAAAAAgAIAOH/AQAAAAAAAgAGAOD/AQAAAAAAAgAHAOD/AQAAAAAAAgAEAN3/AQAAAAAAAgAFAN7/AQAAAAAAAgAGAN7/AQAAAAAAAgAHAN7/AQAAAAAAAgAGAN3/AQAAAAAAAgAFANz/AQAAAAAAAgAEANz/AQAAAAAAAgAEANv/AQAAAAAAAgAGANz/AQAAAAAAAgAHAN3/AQAAAAAAAgAJAOD/AQAAAAAAAgAKAOD/AQAAAAAAAgAIAOD/AQAAAAAAAgAHAN//AQAAAAAAAgAIANz/AQAAAAAAAgAIANv/AQAAAAAAAgAHANv/AQAAAAAAAgAJANz/AQAAAAAAAgAKAN7/AQAAAAAAAgAKAN//AQAAAAAAAgAKANz/AQAAAAAAAgAKAN3/AQAAAAAAAgA=")
+tile_set = SubResource("TileSet_tpv77")
+
+[node name="coins" type="Node2D" parent="obstacles"]
+
+[node name="coin" parent="obstacles/coins" instance=ExtResource("10_18xrt")]
+position = Vector2(-1700, 1000)
+
+[node name="coin2" parent="obstacles/coins" instance=ExtResource("10_18xrt")]
+position = Vector2(1900, -200)
+
+[node name="coin3" parent="obstacles/coins" instance=ExtResource("10_18xrt")]
+position = Vector2(-1700, -3600)
+
+[node name="lionFish" parent="obstacles" instance=ExtResource("11_jixip")]
+position = Vector2(500, 0)
+scale = Vector2(-1, 1)
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(-1600, 0)])
+
+[node name="lionFish2" parent="obstacles" instance=ExtResource("11_jixip")]
+position = Vector2(-500, 1400)
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(2000, 0)])
+
+[node name="lionFish6" parent="obstacles" instance=ExtResource("11_jixip")]
+position = Vector2(-1300, -4200)
+rotation = -4.71239
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(2000, 0)])
+
+[node name="lionFish7" parent="obstacles" instance=ExtResource("11_jixip")]
+position = Vector2(-1000, -4200)
+rotation = -4.71239
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(1600, 0)])
+
+[node name="lionFish8" parent="obstacles" instance=ExtResource("11_jixip")]
+position = Vector2(-700, -4200)
+rotation = -4.71239
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(1200, 0)])
+
+[node name="lionFish4" parent="obstacles" instance=ExtResource("11_jixip")]
+position = Vector2(100, -900)
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(1600, 0)])
+follow_speed = 400.0
+
+[node name="lionFish5" parent="obstacles" instance=ExtResource("11_jixip")]
+position = Vector2(100, -1400)
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(1600, 0)])
+follow_speed = 400.0
+
+[node name="lionFish3" parent="obstacles" instance=ExtResource("11_jixip")]
+position = Vector2(-1700, 1800)
+rotation = -1.5708
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(0, -1200)])
+
+[node name="whale" parent="obstacles" instance=ExtResource("8_weaji")]
+position = Vector2(1800, 600)
+
+[node name="whale2" parent="obstacles" instance=ExtResource("8_weaji")]
+position = Vector2(-1700, -1600)
+
+[node name="whale3" parent="obstacles" instance=ExtResource("8_weaji")]
+position = Vector2(1100, -3000)
+
+[node name="winZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="winCol" type="CollisionShape2D" parent="winZone"]
+position = Vector2(300, -5200)
+shape = SubResource("RectangleShape2D_8w1gr")
+
+[node name="leftWall" type="StaticBody2D" parent="."]
+position = Vector2(-2181, -1172)
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="leftWall"]
+texture_repeat = 2
+texture = ExtResource("9_rqsvn")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="leftWall"]
+shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="rightWall" type="StaticBody2D" parent="."]
+position = Vector2(2399, -1172)
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="rightWall"]
+texture_repeat = 2
+texture = ExtResource("9_rqsvn")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="rightWall"]
+shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="bottomWall" type="StaticBody2D" parent="."]
+position = Vector2(61, 2693)
+rotation = 1.57079
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="bottomWall"]
+visible = false
+texture_repeat = 2
+texture = ExtResource("9_rqsvn")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="bottomWall"]
+shape = SubResource("RectangleShape2D_wk6w2")

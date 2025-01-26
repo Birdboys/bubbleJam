@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://6i87n3ywxqsh"]
+
+[ext_resource type="Script" path="res://scripts/coral.gd" id="1_vcsb8"]
+[ext_resource type="Texture2D" uid="uid://br8q2u1i7q11p" path="res://assets/coral1.png" id="2_bb0wy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5ilb"]
+size = Vector2(180, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7a35"]
+size = Vector2(150, 150)
+
+[node name="coral" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_vcsb8")
+
+[node name="urchinHurtBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="urchinHurtCol" type="CollisionShape2D" parent="urchinHurtBox"]
+shape = SubResource("RectangleShape2D_a5ilb")
+debug_color = Color(0.912132, 0.248649, 0.408832, 0.42)
+
+[node name="urchinCol" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o7a35")
+
+[node name="coralSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_bb0wy")
