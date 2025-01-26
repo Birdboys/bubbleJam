@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var bubbleCol := $bubbleCol
 @onready var bubHurtBox := $bubbleHurtBox
 @onready var bubCollectBox := $bubbleCollectBox
+@onready var otterSprite := $otterSprite
 @export var bubble_scale := 1.0
 
 var bubble_rise_speed := 125.0
@@ -20,12 +21,14 @@ func _ready() -> void:
 	bubHurtBox.area_entered.connect(popBubble)
 	bubCollectBox.area_entered.connect(collectBubble)
 	updateScale(0.0)
+	updateOtter(0.0)
 	
 func _process(delta: float) -> void:
 	if not is_playing: return
 	updateScale(delta)
 	updateRotation(delta)
-
+	updateOtter(delta)
+	
 	current_velocity = current_velocity.move_toward(Vector2.UP * bubble_rise_speed, bubble_stop_speed*delta)
 	velocity = current_velocity
 	move_and_slide()
@@ -34,11 +37,18 @@ func updateScale(delta):
 	bubble_scale -= bubble_deflate_speed * delta
 	bubble_scale = clamp(bubble_scale, 0.0, 1.0)
 	scale = 3 * Vector2.ONE * bubble_scale
+	otterSprite.scale = 3 * Vector2.ONE * bubble_scale
 
 func updateRotation(delta):
 	current_rotation = move_toward(current_rotation, 0.0, bubble_rot_friction*delta)
 	bubbleSprite.rotate(current_rotation)
 
+func updateOtter(delta):
+	otterSprite.rotate(current_rotation/5.0)
+	otterSprite.rotation = move_toward(otterSprite.rotation, 0.0, bubble_rot_friction*10.0*delta)
+	otterSprite.rotation = clampf(otterSprite.rotation, -PI/5, PI/5)
+	otterSprite.position = position
+	
 func updateVel(v):
 	current_velocity = v
 	
