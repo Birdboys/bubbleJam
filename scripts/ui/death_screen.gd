@@ -12,9 +12,8 @@ enum levels {LEVEL0, LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, NONE}
 @onready var winLabel := $deathScreenMargin/deathScreenPanel/margin/bubble/winLabel
 @onready var lossButtons := $deathScreenMargin/deathScreenPanel/margin/bubble/lossButtons
 @onready var lossLabel := $deathScreenMargin/deathScreenPanel/margin/bubble/lossLabel
-
 var game_time : int
-var current_level := levels.NONE
+var current_level := 1
 var coins_collected := 0
 
 # Called when the node enters the scene tree for the first time.
@@ -26,7 +25,7 @@ func _ready() -> void:
 	nextButton.pressed.connect(nextLevel)
 	hideDeathScreen()
 
-func showDeathScreen(win: bool, lvl, time, coins):
+func showDeathScreen(win: bool, time, coins):
 	visible = true
 	if win:
 		winLabel.visible = true
@@ -39,7 +38,6 @@ func showDeathScreen(win: bool, lvl, time, coins):
 		winButtons.visible = false
 		lossButtons.visible = true
 		
-	current_level = lvl
 	
 	coins_collected += coins
 	coinData.text = "%s/3" % coins
@@ -72,11 +70,16 @@ func restartGame():
 
 func resetGameData():
 	coins_collected = 0
-	current_level = levels.NONE
+	current_level = 0
 	game_time = 0.0
 
 func nextLevel():
 	hideDeathScreen()
+	current_level += 1
 	match current_level:
-		levels.LEVEL0:
-			get_tree().change_scene_to_file("res://scenes/levels/level1.tscn")
+		6:
+			print("FINISHED")
+			pass
+		_:
+			get_tree().change_scene_to_file("res://scenes/levels/level%s.tscn" % current_level)
+			

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxhjqvqq6yi0m"]
+[gd_scene load_steps=5 format=3 uid="uid://dxhjqvqq6yi0m"]
 
+[ext_resource type="Script" path="res://scripts/urchin.gd" id="1_e0upi"]
 [ext_resource type="Texture2D" uid="uid://b64703tokxc83" path="res://assets/temp/urchin.png" id="1_gxlhx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5ilb"]
@@ -10,6 +11,7 @@ size = Vector2(150, 150)
 
 [node name="urchin" type="StaticBody2D"]
 collision_mask = 0
+script = ExtResource("1_e0upi")
 
 [node name="urchinHurtBox" type="Area2D" parent="."]
 collision_layer = 8
