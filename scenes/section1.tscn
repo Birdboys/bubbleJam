@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://pt7due4xyqpn"]
+[gd_scene load_steps=11 format=4 uid="uid://pt7due4xyqpn"]
 
 [ext_resource type="Script" path="res://scripts/section1.gd" id="1_htjc4"]
 [ext_resource type="Texture2D" uid="uid://ddnak4xxamf6e" path="res://assets/temp/ocean.png" id="2_n03sg"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="5_3qjoi"]
 [ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scenes/coin.tscn" id="5_5wrda"]
 [ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="7_r3hvj"]
+[ext_resource type="AudioStream" uid="uid://bo2eikoxpgv32" path="res://assets/sounds/water_woosh.mp3" id="8_so3q5"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_cyq3t"]
 scenes/1/scene = ExtResource("5_3qjoi")
@@ -78,3 +79,7 @@ size_flags_vertical = 0
 theme_type_variation = &"timerLabel"
 text = "0"
 horizontal_alignment = 2
+
+[node name="waterPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_so3q5")
+volume_db = -60.0
