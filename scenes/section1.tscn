@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cvcffxxqrpo18" path="res://scenes/puffer_fish.tscn" id="3_v822l"]
 [ext_resource type="PackedScene" uid="uid://da1y6457akk57" path="res://scenes/bubble.tscn" id="4_b856s"]
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="5_3qjoi"]
-[ext_resource type="Texture2D" uid="uid://bp6p7e2lvhcg1" path="res://assets/temp/coin.png" id="5_hk2vh"]
+[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scenes/coin.tscn" id="5_5wrda"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_cyq3t"]
 scenes/1/scene = ExtResource("5_3qjoi")
@@ -41,13 +41,11 @@ position = Vector2(0, 2000)
 
 [node name="coins" type="Node2D" parent="level"]
 
-[node name="Coin" type="Sprite2D" parent="level/coins"]
+[node name="coinSprite" parent="level/coins" instance=ExtResource("5_5wrda")]
 position = Vector2(1700, -2400)
-texture = ExtResource("5_hk2vh")
 
-[node name="Coin2" type="Sprite2D" parent="level/coins"]
+[node name="coinSprite2" parent="level/coins" instance=ExtResource("5_5wrda")]
 position = Vector2(-800, -5200)
-texture = ExtResource("5_hk2vh")
 
 [node name="urchinLayer" type="TileMapLayer" parent="level"]
 use_parent_material = true
