@@ -7,8 +7,11 @@ enum puffer_states {PUFFED, EMPTY, DAMAGED, IDLE}
 @onready var pufferHitBox := $pufferHitBox
 @onready var pufferHurtBox := $pufferHurtBox
 @onready var pufferAnim := $pufferAnim
-@onready var puffed_sprite := preload("res://assets/temp/puffer.png")
-@onready var empty_sprite := preload("res://assets/temp/puffer.png")
+@onready var puffed_sprite := preload("res://assets/puffer/puffer_hold.png")
+@onready var out_sprite := preload("res://assets/puffer/puffer_hold.png")
+@onready var in_sprite := preload("res://assets/puffer/puffer_in.png")
+@onready var neutral_sprite := preload("res://assets/puffer/puffer_neutral.png")
+
 @export var puffer_scale := 0.0
 @export var current_state := puffer_states.IDLE
 var puff_recharge_time := 1.0
@@ -28,20 +31,17 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	handleMovement(delta)
+	updateScale()
 	match current_state:
 		puffer_states.PUFFED:
 			if Input.is_action_just_pressed("puff"):
 				doPuff()
-		puffer_states.EMPTY:
-			updateScale()
-		puffer_states.DAMAGED:
-			updateScale()
 
 func handleMovement(delta):
 	var new_pos = get_global_mouse_position()
 	var new_dir = position.direction_to(new_pos)
 	var new_dist = position.distance_to(new_pos)
-	velocity = new_dir * fish_speed * clamp(new_dist, 0, 50)/50
+	velocity = new_dir * fish_speed * clamp(new_dist, 0, 50.0)/50.0
 	move_and_slide()
 	
 func handleRotation(bubble_pos):
@@ -60,15 +60,16 @@ func updateRot(bubble_pos):
 	
 func doPuff():
 	emit_signal("do_puff")
-	pufferEmpty()
+	pufferAnim.play("puff")
 	
 
 func pufferFull():
 	current_state = puffer_states.PUFFED
+	pufferSprite.texture = puffed_sprite
 	
 func pufferEmpty():
 	current_state = puffer_states.EMPTY
-	pufferSprite.texture = empty_sprite
+	pufferSprite.texture = in_sprite
 	puffer_scale = 0.0
 	updateScale()
 	pufferAnim.play("charge")

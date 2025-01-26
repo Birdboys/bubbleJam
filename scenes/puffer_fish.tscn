@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvcffxxqrpo18"]
+[gd_scene load_steps=13 format=3 uid="uid://cvcffxxqrpo18"]
 
 [ext_resource type="Script" path="res://scripts/puffer_fish.gd" id="1_6c7g5"]
 [ext_resource type="Texture2D" uid="uid://bx5id20fjlon4" path="res://assets/temp/puffer.png" id="2_d8n6v"]
+[ext_resource type="Texture2D" uid="uid://c247kxih562nj" path="res://assets/puffer/puffer_out.png" id="3_ne3tu"]
+[ext_resource type="Texture2D" uid="uid://d3te3bf70bw4a" path="res://assets/puffer/puffer_neutral.png" id="4_auttx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtavb"]
 radius = 73.0274
@@ -37,6 +39,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pufferSprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_d8n6v")]
 }
 
 [sub_resource type="Animation" id="Animation_5586f"]
@@ -111,11 +125,55 @@ tracks/2/keys = {
 "values": [1.0, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_a7neg"]
+resource_name = "puff"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:puffer_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pufferEmpty"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pufferSprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_ne3tu"), ExtResource("4_auttx")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jo76y"]
 _data = {
 "RESET": SubResource("Animation_5ta8f"),
 "charge": SubResource("Animation_5586f"),
-"damage": SubResource("Animation_n0wos")
+"damage": SubResource("Animation_n0wos"),
+"puff": SubResource("Animation_a7neg")
 }
 
 [node name="pufferFish" type="CharacterBody2D"]
