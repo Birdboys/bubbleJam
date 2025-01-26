@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://pt7due4xyqpn"]
+[gd_scene load_steps=17 format=4 uid="uid://pt7due4xyqpn"]
 
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_avv6g"]
 [ext_resource type="Texture2D" uid="uid://d1wufi0db30i8" path="res://assets/section1/background.png" id="2_m0mxu"]
@@ -23,6 +23,9 @@ sources/1 = SubResource("TileSetScenesCollectionSource_cpj7o")
 size = Vector2(1218, 233)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4nmn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnwso"]
+size = Vector2(399, 10493)
 
 [node name="section1" type="Node2D"]
 script = ExtResource("1_avv6g")
@@ -167,3 +170,45 @@ region_rect = Rect2(0, 0, 400, 10000)
 
 [node name="wallCol" type="CollisionShape2D" parent="bottomWall"]
 shape = SubResource("RectangleShape2D_u4nmn")
+
+[node name="leftWall2" type="StaticBody2D" parent="."]
+position = Vector2(-2181, -1172)
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="leftWall2"]
+texture_repeat = 2
+texture = ExtResource("9_h3aa6")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="leftWall2"]
+position = Vector2(-0.5, -521.5)
+shape = SubResource("RectangleShape2D_fnwso")
+
+[node name="rightWall2" type="StaticBody2D" parent="."]
+position = Vector2(2399, -1172)
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="rightWall2"]
+texture_repeat = 2
+texture = ExtResource("9_h3aa6")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="rightWall2"]
+shape = SubResource("RectangleShape2D_fnwso")
+
+[node name="bottomWall2" type="StaticBody2D" parent="."]
+position = Vector2(61, 2693)
+rotation = 1.57079
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="bottomWall2"]
+visible = false
+texture_repeat = 2
+texture = ExtResource("9_h3aa6")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="bottomWall2"]
+shape = SubResource("RectangleShape2D_fnwso")

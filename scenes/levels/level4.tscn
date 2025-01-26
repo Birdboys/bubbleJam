@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bdnuy2d08bnon"]
+[gd_scene load_steps=18 format=4 uid="uid://bdnuy2d08bnon"]
 
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_r2461"]
 [ext_resource type="Texture2D" uid="uid://b4ifcskqke5mi" path="res://assets/coral/CoralBackgroundFull.png" id="2_ch25b"]
@@ -26,6 +26,9 @@ sources/1 = SubResource("TileSetScenesCollectionSource_ekdma")
 size = Vector2(1310, 390)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wk6w2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryvkq"]
+size = Vector2(399, 10493)
 
 [node name="level4Coral" type="Node2D"]
 script = ExtResource("1_r2461")
@@ -59,8 +62,9 @@ bubble_scale = 0.75
 
 [node name="playerCam" type="Camera2D" parent="."]
 position = Vector2(0, 127)
-zoom = Vector2(0.05, 0.05)
+zoom = Vector2(0.2, 0.2)
 limit_left = -2100
+limit_top = -5300
 limit_right = 2300
 limit_bottom = 2500
 
@@ -203,3 +207,45 @@ region_rect = Rect2(0, 0, 400, 10000)
 
 [node name="wallCol" type="CollisionShape2D" parent="bottomWall"]
 shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="leftWall2" type="StaticBody2D" parent="."]
+position = Vector2(-2181, -1172)
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="leftWall2"]
+texture_repeat = 2
+texture = ExtResource("9_rqsvn")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="leftWall2"]
+position = Vector2(-0.5, -521.5)
+shape = SubResource("RectangleShape2D_ryvkq")
+
+[node name="rightWall2" type="StaticBody2D" parent="."]
+position = Vector2(2399, -1172)
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="rightWall2"]
+texture_repeat = 2
+texture = ExtResource("9_rqsvn")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="rightWall2"]
+shape = SubResource("RectangleShape2D_ryvkq")
+
+[node name="bottomWall2" type="StaticBody2D" parent="."]
+position = Vector2(61, 2693)
+rotation = 1.57079
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="bottomWall2"]
+visible = false
+texture_repeat = 2
+texture = ExtResource("9_rqsvn")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="bottomWall2"]
+shape = SubResource("RectangleShape2D_ryvkq")

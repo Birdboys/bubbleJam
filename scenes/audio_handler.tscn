@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6g787m73pt8n"]
+[gd_scene load_steps=3 format=3 uid="uid://b6g787m73pt8n"]
 
 [ext_resource type="Script" path="res://scripts/audio_handler.gd" id="1_11g53"]
+[ext_resource type="AudioStream" uid="uid://clelyo48sn7i" path="res://assets/sounds/bubble_song.wav" id="2_5tvb5"]
 
 [node name="audioHandler" type="Node"]
 process_mode = 3
@@ -11,4 +12,6 @@ script = ExtResource("1_11g53")
 [node name="soundEffect2DQueue" type="Node" parent="."]
 
 [node name="bgMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5tvb5")
+autoplay = true
 bus = &"musicBG"
