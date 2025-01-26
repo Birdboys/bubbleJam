@@ -25,6 +25,7 @@ size = Vector2(4208, 352)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wk6w2"]
 
 [node name="level1" type="Node2D"]
+position = Vector2(0, -15)
 script = ExtResource("1_51e5y")
 
 [node name="bgLayer" type="CanvasLayer" parent="."]

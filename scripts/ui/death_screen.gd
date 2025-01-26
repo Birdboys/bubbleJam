@@ -80,8 +80,7 @@ func nextLevel():
 	current_level += 1
 	match current_level:
 		6:
-			print("FINISHED")
-			pass
+			get_tree().change_scene_to_file("res://scenes/end.tscn")
 		_:
 			get_tree().change_scene_to_file("res://scenes/levels/level%s.tscn" % current_level)
 			
