@@ -9,6 +9,7 @@ extends Control
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	mainStuff.main_button.connect(handleMainButton)
+	settingStuff.go_back.connect(reset)
 	reset()
 
 
@@ -19,4 +20,6 @@ func reset():
 func handleMainButton(b):
 	match b:
 		"play": get_tree().change_scene_to_file("res://scenes/section1.tscn")
-	
+		"settings":
+			mainStuff.visible = false
+			settingStuff.visible = true

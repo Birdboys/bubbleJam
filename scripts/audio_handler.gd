@@ -15,6 +15,8 @@ var music_tween
 
 func _ready():
 	populateQueues()
+	AudioServer.set_bus_volume_db(1, linear_to_db(0.5))
+	AudioServer.set_bus_volume_db(2, linear_to_db(0.5))
 
 func populateQueues():
 	for x in range(queue_length):
