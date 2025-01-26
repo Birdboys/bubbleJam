@@ -75,7 +75,6 @@ position = Vector2(-600, -600)
 
 [node name="collectBubble2" parent="collectBubbles" instance=ExtResource("6_cwxk8")]
 position = Vector2(400, -1400)
-air_val = 2
 
 [node name="collectBubble3" parent="collectBubbles" instance=ExtResource("6_cwxk8")]
 position = Vector2(600, -600)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://pt7due4xyqpn"]
+
+[ext_resource type="Script" path="res://section1.gd" id="1_htjc4"]
+[ext_resource type="Texture2D" uid="uid://ddnak4xxamf6e" path="res://assets/temp/ocean.png" id="2_n03sg"]
+[ext_resource type="PackedScene" uid="uid://cvcffxxqrpo18" path="res://scenes/puffer_fish.tscn" id="3_v822l"]
+[ext_resource type="PackedScene" uid="uid://da1y6457akk57" path="res://scenes/bubble.tscn" id="4_b856s"]
+[ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="5_3qjoi"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_cyq3t"]
+scenes/1/scene = ExtResource("5_3qjoi")
+
+[sub_resource type="TileSet" id="TileSet_xukv3"]
+tile_size = Vector2i(200, 200)
+sources/1 = SubResource("TileSetScenesCollectionSource_cyq3t")
+
+[node name="section1" type="Node2D"]
+script = ExtResource("1_htjc4")
+
+[node name="ocean" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, -1800)
+scale = Vector2(2, 2)
+texture = ExtResource("2_n03sg")
+region_enabled = true
+region_rect = Rect2(0, 0, 4200, 2560)
+
+[node name="pufferFish" parent="." instance=ExtResource("3_v822l")]
+current_state = 3
+
+[node name="bubble" parent="." instance=ExtResource("4_b856s")]
+position = Vector2(0, 600)
+
+[node name="playerCam" type="Camera2D" parent="."]
+zoom = Vector2(0.25, 0.25)
+
+[node name="urchins" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="urchins"]
+tile_set = SubResource("TileSet_xukv3")
+format = 2
+layer_0/tile_data = PackedInt32Array(-327681, 1, 65536, -393216, 1, 65536, -393215, 1, 65536, -393214, 1, 65536, -393213, 1, 65536, -393212, 1, 65536, -393211, 1, 65536, -393210, 1, 65536)
