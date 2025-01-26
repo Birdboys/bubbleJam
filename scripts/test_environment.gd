@@ -19,7 +19,6 @@ func handlePuff():
 	var push_dir = -(bubble.position.direction_to(puffer.position).normalized())
 	var push_dist = bubble.position.distance_to(puffer.position)
 	bubble.pushBubble(push_dir, push_dist)
-
 func startGame():
 	puffer.pufferEmpty()
 	bubble.is_playing = true

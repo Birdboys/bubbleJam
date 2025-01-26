@@ -6,6 +6,7 @@ enum puffer_states {PUFFED, EMPTY, DAMAGED, IDLE}
 @onready var pufferCol := $pufferCol
 @onready var pufferHitBox := $pufferHitBox
 @onready var pufferHurtBox := $pufferHurtBox
+@onready var pufferCoinBox := $pufferCoinBox
 @onready var pufferAnim := $pufferAnim
 @onready var puffRay := $puffRay
 @onready var puffed_sprite := preload("res://assets/puffer/puffer_hold.png")
@@ -26,6 +27,7 @@ signal death
 
 func _ready() -> void:
 	pufferHurtBox.area_entered.connect(pufferHurt)
+	pufferCoinBox.area_entered.connect(collectCoin)
 	puffer_scale = 0.0
 	updateScale()
 	#pufferEmpty()
@@ -93,3 +95,8 @@ func pufferHurt(obstacle: Area2D):
 	current_state = puffer_states.DAMAGED
 	pufferAnim.play("damage")
 	AudioHandler.playSound("puff_hurt")
+
+func collectCoin(coin):
+	print(coin)
+	print("Collected coin")
+	coin.queue_free()
