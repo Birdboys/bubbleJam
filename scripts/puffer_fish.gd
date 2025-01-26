@@ -23,6 +23,7 @@ var fish_speed := 7500.0
 var hp := 3
 
 signal do_puff
+signal coin_collected
 signal death
 
 func _ready() -> void:
@@ -97,6 +98,6 @@ func pufferHurt(obstacle: Area2D):
 	AudioHandler.playSound("puff_hurt")
 
 func collectCoin(coin):
-	print(coin)
 	print("Collected coin")
 	coin.queue_free()
+	emit_signal("coin_collected")

@@ -1,0 +1,136 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2btb2v3mwtid"]
+
+[ext_resource type="Script" path="res://scripts/ui/death_screen.gd" id="1_6u0yw"]
+[ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="1_65red"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycwwi"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="deathScreen" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_6u0yw")
+
+[node name="deathScreenMargin" type="MarginContainer" parent="."]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_65red")
+theme_override_constants/margin_left = 96
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_right = 96
+theme_override_constants/margin_bottom = 96
+
+[node name="deathScreenPanel" type="Panel" parent="deathScreenMargin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ycwwi")
+
+[node name="margin" type="MarginContainer" parent="deathScreenMargin/deathScreenPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="bubble" type="VBoxContainer" parent="deathScreenMargin/deathScreenPanel/margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="lossLabel" type="Label" parent="deathScreenMargin/deathScreenPanel/margin/bubble"]
+layout_mode = 2
+theme_type_variation = &"titleLabel"
+text = "BUBBLE
+POPPED!"
+horizontal_alignment = 1
+
+[node name="winLabel" type="Label" parent="deathScreenMargin/deathScreenPanel/margin/bubble"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"titleLabel"
+text = "STAGE
+CLEARED!"
+horizontal_alignment = 1
+
+[node name="timeCont" type="HBoxContainer" parent="deathScreenMargin/deathScreenPanel/margin/bubble"]
+layout_mode = 2
+
+[node name="timeLabel" type="Label" parent="deathScreenMargin/deathScreenPanel/margin/bubble/timeCont"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_type_variation = &"subLabel"
+text = "TIME: "
+
+[node name="timeData" type="Label" parent="deathScreenMargin/deathScreenPanel/margin/bubble/timeCont"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_type_variation = &"subLabel"
+text = "0"
+
+[node name="coinCont" type="HBoxContainer" parent="deathScreenMargin/deathScreenPanel/margin/bubble"]
+layout_mode = 2
+
+[node name="coinLabel" type="Label" parent="deathScreenMargin/deathScreenPanel/margin/bubble/coinCont"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_type_variation = &"subLabel"
+text = "COINS:"
+
+[node name="coinData" type="Label" parent="deathScreenMargin/deathScreenPanel/margin/bubble/coinCont"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_type_variation = &"subLabel"
+text = "0/3"
+
+[node name="lossButtons" type="VBoxContainer" parent="deathScreenMargin/deathScreenPanel/margin/bubble"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="restartLevel" type="Button" parent="deathScreenMargin/deathScreenPanel/margin/bubble/lossButtons"]
+layout_mode = 2
+theme_type_variation = &"subButton"
+text = "RESTART
+LEVEL"
+
+[node name="restartGame" type="Button" parent="deathScreenMargin/deathScreenPanel/margin/bubble/lossButtons"]
+layout_mode = 2
+theme_type_variation = &"subButton"
+text = "RESTART
+GAME"
+
+[node name="mainMenu" type="Button" parent="deathScreenMargin/deathScreenPanel/margin/bubble/lossButtons"]
+layout_mode = 2
+theme_type_variation = &"subButton"
+text = "MAIN MENU"
+
+[node name="winButtons" type="VBoxContainer" parent="deathScreenMargin/deathScreenPanel/margin/bubble"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="nextLevel" type="Button" parent="deathScreenMargin/deathScreenPanel/margin/bubble/winButtons"]
+layout_mode = 2
+theme_type_variation = &"subButton"
+text = "NEXT STAGE"
+
+[node name="mainMenu" type="Button" parent="deathScreenMargin/deathScreenPanel/margin/bubble/winButtons"]
+layout_mode = 2
+theme_type_variation = &"subButton"
+text = "MAIN MENU"
