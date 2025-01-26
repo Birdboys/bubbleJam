@@ -7,6 +7,7 @@ enum puffer_states {PUFFED, EMPTY, DAMAGED, IDLE}
 @onready var pufferHitBox := $pufferHitBox
 @onready var pufferHurtBox := $pufferHurtBox
 @onready var pufferAnim := $pufferAnim
+@onready var puffRay := $puffRay
 @onready var puffed_sprite := preload("res://assets/puffer/puffer_hold.png")
 @onready var out_sprite := preload("res://assets/puffer/puffer_hold.png")
 @onready var in_sprite := preload("res://assets/puffer/puffer_in.png")
@@ -62,8 +63,18 @@ func doPuff():
 	emit_signal("do_puff")
 	current_state = puffer_states.EMPTY
 	pufferAnim.play("puff")
-	
 
+func doesPuffConnect(pos):
+	puffRay.target_position = pos
+	puffRay.force_raycast_update()
+	print("TRYING TO CONNECT")
+	if puffRay.is_colliding():
+		var col = puffRay.get_collider()
+		return not col.get_collision_layer_value(1)
+	else:
+		print("NO CONNECT")
+		return false
+		
 func pufferFull():
 	current_state = puffer_states.PUFFED
 	pufferSprite.texture = puffed_sprite
@@ -82,4 +93,3 @@ func pufferHurt(obstacle: Area2D):
 	current_state = puffer_states.DAMAGED
 	pufferAnim.play("damage")
 	AudioHandler.playSound("puff_hurt")
-	

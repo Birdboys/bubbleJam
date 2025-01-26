@@ -211,3 +211,7 @@ shape = SubResource("CircleShape2D_2up4t")
 libraries = {
 "": SubResource("AnimationLibrary_jo76y")
 }
+
+[node name="puffRay" type="RayCast2D" parent="."]
+enabled = false
+collision_mask = 5
