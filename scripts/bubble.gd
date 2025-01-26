@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 var bubble_rise_speed := 125.0
 var bubble_stop_speed := 650.0
-var bubble_deflate_speed := 0.075
+var bubble_deflate_speed := 0 #0.075
 var bubble_rot_friction := PI/64.0
 var bubble_push_force := 1500.0
 
