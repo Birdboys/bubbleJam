@@ -41,7 +41,7 @@ func handleMovement(delta):
 	var new_pos = get_global_mouse_position()
 	var new_dir = position.direction_to(new_pos)
 	var new_dist = position.distance_to(new_pos)
-	velocity = new_dir * fish_speed * clamp(new_dist, 0, 50.0)/50.0
+	velocity = new_dir * fish_speed * clamp(new_dist, 0, 200.0)/200.0
 	move_and_slide()
 	
 func handleRotation(bubble_pos):

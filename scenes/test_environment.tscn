@@ -12,6 +12,7 @@
 script = ExtResource("1_66d0o")
 
 [node name="ocean" type="Sprite2D" parent="."]
+z_index = -1
 texture_repeat = 2
 position = Vector2(0, -1800)
 scale = Vector2(2, 2)

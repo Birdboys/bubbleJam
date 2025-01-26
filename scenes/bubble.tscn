@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://da1y6457akk57"]
+[gd_scene load_steps=7 format=3 uid="uid://da1y6457akk57"]
 
 [ext_resource type="Texture2D" uid="uid://djqljxeuoxj3m" path="res://assets/temp/bubble.png" id="1_74ik8"]
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_d4vj7"]
+[ext_resource type="Texture2D" uid="uid://b3v8s6q1uggjl" path="res://assets/otter.png" id="3_k7kl0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dh2yb"]
 radius = 90.0
@@ -18,6 +19,11 @@ script = ExtResource("1_d4vj7")
 
 [node name="bubbleCol" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dh2yb")
+
+[node name="otterSprite" type="Sprite2D" parent="."]
+top_level = true
+z_index = -1
+texture = ExtResource("3_k7kl0")
 
 [node name="bubbleSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_74ik8")

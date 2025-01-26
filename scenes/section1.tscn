@@ -17,6 +17,7 @@ sources/1 = SubResource("TileSetScenesCollectionSource_cyq3t")
 script = ExtResource("1_htjc4")
 
 [node name="ocean" type="Sprite2D" parent="."]
+z_index = -1
 texture_repeat = 2
 position = Vector2(100, -1400)
 texture = ExtResource("2_n03sg")
