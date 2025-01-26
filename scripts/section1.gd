@@ -3,23 +3,27 @@ extends Node2D
 @onready var puffer := $pufferFish
 @onready var bubble := $bubble
 @onready var cam := $playerCam
+@onready var camTrigger := $camTrigger
 @onready var death_bubble_scene := preload("res://scenes/death_bubble.tscn")
 @onready var death_puffer_scene := preload("res://scenes/death_puffer.tscn")
 
-var cam_move_speed := 150.0
+var cam_move_speed := 750.0
+var cam_follow = false
 var is_playing = true
+var finished = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	puffer.do_puff.connect(handlePuff)
 	bubble.death.connect(handleDeath)
+	camTrigger.body_exited.connect(startCamTracking)
 	get_tree().create_timer(2.0).timeout.connect(startGame)
 	
 func _process(delta: float) -> void:
 	if is_playing:
-		cam.position = cam.position.move_toward(bubble.position, cam_move_speed)
 		puffer.handleRotation(bubble.position)
-	
+		if cam_follow: cam.position = cam.position.move_toward(bubble.position, cam_move_speed*delta)
+
 func handlePuff():
 	if is_playing:
 		var push_dir = -(bubble.position.direction_to(puffer.position).normalized())
@@ -55,8 +59,14 @@ func handleDeath():
 	get_tree().create_timer(1.8).timeout.connect(deathScreen)
 
 func deathScreen():
+	if finished: return
+	finished = true
 	print('show deaths screen')
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func startGame():
 	puffer.pufferEmpty()
 	bubble.is_playing = true
+
+func startCamTracking(_bub):
+	cam_follow = true

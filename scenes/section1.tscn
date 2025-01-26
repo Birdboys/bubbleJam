@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://pt7due4xyqpn"]
+[gd_scene load_steps=11 format=4 uid="uid://pt7due4xyqpn"]
 
 [ext_resource type="Script" path="res://scripts/section1.gd" id="1_htjc4"]
-[ext_resource type="Texture2D" uid="uid://ddnak4xxamf6e" path="res://assets/temp/ocean.png" id="2_n03sg"]
+[ext_resource type="Texture2D" uid="uid://d1wufi0db30i8" path="res://assets/section1/background.png" id="2_3va7w"]
+[ext_resource type="Texture2D" uid="uid://cvqpilc3ibhqj" path="res://assets/section1/midground.png" id="3_rhyv8"]
 [ext_resource type="PackedScene" uid="uid://cvcffxxqrpo18" path="res://scenes/puffer_fish.tscn" id="3_v822l"]
 [ext_resource type="PackedScene" uid="uid://da1y6457akk57" path="res://scenes/bubble.tscn" id="4_b856s"]
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="5_3qjoi"]
@@ -14,16 +15,30 @@ scenes/1/scene = ExtResource("5_3qjoi")
 tile_size = Vector2i(200, 200)
 sources/1 = SubResource("TileSetScenesCollectionSource_cyq3t")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyvx4"]
+size = Vector2(1596, 2914)
+
 [node name="section1" type="Node2D"]
 script = ExtResource("1_htjc4")
 
-[node name="ocean" type="Sprite2D" parent="."]
+[node name="bgLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="background" type="Sprite2D" parent="bgLayer"]
 z_index = -1
 texture_repeat = 2
 position = Vector2(100, -1400)
-texture = ExtResource("2_n03sg")
+texture = ExtResource("2_3va7w")
 region_enabled = true
 region_rect = Rect2(0, 0, 4200, 7800)
+
+[node name="midgroundPara" type="Parallax2D" parent="."]
+z_index = -1
+scroll_scale = Vector2(0.45, 0.45)
+scroll_offset = Vector2(0, -1400)
+
+[node name="midground" type="Sprite2D" parent="midgroundPara"]
+texture = ExtResource("3_rhyv8")
 
 [node name="pufferFish" parent="." instance=ExtResource("3_v822l")]
 position = Vector2(0, 2000)
@@ -34,7 +49,7 @@ position = Vector2(0, 2200)
 bubble_scale = 0.75
 
 [node name="playerCam" type="Camera2D" parent="."]
-position = Vector2(0, 2000)
+position = Vector2(0, 64)
 zoom = Vector2(0.2, 0.2)
 
 [node name="level" type="Node2D" parent="."]
@@ -53,4 +68,10 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAD9//P/AQAAAAAAAQD8//P/AQAAAAAAAQADAPT/AQAAAAAAAQAKAPj/AQAAAAAAAQAJAPj/AQAAAAAAAQAIAPj/AQAAAAAAAQAHAPj/AQAAAAAAAQAGAPj/AQAAAAAAAQAFAPj/AQAAAAAAAQAEAPj/AQAAAAAAAQADAPj/AQAAAAAAAQD9//j/AQAAAAAAAQD8//j/AQAAAAAAAQD7//j/AQAAAAAAAQD6//j/AQAAAAAAAQD5//j/AQAAAAAAAQD4//j/AQAAAAAAAQD3//j/AQAAAAAAAQD2//j/AQAAAAAAAQD5//3/AQAAAAAAAQD+//3/AQAAAAAAAQD///3/AQAAAAAAAQAAAP3/AQAAAAAAAQABAP3/AQAAAAAAAQACAP3/AQAAAAAAAQAHAP3/AQAAAAAAAQD4/+7/AQAAAAAAAQD5/+3/AQAAAAAAAQD6/+3/AQAAAAAAAQD7/+3/AQAAAAAAAQD8/+3/AQAAAAAAAQD9/+3/AQAAAAAAAQD+/+3/AQAAAAAAAQD//+3/AQAAAAAAAQAAAO3/AQAAAAAAAQABAO3/AQAAAAAAAQD3/+//AQAAAAAAAQD2//D/AQAAAAAAAQADAPf/AQAAAAAAAQACAPP/AQAAAAAAAQABAPP/AQAAAAAAAQAAAPP/AQAAAAAAAQAGAO//AQAAAAAAAQADAPX/AQAAAAAAAQADAPb/AQAAAAAAAQD///P/AQAAAAAAAQD+//P/AQAAAAAAAQAGAO7/AQAAAAAAAQAGAO3/AQAAAAAAAQAGAPD/AQAAAAAAAQAGAPH/AQAAAAAAAQAGAPL/AQAAAAAAAQAGAPP/AQAAAAAAAQAGAPT/AQAAAAAAAQAKAPf/AQAAAAAAAQAKAPb/AQAAAAAAAQAKAPX/AQAAAAAAAQAKAPT/AQAAAAAAAQAKAPP/AQAAAAAAAQAKAPL/AQAAAAAAAQAKAPH/AQAAAAAAAQAKAPD/AQAAAAAAAQAKAO//AQAAAAAAAQAKAO7/AQAAAAAAAQAKAO3/AQAAAAAAAQAHAPX/AQAAAAAAAQAJAPL/AQAAAAAAAQAHAO//AQAAAAAAAQAKAOz/AQAAAAAAAQAKAOv/AQAAAAAAAQAKAOr/AQAAAAAAAQAHAOj/AQAAAAAAAQAIAOj/AQAAAAAAAQAJAOj/AQAAAAAAAQAKAOj/AQAAAAAAAQAKAOn/AQAAAAAAAQAGAOz/AQAAAAAAAQAGAOj/AQAAAAAAAQAFAOj/AQAAAAAAAQAEAOj/AQAAAAAAAQADAOj/AQAAAAAAAQACAOj/AQAAAAAAAQD9/+j/AQAAAAAAAQD9/+n/AQAAAAAAAQD8/+r/AQAAAAAAAQD7/+r/AQAAAAAAAQD6/+r/AQAAAAAAAQD5/+r/AQAAAAAAAQD2/+f/AQAAAAAAAQD3/+f/AQAAAAAAAQD4/+f/AQAAAAAAAQD5/+f/AQAAAAAAAQD6/+f/AQAAAAAAAQD4/+3/AQAAAAAAAQD3/+3/AQAAAAAAAQD2/+3/AQAAAAAAAQD2/+z/AQAAAAAAAQD2/+v/AQAAAAAAAQD2/+r/AQAAAAAAAQD2/+n/AQAAAAAAAQD2/+j/AQAAAAAAAQD9/+f/AQAAAAAAAQD6/+T/AQAAAAAAAQAKAOf/AQAAAAAAAQAKAOb/AQAAAAAAAQAKAOX/AQAAAAAAAQAKAOT/AQAAAAAAAQACAOf/AQAAAAAAAQACAOb/AQAAAAAAAQACAOX/AQAAAAAAAQACAOT/AQAAAAAAAQD9/+b/AQAAAAAAAQD9/+X/AQAAAAAAAQD9/+T/AQAAAAAAAQD8/+T/AQAAAAAAAQD7/+T/AQAAAAAAAQD2/+b/AQAAAAAAAQD2/+X/AQAAAAAAAQD2/+T/AQAAAAAAAQD2/+P/AQAAAAAAAQD2/+L/AQAAAAAAAQD2/+H/AQAAAAAAAQD9/+H/AQAAAAAAAQD5/+T/AQAAAAAAAQADAN//AQAAAAAAAQACAN//AQAAAAAAAQABAN//AQAAAAAAAQAAAN//AQAAAAAAAQD//9//AQAAAAAAAQD+/9//AQAAAAAAAQD9/9//AQAAAAAAAQD9/+D/AQAAAAAAAQADAOT/AQAAAAAAAQAEAOT/AQAAAAAAAQAFAOT/AQAAAAAAAQAGAOT/AQAAAAAAAQAHAOT/AQAAAAAAAQAIAOT/AQAAAAAAAQAJAOT/AQAAAAAAAQD6/+H/AQAAAAAAAQD6/+L/AQAAAAAAAQD6/+P/AQAAAAAAAQD5/+P/AQAAAAAAAQD5/+L/AQAAAAAAAQD5/+H/AQAAAAAAAQD5/+D/AQAAAAAAAQD5/9//AQAAAAAAAQD6/9//AQAAAAAAAQD6/+D/AQAAAAAAAQD2/+D/AQAAAAAAAQD2/9//AQAAAAAAAQD2/97/AQAAAAAAAQD2/93/AQAAAAAAAQD2/9z/AQAAAAAAAQD3/9z/AQAAAAAAAQD4/9z/AQAAAAAAAQD5/9z/AQAAAAAAAQD6/9z/AQAAAAAAAQD7/9z/AQAAAAAAAQD8/9z/AQAAAAAAAQD9/9z/AQAAAAAAAQD9/93/AQAAAAAAAQD9/97/AQAAAAAAAQAKAOP/AQAAAAAAAQAKAOL/AQAAAAAAAQAKAOH/AQAAAAAAAQAKAOD/AQAAAAAAAQAKAN//AQAAAAAAAQAKAN7/AQAAAAAAAQAKAN3/AQAAAAAAAQAKANz/AQAAAAAAAQADAN7/AQAAAAAAAQADAN3/AQAAAAAAAQADANz/AQAAAAAAAQAGAPX/AQAAAAAAAQD9/+r/AQAAAAAAAQA=")
 tile_set = SubResource("TileSet_xukv3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="camTrigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="triggerCol" type="CollisionShape2D" parent="camTrigger"]
+position = Vector2(0, 1039)
+shape = SubResource("RectangleShape2D_iyvx4")

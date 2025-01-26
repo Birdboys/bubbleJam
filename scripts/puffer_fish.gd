@@ -16,7 +16,7 @@ enum puffer_states {PUFFED, EMPTY, DAMAGED, IDLE}
 var puff_recharge_time := 1.0
 var puff_cooldown := 1.0
 var damage_timeout := 0.5
-var fish_speed := 10000.0
+var fish_speed := 7500.0
 
 var hp := 3
 
@@ -41,7 +41,7 @@ func handleMovement(delta):
 	var new_pos = get_global_mouse_position()
 	var new_dir = position.direction_to(new_pos)
 	var new_dist = position.distance_to(new_pos)
-	velocity = new_dir * fish_speed * clamp(new_dist, 0, 200.0)/200.0
+	velocity = new_dir * fish_speed * clamp(new_dist, 0, 400.0)/400.0
 	move_and_slide()
 	
 func handleRotation(bubble_pos):
