@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://6agdkbsdai4d"]
+
+[ext_resource type="Script" path="res://scripts/eel.gd" id="1_wpoxq"]
+[ext_resource type="Texture2D" uid="uid://dci7fol2r02ap" path="res://assets/temp/eel.png" id="2_xf8ko"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w3yis"]
+radius = 140.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dme2d"]
+radius = 170.0
+
+[node name="eel" type="StaticBody2D"]
+script = ExtResource("1_wpoxq")
+
+[node name="eelCol" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w3yis")
+
+[node name="eelSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -22)
+texture = ExtResource("2_xf8ko")
+
+[node name="eelHurtBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="eelHurtCol" type="CollisionShape2D" parent="eelHurtBox"]
+shape = SubResource("CircleShape2D_dme2d")
+
+[node name="eelTimer" type="Timer" parent="."]
+
+[node name="electricity" type="Node2D" parent="."]
+position = Vector2(200, 0)

@@ -22,6 +22,7 @@ func handlePuff():
 	bubble.pushBubble(push_dir, push_dist)
 
 func handleDeath():
+	
 	print("me die")
 
 func startGame():
