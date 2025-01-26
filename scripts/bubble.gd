@@ -14,12 +14,15 @@ var bubble_push_force := 1500.0
 
 var current_velocity := Vector2.ZERO
 var current_rotation := 0.0
+var is_playing := false
 
 func _ready() -> void:
 	bubHurtBox.area_entered.connect(popBubble)
 	bubCollectBox.area_entered.connect(collectBubble)
+	updateScale(0.0)
 	
 func _process(delta: float) -> void:
+	if not is_playing: return
 	updateScale(delta)
 	updateRotation(delta)
 
@@ -29,6 +32,7 @@ func _process(delta: float) -> void:
 	
 func updateScale(delta):
 	bubble_scale -= bubble_deflate_speed * delta
+	bubble_scale = clamp(bubble_scale, 0.0, 1.0)
 	scale = 3 * Vector2.ONE * bubble_scale
 
 func updateRotation(delta):
@@ -36,9 +40,10 @@ func updateRotation(delta):
 	bubbleSprite.rotate(current_rotation)
 
 func popBubble(enemy: Area2D):
+	if not is_playing: return
 	print("BUBBLE POPPED")
 	AudioHandler.playSound("pops")
-	#get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func collectBubble(bub: Area2D):
 	var added_air_val = bub.air_val

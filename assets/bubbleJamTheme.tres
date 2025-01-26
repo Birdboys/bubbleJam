@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dqryax7e1nmkx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wdtir"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_usgql"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1yi3y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rxnfd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0cy3"]
+
+[resource]
+mainButton/base_type = &"Button"
+mainButton/colors/font_color = Color(0.411765, 0.941176, 0.780392, 1)
+mainButton/colors/font_hover_color = Color(0, 0.776471, 0.74902, 1)
+mainButton/font_sizes/font_size = 42
+mainButton/styles/focus = SubResource("StyleBoxEmpty_wdtir")
+mainButton/styles/hover = SubResource("StyleBoxEmpty_usgql")
+mainButton/styles/hover_pressed = SubResource("StyleBoxEmpty_1yi3y")
+mainButton/styles/normal = SubResource("StyleBoxEmpty_rxnfd")
+mainButton/styles/pressed = SubResource("StyleBoxEmpty_y0cy3")
+subLabel/base_type = &"Label"
+subLabel/colors/font_color = Color(0.411765, 0.941176, 0.780392, 1)
+subLabel/font_sizes/font_size = 32
+titleLabel/base_type = &"Label"
+titleLabel/colors/font_color = Color(0.411765, 0.941176, 0.780392, 1)
+titleLabel/font_sizes/font_size = 72

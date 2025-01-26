@@ -118,6 +118,7 @@ _data = {
 [node name="pufferFish" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_6c7g5")
+puffer_scale = 1.0
 current_state = 1
 
 [node name="pufferSprite" type="Sprite2D" parent="."]

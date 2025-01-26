@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum puffer_states {PUFFED, EMPTY, DAMAGED}
+enum puffer_states {PUFFED, EMPTY, DAMAGED, IDLE}
 
 @onready var pufferSprite := $pufferSprite
 @onready var pufferCol := $pufferCol
@@ -9,8 +9,8 @@ enum puffer_states {PUFFED, EMPTY, DAMAGED}
 @onready var pufferAnim := $pufferAnim
 @onready var puffed_sprite := preload("res://assets/temp/puffer.png")
 @onready var empty_sprite := preload("res://assets/temp/puffer.png")
-@export var puffer_scale := 1.0
-@export var current_state := puffer_states.PUFFED
+@export var puffer_scale := 0.0
+@export var current_state := puffer_states.IDLE
 var puff_recharge_time := 1.0
 var puff_cooldown := 1.0
 var damage_timeout := 0.5
@@ -21,8 +21,9 @@ signal do_puff
 
 func _ready() -> void:
 	pufferHurtBox.area_entered.connect(pufferHurt)
+	puffer_scale = 0.0
 	updateScale()
-	pufferEmpty()
+	#pufferEmpty()
 	
 func _process(delta: float) -> void:
 	position = get_global_mouse_position()
@@ -41,6 +42,7 @@ func handleRotation(bubble_pos):
 	pufferSprite.flip_v = position.x > bubble_pos.x
 	
 func updateScale():
+	print("SCALE ", puffer_scale)
 	var new_scale = Vector2.ONE + (Vector2.ONE * puffer_scale)
 	pufferSprite.scale = new_scale
 	pufferCol.scale = new_scale
@@ -65,7 +67,7 @@ func pufferEmpty():
 	pufferAnim.play("charge")
 	
 func pufferHurt(obstacle: Area2D):
-	if current_state == puffer_states.DAMAGED: return
+	if current_state == puffer_states.DAMAGED or current_state == puffer_states.IDLE: return
 	hp -= 1
 	if hp == 0: get_tree().quit()
 	current_state = puffer_states.DAMAGED

@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://da6ke420c6aw0"]
+
+[ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="1_whtj7"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_8f0e4"]
+
+[node name="mainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_whtj7")
+script = ExtResource("2_8f0e4")
+
+[node name="bgRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.00784314, 0.164706, 1)
+
+[node name="uiMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="mainStuff" type="VBoxContainer" parent="uiMargin"]
+layout_mode = 2
+
+[node name="titleLabel" type="Label" parent="uiMargin/mainStuff"]
+layout_mode = 2
+theme_type_variation = &"titleLabel"
+text = "BUBBLE JAM"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="uiMargin/mainStuff"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="playButton" type="Button" parent="uiMargin/mainStuff/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"mainButton"
+text = "PLAY"
+
+[node name="tutorialButton" type="Button" parent="uiMargin/mainStuff/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"mainButton"
+text = "TUTORIAL"
+
+[node name="settingsButton" type="Button" parent="uiMargin/mainStuff/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"mainButton"
+text = "SETTINGS"
+
+[node name="creditsButton" type="Button" parent="uiMargin/mainStuff/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"mainButton"
+text = "CREDITS"
