@@ -97,7 +97,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "0"
 
 [node name="winZone" type="Area2D" parent="."]
-position = Vector2(33, 1818)
+position = Vector2(33, 1805)
 collision_layer = 0
 collision_mask = 4
 
