@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cppibnxi6p8lb"]
+
+[ext_resource type="Script" path="res://scripts/turtle.gd" id="1_ce5jl"]
+[ext_resource type="Texture2D" uid="uid://cvlbof3ml4roe" path="res://assets/temp/turtle.png" id="1_lmo61"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l58o6"]
+radius = 80.0
+height = 500.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x84xm"]
+radius = 120.0
+height = 600.0
+
+[sub_resource type="Curve2D" id="Curve2D_0c76x"]
+
+[node name="turtle" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_ce5jl")
+
+[node name="turtleSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_lmo61")
+
+[node name="turtleCol" type="CollisionShape2D" parent="."]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_l58o6")
+
+[node name="bubbleBouncer" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="bubbleBouncerCol" type="CollisionShape2D" parent="bubbleBouncer"]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_x84xm")
+
+[node name="fishPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_0c76x")
+
+[node name="fishFollow" type="PathFollow2D" parent="fishPath"]
+loop = false

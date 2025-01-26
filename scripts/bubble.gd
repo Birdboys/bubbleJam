@@ -39,6 +39,9 @@ func updateRotation(delta):
 	current_rotation = move_toward(current_rotation, 0.0, bubble_rot_friction*delta)
 	bubbleSprite.rotate(current_rotation)
 
+func updateVel(v):
+	current_velocity = v
+	
 func popBubble(enemy: Area2D):
 	if not is_playing: return
 	print("BUBBLE POPPED")

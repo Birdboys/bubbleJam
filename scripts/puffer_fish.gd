@@ -49,7 +49,6 @@ func handleRotation(bubble_pos):
 	pufferSprite.flip_v = position.x > bubble_pos.x
 	
 func updateScale():
-	print("SCALE ", puffer_scale)
 	var new_scale = Vector2.ONE + (Vector2.ONE * puffer_scale)
 	pufferSprite.scale = new_scale
 	pufferCol.scale = new_scale
