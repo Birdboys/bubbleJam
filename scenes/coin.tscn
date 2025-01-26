@@ -12,6 +12,7 @@ texture = ExtResource("1_u7tbh")
 script = ExtResource("2_jb3st")
 
 [node name="coinHitBox" type="Area2D" parent="."]
+collision_mask = 16
 
 [node name="hitBoxCol" type="CollisionShape2D" parent="coinHitBox"]
 shape = SubResource("CircleShape2D_eiqkk")

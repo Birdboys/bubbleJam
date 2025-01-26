@@ -5,6 +5,6 @@ extends Sprite2D
 func _ready():
 	coinHitBox.body_entered.connect(collectCoin)
 
-func collectCoin():
+func collectCoin(fish: CharacterBody2D):
 	print("Collected coin")
 	queue_free()
