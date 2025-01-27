@@ -24,6 +24,7 @@ DeathScreen="*res://scenes/death_screen.tscn"
 
 window/size/viewport_width=650
 window/size/viewport_height=976
+window/size/resizable=false
 
 [input]
 
