@@ -18,7 +18,6 @@ var current_level
 var puffer_hp := 0
 
 func _ready() -> void:
-	DeathScreen.resetGameData()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	puffer.do_puff.connect(handlePuff)
 	puffer.coin_collected.connect(coinCollected)

@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bijr6klugjdtl"]
+[gd_scene load_steps=4 format=3 uid="uid://bijr6klugjdtl"]
 
 [ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="1_4alw3"]
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="2_nxdll"]
+[ext_resource type="Texture2D" uid="uid://dy76ob8x1g1wj" path="res://assets/HuffnPuff_splash.png" id="3_1rxex"]
 
-[node name="titleScreen" type="Control"]
-layout_mode = 3
+[node name="titleScreen" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,35 +15,29 @@ size_flags_vertical = 3
 theme = ExtResource("1_4alw3")
 script = ExtResource("2_nxdll")
 
-[node name="bgRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0627451, 0.00784314, 0.164706, 1)
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0.682353, 0.764706, 1)
+
+[node name="bgRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_1rxex")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="titleLabels" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 alignment = 1
 
-[node name="titleLabel" type="Label" parent="titleLabels"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme = ExtResource("1_4alw3")
-theme_type_variation = &"titleLabel"
-text = "HUFF N' PUFF"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/margin_bottom = 100
 
-[node name="subLabel" type="Label" parent="titleLabels"]
+[node name="subLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 8
 theme_type_variation = &"subLabel"
+theme_override_constants/outline_size = 10
 text = "PRESS SPACE TO START"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/ui/main_stuff.gd" id="3_u8u57"]
 [ext_resource type="Script" path="res://scripts/ui/setting_stuff.gd" id="4_hkfs7"]
 [ext_resource type="Script" path="res://scripts/ui/credit_stuff.gd" id="5_ijyop"]
-[ext_resource type="Script" path="res://scripts/ui/tutorial_stuff.gd" id="6_tv0q5"]
+[ext_resource type="Texture2D" uid="uid://dygtbeiq07pdj" path="res://scenes/people.png" id="6_dr44b"]
 
 [node name="mainMenu" type="Control"]
 layout_mode = 3
@@ -62,11 +62,6 @@ alignment = 1
 layout_mode = 2
 theme_type_variation = &"mainButton"
 text = "PLAY"
-
-[node name="tutorialButton" type="Button" parent="uiMargin/mainStuff/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"mainButton"
-text = "TUTORIAL"
 
 [node name="settingsButton" type="Button" parent="uiMargin/mainStuff/VBoxContainer"]
 layout_mode = 2
@@ -148,22 +143,23 @@ theme_type_variation = &"titleLabel"
 text = "CREDITS"
 horizontal_alignment = 1
 
-[node name="credits" type="ScrollContainer" parent="uiMargin/creditStuff"]
+[node name="creditCont" type="VBoxContainer" parent="uiMargin/creditStuff"]
 layout_mode = 2
 
-[node name="creditCont" type="VBoxContainer" parent="uiMargin/creditStuff/credits"]
+[node name="HBoxContainer" type="HBoxContainer" parent="uiMargin/creditStuff/creditCont"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="uiMargin/creditStuff/credits/creditCont"]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="uiMargin/creditStuff/credits/creditCont/HBoxContainer"]
+[node name="Label" type="Label" parent="uiMargin/creditStuff/creditCont/HBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"subLabel"
-text = "adsdadsadassadas"
+text = "Programmers: Colby Bird,
+Kyle Roth
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="uiMargin/creditStuff/credits/creditCont/HBoxContainer"]
-layout_mode = 2
+Artists: Blizzzard, Reagan Riley
+
+Music: Kyle Roth
+
+Testers: Logan"
 
 [node name="backButton" type="Button" parent="uiMargin/creditStuff"]
 layout_mode = 2
@@ -172,21 +168,9 @@ size_flags_vertical = 10
 theme_type_variation = &"subButton"
 text = "BACK"
 
-[node name="tutorialStuff" type="VBoxContainer" parent="uiMargin"]
+[node name="TextureRect" type="TextureRect" parent="uiMargin/creditStuff"]
 layout_mode = 2
-theme_override_constants/separation = 32
-script = ExtResource("6_tv0q5")
-
-[node name="titleLabel" type="Label" parent="uiMargin/tutorialStuff"]
-layout_mode = 2
-size_flags_vertical = 2
-theme_type_variation = &"titleLabel"
-text = "TUTORIAL"
-horizontal_alignment = 1
-
-[node name="backButton" type="Button" parent="uiMargin/tutorialStuff"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
-theme_type_variation = &"subButton"
-text = "BACK"
+size_flags_vertical = 3
+texture = ExtResource("6_dr44b")
+expand_mode = 1
+stretch_mode = 5
