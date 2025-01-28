@@ -4,7 +4,12 @@
 [ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="1_65red"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycwwi"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.054902, 0.0117647, 0.243137, 0.784314)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.411765, 0.941176, 0.780392, 1)
 corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
@@ -41,10 +46,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
 
 [node name="bubble" type="VBoxContainer" parent="deathScreenMargin/deathScreenPanel/margin"]
 layout_mode = 2

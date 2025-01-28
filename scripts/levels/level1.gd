@@ -24,6 +24,7 @@ func _ready() -> void:
 	puffer.death.connect(handleDeath)
 	bubble.death.connect(handleDeath)
 	winZone.body_entered.connect(handleWin)
+	game_time = DeathScreen.game_time
 	get_tree().create_timer(2.0).timeout.connect(startGame)
 
 func _process(delta: float) -> void:
@@ -89,4 +90,3 @@ func handleDeath():
 
 func deathScreen(win:bool):
 	DeathScreen.showDeathScreen(win, game_time, coins_collected, puffer_hp)
-	

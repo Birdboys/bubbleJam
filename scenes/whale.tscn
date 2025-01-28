@@ -13,7 +13,7 @@ size = Vector2(320, 320)
 script = ExtResource("1_p0d53")
 
 [node name="whaleSprite" type="Sprite2D" parent="."]
-scale = Vector2(1.885, 1.885)
+scale = Vector2(4, 4)
 texture = ExtResource("2_vitdy")
 
 [node name="whale" type="Area2D" parent="."]

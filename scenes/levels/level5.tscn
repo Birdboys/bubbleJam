@@ -193,3 +193,7 @@ region_rect = Rect2(0, 0, 400, 10000)
 
 [node name="wallCol" type="CollisionShape2D" parent="bottomWall"]
 shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="oceanModulate" type="CanvasModulate" parent="."]
+position = Vector2(0, 15)
+color = Color(0.551614, 0.813855, 1, 1)
