@@ -7,6 +7,7 @@ enum puffer_states {PUFFED, EMPTY, DAMAGED, IDLE}
 @onready var pufferHitBox := $pufferHitBox
 @onready var pufferHurtBox := $pufferHurtBox
 @onready var pufferCoinBox := $pufferCoinBox
+@onready var waterSound := $waterSound
 @onready var pufferAnim := $pufferAnim
 @onready var puffRay := $puffRay
 @onready var puffed_sprite := preload("res://assets/puffer/puffer_hold.png")
@@ -19,6 +20,8 @@ var puff_recharge_time := 1.0
 var puff_cooldown := 1.0
 var damage_timeout := 0.5
 var fish_speed := 7500.0
+var movement_sound_max_dist := 200.0
+var prev_pos : Vector2
 
 var hp := 3
 
@@ -30,17 +33,22 @@ func _ready() -> void:
 	pufferHurtBox.area_entered.connect(pufferHurt)
 	pufferCoinBox.area_entered.connect(collectCoin)
 	puffer_scale = 0.0
+	prev_pos = position
 	updateScale()
 	#pufferEmpty()
 	
 func _process(delta: float) -> void:
 	handleMovement(delta)
+	handleWaterSound(delta)
 	updateScale()
 	match current_state:
 		puffer_states.PUFFED:
 			if Input.is_action_just_pressed("puff"):
 				doPuff()
 
+func _physics_process(delta: float) -> void:
+	print(db_to_linear(waterSound.volume_db)*100)
+	
 func handleMovement(delta):
 	var new_pos = get_global_mouse_position()
 	var new_dir = position.direction_to(new_pos)
@@ -51,7 +59,13 @@ func handleMovement(delta):
 func handleRotation(bubble_pos):
 	pufferSprite.rotation = transform.looking_at(bubble_pos).get_rotation()
 	pufferSprite.flip_v = position.x > bubble_pos.x
-	
+
+func handleWaterSound(delta):
+	var pos_diff = position.distance_to(prev_pos)
+	pos_diff = clamp(pos_diff, 0.0, movement_sound_max_dist)/movement_sound_max_dist
+	waterSound.volume_db = linear_to_db(pos_diff)
+	prev_pos = position
+
 func updateScale():
 	var new_scale = Vector2.ONE + (Vector2.ONE * puffer_scale)
 	pufferSprite.scale = new_scale
