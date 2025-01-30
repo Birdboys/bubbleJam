@@ -16,12 +16,15 @@ enum puffer_states {PUFFED, EMPTY, DAMAGED, IDLE}
 @onready var neutral_sprite := preload("res://assets/puffer/puffer_neutral.png")
 @export var puffer_scale := 0.0
 @export var current_state := puffer_states.IDLE
+@export var movement_penalty := 1.0
+
 var puff_recharge_time := 1.0
 var puff_cooldown := 1.0
 var damage_timeout := 0.5
 var fish_speed := 7500.0
 var movement_sound_max_dist := 200.0
 var prev_pos : Vector2
+var damaged_movement_reduction := 0.25
 
 var hp := 3
 
@@ -57,7 +60,7 @@ func handleMovement(delta):
 	var new_pos = get_global_mouse_position()
 	var new_dir = position.direction_to(new_pos)
 	var new_dist = position.distance_to(new_pos)
-	velocity = new_dir * fish_speed * clamp(new_dist, 0, 400.0)/400.0
+	velocity = new_dir * fish_speed * movement_penalty * clamp(new_dist, 0, 400.0)/400.0 
 	move_and_slide()
 	
 func handleRotation(bubble_pos):

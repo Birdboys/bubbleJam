@@ -46,7 +46,7 @@ func handlePuff():
 func startGame():
 	puffer.pufferEmpty()
 	bubble.is_playing = true
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 
 func coinCollected():
 	coins_collected += 1
