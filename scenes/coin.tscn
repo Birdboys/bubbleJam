@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://68d53l1ufr01"]
+[gd_scene load_steps=10 format=3 uid="uid://68d53l1ufr01"]
 
 [ext_resource type="Script" path="res://scripts/coin.gd" id="1_5lhaj"]
 [ext_resource type="Texture2D" uid="uid://du0mryqgg7c21" path="res://assets/Sanddollar.png" id="1_kibbw"]
 [ext_resource type="Texture2D" uid="uid://xli35e23psdk" path="res://assets/floaty_64.png" id="3_65piu"]
+[ext_resource type="Texture2D" uid="uid://dv2fc7qbqeci0" path="res://assets/light.png" id="4_mot61"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eiqkk"]
 radius = 151.03
@@ -94,3 +95,8 @@ scale_amount_curve = SubResource("Curve_38frv")
 color = Color(1, 0.986833, 0.21, 1)
 anim_speed_min = 2.0
 anim_speed_max = 2.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.5
+texture = ExtResource("4_mot61")
+texture_scale = 0.6

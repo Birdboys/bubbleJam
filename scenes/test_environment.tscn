@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://da1y6457akk57" path="res://scenes/bubble.tscn" id="2_1t8mg"]
 [ext_resource type="Texture2D" uid="uid://ddnak4xxamf6e" path="res://assets/temp/ocean.png" id="4_ctwtv"]
 [ext_resource type="PackedScene" uid="uid://rtqqgxot481" path="res://scenes/collect_bubble.tscn" id="6_cwxk8"]
-[ext_resource type="PackedScene" uid="uid://o3wrdf0hp1vp" path="res://scenes/crab.tscn" id="7_hbiav"]
-[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scripts/coin.tscn" id="8_iknth"]
+[ext_resource type="PackedScene" path="res://scenes/crab.tscn" id="7_hbiav"]
+[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scenes/coin.tscn" id="8_iknth"]
 
 [node name="testEnvironment" type="Node2D"]
 script = ExtResource("1_66d0o")

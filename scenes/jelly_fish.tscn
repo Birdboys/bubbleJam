@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://caivuw1yrylwx"]
+[gd_scene load_steps=8 format=3 uid="uid://caivuw1yrylwx"]
 
 [ext_resource type="Script" path="res://scripts/jelly_fish.gd" id="1_81y60"]
 [ext_resource type="Texture2D" uid="uid://di8c5fdwbyqya" path="res://assets/Jellyfish.png" id="2_but73"]
+[ext_resource type="Texture2D" uid="uid://dv2fc7qbqeci0" path="res://assets/light.png" id="3_07g1n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6upv3"]
 radius = 90.0
@@ -57,3 +58,9 @@ position = Vector2(-0.5, -478.5)
 shape = SubResource("RectangleShape2D_lu0k3")
 
 [node name="bubbleTimer" type="Timer" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -163)
+energy = 0.5
+texture = ExtResource("3_07g1n")
+texture_scale = 0.7

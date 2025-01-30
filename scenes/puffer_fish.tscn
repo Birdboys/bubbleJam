@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvcffxxqrpo18"]
+[gd_scene load_steps=17 format=3 uid="uid://cvcffxxqrpo18"]
 
 [ext_resource type="Script" path="res://scripts/puffer_fish.gd" id="1_6c7g5"]
-[ext_resource type="Texture2D" uid="uid://bx5id20fjlon4" path="res://assets/temp/puffer.png" id="2_d8n6v"]
-[ext_resource type="Texture2D" uid="uid://c247kxih562nj" path="res://assets/puffer/puffer_out.png" id="3_ne3tu"]
 [ext_resource type="Texture2D" uid="uid://d3te3bf70bw4a" path="res://assets/puffer/puffer_neutral.png" id="4_auttx"]
 [ext_resource type="Texture2D" uid="uid://djqljxeuoxj3m" path="res://assets/temp/bubble.png" id="5_j3ug5"]
+[ext_resource type="Texture2D" uid="uid://dv2fc7qbqeci0" path="res://assets/light.png" id="5_vqijx"]
 [ext_resource type="AudioStream" uid="uid://bo2eikoxpgv32" path="res://assets/sounds/water_woosh.mp3" id="6_w14c2"]
 
 [sub_resource type="Curve" id="Curve_uyr7x"]
@@ -42,46 +41,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pufferSprite:modulate")
+tracks/1/path = NodePath("pufferCoinBox:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("pufferSprite:texture")
+tracks/2/path = NodePath(".:movement_penalty")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_d8n6v")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("pufferCoinBox:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:movement_penalty")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -121,25 +96,13 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_n0wos"]
 resource_name = "damage"
 step = 0.25
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("pufferSprite:modulate")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -147,37 +110,37 @@ tracks/1/keys = {
 "method": &"pufferEmpty"
 }]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:puffer_scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:puffer_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("pufferCoinBox:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pufferCoinBox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:movement_penalty")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:movement_penalty")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.75, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
@@ -217,22 +180,10 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("pufferSprite:texture")
+tracks/2/path = NodePath("pufferSprite/bubbleBurst:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("3_ne3tu"), ExtResource("4_auttx")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("pufferSprite/bubbleBurst:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -258,11 +209,9 @@ puffer_scale = 1.0
 current_state = 1
 
 [node name="pufferSprite" type="Sprite2D" parent="."]
-position = Vector2(-10, -5)
-texture = ExtResource("2_d8n6v")
+texture = ExtResource("4_auttx")
 
 [node name="bubbleBurst" type="CPUParticles2D" parent="pufferSprite"]
-position = Vector2(10, 5)
 emitting = false
 one_shot = true
 explosiveness = 0.91
@@ -337,3 +286,9 @@ scale_amount_curve = SubResource("Curve_acmib")
 stream = ExtResource("6_w14c2")
 volume_db = -60.0
 autoplay = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("5_vqijx")
+texture_scale = 1.5
