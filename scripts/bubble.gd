@@ -18,6 +18,7 @@ var bubble_push_force := 1500.0
 
 var current_velocity := Vector2.ZERO
 var current_rotation := 0.0
+var in_whirlpool := false
 var is_playing := false
 
 func _ready() -> void:
@@ -32,7 +33,7 @@ func _process(delta: float) -> void:
 	updateRotation(delta)
 	updateOtter(delta)
 	
-	current_velocity = current_velocity.move_toward(Vector2.UP * bubble_rise_speed, bubble_stop_speed*delta)
+	if not in_whirlpool: current_velocity = current_velocity.move_toward(Vector2.UP * bubble_rise_speed, bubble_stop_speed*delta)
 	velocity = current_velocity
 	move_and_slide()
 	
