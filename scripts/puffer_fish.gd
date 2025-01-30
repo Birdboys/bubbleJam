@@ -52,8 +52,6 @@ func _process(delta: float) -> void:
 			handleMovement(delta)
 			handleWaterSound(delta)
 
-func _physics_process(delta: float) -> void:
-	print(db_to_linear(waterSound.volume_db)*100)
 	
 func handleMovement(delta):
 	var new_pos = get_global_mouse_position()
