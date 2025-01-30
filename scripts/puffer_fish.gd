@@ -7,6 +7,7 @@ enum puffer_states {PUFFED, EMPTY, DAMAGED, IDLE}
 @onready var pufferHitBox := $pufferHitBox
 @onready var pufferHurtBox := $pufferHurtBox
 @onready var pufferCoinBox := $pufferCoinBox
+@onready var bubbleTrail := $bubbleTrail
 @onready var waterSound := $waterSound
 @onready var pufferAnim := $pufferAnim
 @onready var puffRay := $puffRay
@@ -68,6 +69,9 @@ func handleWaterSound(delta):
 	var pos_diff = position.distance_to(prev_pos)
 	pos_diff = clamp(pos_diff, 0.0, movement_sound_max_dist)/movement_sound_max_dist
 	waterSound.volume_db = linear_to_db(pos_diff)
+	#bubbleTrail.amount = max(pos_diff * 100, 4)
+	#bubbleTrail.emitting = true
+	print(bubbleTrail.amount)
 	prev_pos = position
 
 func updateScale():
