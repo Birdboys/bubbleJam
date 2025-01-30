@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dgh5irobvj0p2"]
+[gd_scene load_steps=18 format=4 uid="uid://dgh5irobvj0p2"]
 
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_m3m23"]
 [ext_resource type="Texture2D" uid="uid://b4ifcskqke5mi" path="res://assets/coral/CoralBackgroundFull.png" id="2_tuqfg"]
@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="7_tscci"]
 [ext_resource type="PackedScene" uid="uid://6i87n3ywxqsh" path="res://scenes/coral.tscn" id="8_3m5ur"]
 [ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="9_sbao0"]
+[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scripts/coin.tscn" id="10_4pg6t"]
 [ext_resource type="PackedScene" uid="uid://cvuik8t15iku5" path="res://scenes/lion_fish.tscn" id="11_8hoiq"]
+[ext_resource type="PackedScene" uid="uid://caivuw1yrylwx" path="res://scenes/jelly_fish.tscn" id="11_lr1kq"]
 [ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="12_uxt3y"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ekdma"]
@@ -50,11 +52,11 @@ scroll_offset = Vector2(0, -1400)
 texture = ExtResource("3_d2nu2")
 
 [node name="pufferFish" parent="." instance=ExtResource("4_fq6vh")]
-position = Vector2(-1306, 2130)
+position = Vector2(-1614, 381)
 current_state = 3
 
 [node name="bubble" parent="." instance=ExtResource("5_h60us")]
-position = Vector2(-1092, 1660)
+position = Vector2(-1209, 1083)
 bubble_scale = 0.75
 
 [node name="playerCam" type="Camera2D" parent="."]
@@ -94,14 +96,45 @@ text = "0"
 [node name="urchinLayer" type="TileMapLayer" parent="obstacles"]
 use_parent_material = true
 position = Vector2(0, 2100)
-tile_map_data = PackedByteArray("AAD2//v/AQAAAAAAAgD3//v/AQAAAAAAAgD2//z/AQAAAAAAAgD2//3/AQAAAAAAAgD3//z/AQAAAAAAAgD4//v/AQAAAAAAAgD8//v/AQAAAAAAAgABAAEAAQAAAAAAAgABAAAAAQAAAAAAAgABAP//AQAAAAAAAgABAP7/AQAAAAAAAgABAP3/AQAAAAAAAgABAPz/AQAAAAAAAgABAPv/AQAAAAAAAgABAPr/AQAAAAAAAgABAPn/AQAAAAAAAgABAPj/AQAAAAAAAgD8//z/AQAAAAAAAgD8//3/AQAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAAAAPP/AQAAAAAAAgAAAPT/AQAAAAAAAgAAAPX/AQAAAAAAAgAKAPP/AQAAAAAAAgAKAPT/AQAAAAAAAgD8/wEAAQAAAAAAAgD7/wEAAQAAAAAAAgD6/wEAAQAAAAAAAgD5/wEAAQAAAAAAAgD4/wEAAQAAAAAAAgD2//z/AQAAAAAAAgD2//v/AQAAAAAAAgD2/wAAAQAAAAAAAgD2/wEAAQAAAAAAAgD3/wEAAQAAAAAAAgD9/wEAAQAAAAAAAgD+/wEAAQAAAAAAAgD//wEAAQAAAAAAAgD4//L/AQAAAAAAAgD5//L/AQAAAAAAAgD6//L/AQAAAAAAAgD7//L/AQAAAAAAAgD7//P/AQAAAAAAAgD8//P/AQAAAAAAAgD9//P/AQAAAAAAAgD9//T/AQAAAAAAAgD+//T/AQAAAAAAAgD+//X/AQAAAAAAAgD///X/AQAAAAAAAgD9//X/AQAAAAAAAgD+//n/AQAAAAAAAgD+//r/AQAAAAAAAgD+//v/AQAAAAAAAgABAAEAAQAAAAAAAgAAAAEAAQAAAAAAAgACAAEAAQAAAAAAAgADAAEAAQAAAAAAAgD3//z/AQAAAAAAAgD2//3/AQAAAAAAAgD3//3/AQAAAAAAAgD2//7/AQAAAAAAAgD///n/AQAAAAAAAgD///r/AQAAAAAAAgD///v/AQAAAAAAAgD+//z/AQAAAAAAAgD4//3/AQAAAAAAAgD3//7/AQAAAAAAAgD2////AQAAAAAAAgD3/wAAAQAAAAAAAgAFAP7/AQAAAAAAAgAFAP3/AQAAAAAAAgAFAPz/AQAAAAAAAgAFAPv/AQAAAAAAAgAFAPr/AQAAAAAAAgAFAPn/AQAAAAAAAgAFAP//AQAAAAAAAgAFAAAAAQAAAAAAAgAFAAEAAQAAAAAAAgAEAAEAAQAAAAAAAgAAAPn/AQAAAAAAAgAAAPr/AQAAAAAAAgAAAPv/AQAAAAAAAgD///z/AQAAAAAAAgD///T/AQAAAAAAAgD///P/AQAAAAAAAgD+//P/AQAAAAAAAgD4//7/AQAAAAAAAgD3////AQAAAAAAAgD4/wAAAQAAAAAAAgAAAO//AQAAAAAAAgAAAPD/AQAAAAAAAgAAAPH/AQAAAAAAAgAAAPL/AQAAAAAAAgAKAO//AQAAAAAAAgAKAPL/AQAAAAAAAgAFAO//AQAAAAAAAgAFAPD/AQAAAAAAAgAKAPX/AQAAAAAAAgAKAPD/AQAAAAAAAgAKAPH/AQAAAAAAAgAFAPH/AQAAAAAAAgAFAPL/AQAAAAAAAgAFAPP/AQAAAAAAAgAGAPn/AQAAAAAAAgAHAPn/AQAAAAAAAgAHAPr/AQAAAAAAAgAIAPr/AQAAAAAAAgAJAPr/AQAAAAAAAgAKAPr/AQAAAAAAAgAKAPn/AQAAAAAAAgAJAPn/AQAAAAAAAgAIAPn/AQAAAAAAAgAGAPr/AQAAAAAAAgAGAPv/AQAAAAAAAgAHAPv/AQAAAAAAAgAHAPz/AQAAAAAAAgAIAPv/AQAAAAAAAgAJAPv/AQAAAAAAAgAJAPz/AQAAAAAAAgAJAP3/AQAAAAAAAgAJAP7/AQAAAAAAAgAIAP7/AQAAAAAAAgAIAP//AQAAAAAAAgAHAP//AQAAAAAAAgAGAP7/AQAAAAAAAgAGAP3/AQAAAAAAAgAGAPz/AQAAAAAAAgAHAP3/AQAAAAAAAgAHAP7/AQAAAAAAAgAHAAAAAQAAAAAAAgAIAAAAAQAAAAAAAgAJAP//AQAAAAAAAgAKAPz/AQAAAAAAAgAKAP3/AQAAAAAAAgAKAP7/AQAAAAAAAgAKAP//AQAAAAAAAgAKAAAAAQAAAAAAAgAKAAEAAQAAAAAAAgAJAAEAAQAAAAAAAgAIAAEAAQAAAAAAAgAHAAEAAQAAAAAAAgAGAAEAAQAAAAAAAgAGAAAAAQAAAAAAAgAGAP//AQAAAAAAAgAJAAAAAQAAAAAAAgAIAP3/AQAAAAAAAgAIAPz/AQAAAAAAAgAKAPv/AQAAAAAAAgAJAPj/AQAAAAAAAgAKAPf/AQAAAAAAAgAKAPb/AQAAAAAAAgAKAPj/AQAAAAAAAgD2//P/AQAAAAAAAgD2//L/AQAAAAAAAgD3//L/AQAAAAAAAgD3//H/AQAAAAAAAgD2//H/AQAAAAAAAgD4//H/AQAAAAAAAgD5//H/AQAAAAAAAgD6//H/AQAAAAAAAgD7//H/AQAAAAAAAgD8//L/AQAAAAAAAgD9//L/AQAAAAAAAgD+//L/AQAAAAAAAgD///L/AQAAAAAAAgD///H/AQAAAAAAAgD///D/AQAAAAAAAgA=")
 tile_set = SubResource("TileSet_tpv77")
 
 [node name="coins" type="Node2D" parent="obstacles"]
 
+[node name="coin" parent="obstacles/coins" instance=ExtResource("10_4pg6t")]
+position = Vector2(-87, 413)
+
 [node name="lionFish" parent="obstacles" instance=ExtResource("11_8hoiq")]
-position = Vector2(-485, 1590)
+position = Vector2(300, -400)
 path_points = Array[Vector2]([Vector2(0, 0), Vector2(500, 0)])
+
+[node name="lionFish2" parent="obstacles" instance=ExtResource("11_8hoiq")]
+position = Vector2(300, -600)
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(500, 0)])
+start_wait_time = 0.5
+
+[node name="lionFish3" parent="obstacles" instance=ExtResource("11_8hoiq")]
+position = Vector2(300, -800)
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(500, 0)])
+start_wait_time = 1.0
+
+[node name="lionFish4" parent="obstacles" instance=ExtResource("11_8hoiq")]
+position = Vector2(300, -1000)
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(500, 0)])
+start_wait_time = 1.5
+
+[node name="lionFish5" parent="obstacles" instance=ExtResource("11_8hoiq")]
+position = Vector2(300, -1200)
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(500, 0)])
+start_wait_time = 2.0
+
+[node name="jellyFish" parent="obstacles" instance=ExtResource("11_lr1kq")]
+position = Vector2(-1323, 1971)
+rotation = 1.5708
+
+[node name="jellyFish2" parent="obstacles" instance=ExtResource("11_lr1kq")]
+position = Vector2(567, 2365)
+push_distance = 3
 
 [node name="winZone" type="Area2D" parent="."]
 collision_layer = 0

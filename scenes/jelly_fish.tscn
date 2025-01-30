@@ -15,7 +15,7 @@ height = 556.0
 size = Vector2(640, 240)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu0k3"]
-size = Vector2(600, 400)
+size = Vector2(629, 557)
 
 [node name="jellyFish" type="StaticBody2D"]
 collision_mask = 0
@@ -53,7 +53,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="detectorCol" type="CollisionShape2D" parent="jellyDetectorArea"]
-position = Vector2(0, -400)
+position = Vector2(-0.5, -478.5)
 shape = SubResource("RectangleShape2D_lu0k3")
 
 [node name="bubbleTimer" type="Timer" parent="."]
