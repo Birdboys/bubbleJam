@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://68d53l1ufr01"]
+[gd_scene load_steps=9 format=3 uid="uid://68d53l1ufr01"]
 
 [ext_resource type="Script" path="res://scripts/coin.gd" id="1_5lhaj"]
 [ext_resource type="Texture2D" uid="uid://du0mryqgg7c21" path="res://assets/Sanddollar.png" id="1_kibbw"]
+[ext_resource type="Texture2D" uid="uid://xli35e23psdk" path="res://assets/floaty_64.png" id="3_65piu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eiqkk"]
 radius = 151.03
@@ -20,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.966667, 2, 3, 4, 5, 6),
 "transitions": PackedFloat32Array(2, 0.5, 2, 0.5, 2, 0.5, 2),
 "update": 0,
-"values": [Vector2(1.5, 1.5), Vector2(1.8, 1.8), Vector2(1.5, 1.5), Vector2(1.8, 1.8), Vector2(1.5, 1.5), Vector2(1.8, 1.8), Vector2(1.5, 1.5)]
+"values": [Vector2(1.5, 1.5), Vector2(1.7, 1.7), Vector2(1.5, 1.5), Vector2(1.7, 1.7), Vector2(1.5, 1.5), Vector2(1.7, 1.7), Vector2(1.5, 1.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -32,13 +33,24 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 6.28319]
+"values": [0.0, -6.28319]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mrllq"]
 _data = {
 "coin": SubResource("Animation_dwjx7")
 }
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_akxkp"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_38frv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.191011, 1), 0.0, 0.0, 0, 0, Vector2(0.460674, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="coin" type="Area2D"]
 collision_layer = 128
@@ -49,10 +61,36 @@ script = ExtResource("1_5lhaj")
 shape = SubResource("CircleShape2D_eiqkk")
 
 [node name="coinSprite" type="Sprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
+rotation = -5.23599
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("1_kibbw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mrllq")
 }
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_akxkp")
+position = Vector2(38, -3)
+amount = 10
+lifetime = 5.0
+explosiveness = 0.51
+randomness = 0.6
+texture = ExtResource("3_65piu")
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(0, -1)
+spread = 80.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+angular_velocity_min = 141.47
+angular_velocity_max = 272.38
+orbit_velocity_min = 0.6
+orbit_velocity_max = 0.6
+angle_max = 360.0
+scale_amount_curve = SubResource("Curve_38frv")
+color = Color(1, 0.986833, 0.21, 1)
+anim_speed_min = 2.0
+anim_speed_max = 2.0
