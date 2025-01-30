@@ -38,13 +38,17 @@ func _ready() -> void:
 	#pufferEmpty()
 	
 func _process(delta: float) -> void:
-	handleMovement(delta)
-	handleWaterSound(delta)
+	
 	updateScale()
 	match current_state:
 		puffer_states.PUFFED:
+			handleMovement(delta)
+			handleWaterSound(delta)
 			if Input.is_action_just_pressed("puff"):
 				doPuff()
+		puffer_states.EMPTY, puffer_states.DAMAGED:
+			handleMovement(delta)
+			handleWaterSound(delta)
 
 func _physics_process(delta: float) -> void:
 	print(db_to_linear(waterSound.volume_db)*100)

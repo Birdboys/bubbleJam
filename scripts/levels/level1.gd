@@ -18,7 +18,7 @@ var current_level
 var puffer_hp := 0
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	puffer.do_puff.connect(handlePuff)
 	puffer.coin_collected.connect(coinCollected)
 	puffer.death.connect(handleDeath)
@@ -46,6 +46,7 @@ func handlePuff():
 func startGame():
 	puffer.pufferEmpty()
 	bubble.is_playing = true
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func coinCollected():
 	coins_collected += 1
