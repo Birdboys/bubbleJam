@@ -3,8 +3,9 @@ extends Node2D
 @onready var suckArea := $suckArea
 @onready var biteArea := $biteArea
 @onready var whaleSprite := $whaleSprite
+@onready var whirlpoolParts := $whirlpoolParticles
 @onready var open_sprite := preload("res://assets/orca_open.png")
-@onready var closed_sprite := preload("res://assets/orca_open.png")
+@onready var closed_sprite := preload("res://assets/orca_closed.png")
 
 var suck_strength := 300.0
 var open := false
@@ -21,6 +22,7 @@ func _process(delta: float) -> void:
 
 func toggleSuck(bub, on):
 	open = on
+	whirlpoolParts.emitting = on
 	if open:
 		whaleSprite.texture = open_sprite
 		bubble = bub

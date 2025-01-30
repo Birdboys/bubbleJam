@@ -27,6 +27,7 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_dme2d")
 
 [node name="eelTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="electricity" type="Node2D" parent="."]
 position = Vector2(200, 0)

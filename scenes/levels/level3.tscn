@@ -90,7 +90,6 @@ push_distance = 3
 
 [node name="eel" parent="level" instance=ExtResource("8_1pbv2")]
 position = Vector2(-707, -1373)
-time_on = 3
 time_off = 6.0
 
 [node name="eel2" parent="level" instance=ExtResource("8_1pbv2")]

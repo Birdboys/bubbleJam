@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://q0f6xfqtlwoc"]
+[gd_scene load_steps=6 format=3 uid="uid://q0f6xfqtlwoc"]
 
 [ext_resource type="Script" path="res://scripts/whale.gd" id="1_p0d53"]
 [ext_resource type="Texture2D" uid="uid://bsxuh1jehlfdl" path="res://assets/orca_closed.png" id="2_vitdy"]
+[ext_resource type="PackedScene" uid="uid://csutpt80tdl8k" path="res://scenes/whirlpool.tscn" id="3_uuc72"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tcrce"]
 radius = 1200.0
@@ -15,8 +16,6 @@ script = ExtResource("1_p0d53")
 [node name="whaleSprite" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
 texture = ExtResource("2_vitdy")
-
-[node name="whale" type="Area2D" parent="."]
 
 [node name="suckArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -33,3 +32,7 @@ collision_mask = 4
 [node name="biteCol" type="CollisionShape2D" parent="biteArea"]
 shape = SubResource("RectangleShape2D_8hynl")
 debug_color = Color(0.963474, 0.163579, 0.261141, 0.42)
+
+[node name="whirlpoolParticles" parent="." instance=ExtResource("3_uuc72")]
+emitting = false
+amount = 20

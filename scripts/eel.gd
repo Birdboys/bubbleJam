@@ -8,15 +8,15 @@ extends StaticBody2D
 @onready var normSprite := preload("res://assets/eel_neutral.png")
 @export var electricity_length := 6
 @export var time_offset := 0.0
+@export var time_on := 2.0
+@export var time_off := 4.0
+@export var sprite_change_delay := 2.0
 
 var on := false
-@export var time_on := 2
-@export var time_off := 5.0
-
-
 
 func _ready() -> void:
-	get_tree().create_timer(time_offset).timeout.connect(eelTimer.start.bind(time_on))
+	eelTimer.start(time_off+time_offset)
+	get_tree().create_timer(time_off+time_offset-sprite_change_delay).timeout.connect(changeToZapSprite)
 	eelTimer.timeout.connect(toggleElectricity)
 	
 func toggleElectricity():
@@ -27,13 +27,18 @@ func toggleElectricity():
 		stopElectric()
 		
 func startElectric():
-	eelSprite.texture = zapSprite
 	for x in range(electricity_length):
 		var new_elec = electricity.instantiate()
 		electrics.add_child(new_elec)
 		new_elec.position.x = x * 200
+	eelTimer.start(time_on)
 
+func changeToZapSprite():
+	eelSprite.texture = zapSprite
+	
 func stopElectric():
 	eelSprite.texture = normSprite
 	for e in electrics.get_children():
 		e.queue_free()
+	get_tree().create_timer(time_off-sprite_change_delay).timeout.connect(changeToZapSprite)
+	eelTimer.start(time_off)
