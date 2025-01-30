@@ -16,7 +16,7 @@ enum levels {LEVEL0, LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, NONE}
 var game_time : int
 var current_level := 1
 var coins_collected := 0
-
+var num_levels := 7
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	resetGameData()
@@ -78,8 +78,9 @@ func resetGameData():
 func nextLevel():
 	hideDeathScreen()
 	current_level += 1
+	var end_stop = num_levels + 1
 	match current_level:
-		6:
+		end_stop:
 			get_tree().change_scene_to_file("res://scenes/end.tscn")
 		_:
 			get_tree().change_scene_to_file("res://scenes/levels/level%s.tscn" % current_level)
