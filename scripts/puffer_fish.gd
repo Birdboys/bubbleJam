@@ -41,7 +41,6 @@ func _ready() -> void:
 	#pufferEmpty()
 	
 func _process(delta: float) -> void:
-	
 	updateScale()
 	match current_state:
 		puffer_states.PUFFED:
