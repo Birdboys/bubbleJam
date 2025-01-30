@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://dstoksemvbjg0"]
+
+[ext_resource type="Script" path="res://scripts/test_environment.gd" id="1_66d0o"]
+[ext_resource type="PackedScene" uid="uid://cvcffxxqrpo18" path="res://scenes/puffer_fish.tscn" id="1_nwbpb"]
+[ext_resource type="PackedScene" uid="uid://da1y6457akk57" path="res://scenes/bubble.tscn" id="2_1t8mg"]
+[ext_resource type="Texture2D" uid="uid://ddnak4xxamf6e" path="res://assets/temp/ocean.png" id="4_ctwtv"]
+[ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="5_ks4oj"]
+[ext_resource type="PackedScene" uid="uid://rtqqgxot481" path="res://scenes/collect_bubble.tscn" id="6_cwxk8"]
+[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scripts/coin.tscn" id="8_iknth"]
+[ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="8_vxrwr"]
+[ext_resource type="PackedScene" uid="uid://csutpt80tdl8k" path="res://scenes/whirlpool.tscn" id="9_ov3ib"]
+
+[node name="testEnvironment" type="Node2D"]
+script = ExtResource("1_66d0o")
+
+[node name="ocean" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, -1800)
+scale = Vector2(2, 2)
+texture = ExtResource("4_ctwtv")
+region_enabled = true
+region_rect = Rect2(0, 0, 4200, 2560)
+
+[node name="bubble" parent="." instance=ExtResource("2_1t8mg")]
+position = Vector2(0, 600)
+
+[node name="playerCam" type="Camera2D" parent="."]
+zoom = Vector2(0.25, 0.25)
+
+[node name="urchins" type="Node2D" parent="."]
+
+[node name="urchin" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(0, -800)
+
+[node name="urchin2" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(200, -1000)
+
+[node name="urchin3" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(-200, -1000)
+
+[node name="urchin4" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(0, -1000)
+
+[node name="urchin5" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(-200, -1200)
+
+[node name="urchin6" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(-200, -1400)
+
+[node name="urchin7" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(-200, -1400)
+
+[node name="urchin8" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(-400, -1400)
+
+[node name="urchin9" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(-600, -1400)
+
+[node name="urchin10" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(-800, -1400)
+
+[node name="urchin11" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(-1000, -1400)
+
+[node name="urchin12" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(-1200, -1400)
+
+[node name="urchin13" parent="urchins" instance=ExtResource("5_ks4oj")]
+position = Vector2(800, -1400)
+
+[node name="collectBubbles" type="Node2D" parent="."]
+
+[node name="collectBubble" parent="collectBubbles" instance=ExtResource("6_cwxk8")]
+position = Vector2(-600, -600)
+
+[node name="collectBubble2" parent="collectBubbles" instance=ExtResource("6_cwxk8")]
+position = Vector2(400, -1400)
+
+[node name="whale" parent="." instance=ExtResource("8_vxrwr")]
+position = Vector2(990, -854)
+
+[node name="pufferFish" parent="." instance=ExtResource("1_nwbpb")]
+position = Vector2(-94, 80)
+
+[node name="coin" parent="." instance=ExtResource("8_iknth")]
+position = Vector2(-671, -31)
+
+[node name="coin2" parent="." instance=ExtResource("8_iknth")]
+position = Vector2(-816, 1147)
+
+[node name="Node2D" parent="." instance=ExtResource("9_ov3ib")]
+position = Vector2(980, -852)
