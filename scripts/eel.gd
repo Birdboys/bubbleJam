@@ -27,10 +27,11 @@ func toggleElectricity():
 		stopElectric()
 		
 func startElectric():
-	for x in range(electricity_length):
+	for x in range(electricity_length+1):
 		var new_elec = electricity.instantiate()
 		electrics.add_child(new_elec)
 		new_elec.position.x = x * 200
+		new_elec.initZap(x==0)
 	eelTimer.start(time_on)
 
 func changeToZapSprite():

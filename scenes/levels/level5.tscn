@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="7_xp1yb"]
 [ext_resource type="PackedScene" uid="uid://6i87n3ywxqsh" path="res://scenes/coral.tscn" id="8_whm1u"]
 [ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="9_vtv3q"]
-[ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scenes/coin.tscn" id="10_dcud7"]
+[ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="10_dcud7"]
 [ext_resource type="PackedScene" uid="uid://cvuik8t15iku5" path="res://scenes/lion_fish.tscn" id="11_ceq6w"]
 [ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="12_hakji"]
 [ext_resource type="Texture2D" uid="uid://du0mryqgg7c21" path="res://assets/Sanddollar.png" id="13_v2fp3"]
@@ -46,7 +46,7 @@ region_rect = Rect2(0, 0, 4200, 7800)
 [node name="midgroundPara" type="Parallax2D" parent="."]
 z_index = -1
 scroll_scale = Vector2(0.45, 0.45)
-scroll_offset = Vector2(0, -1100)
+scroll_offset = Vector2(0, -1150)
 
 [node name="midground" type="Sprite2D" parent="midgroundPara"]
 texture = ExtResource("3_icywg")

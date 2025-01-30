@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnvfehl3kjcfj"
-path="res://.godot/imported/electricity.png-24bc0ebccc9cfcf4c3214b151cb8536c.ctex"
+uid="uid://c85o6ay1iiqac"
+path="res://.godot/imported/zap3.png-94219e95f650fb04bf268e49078491d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/electricity.png"
-dest_files=["res://.godot/imported/electricity.png-24bc0ebccc9cfcf4c3214b151cb8536c.ctex"]
+source_file="res://assets/zap3.png"
+dest_files=["res://.godot/imported/zap3.png-94219e95f650fb04bf268e49078491d0.ctex"]
 
 [params]
 
