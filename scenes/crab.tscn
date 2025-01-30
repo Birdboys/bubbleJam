@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://o3wrdf0hp1vp"]
+
+[ext_resource type="Texture2D" uid="uid://b7nblpmkd5vab" path="res://assets/CrabBody.png" id="1_88f5m"]
+[ext_resource type="Script" path="res://scripts/crab.gd" id="1_idv05"]
+[ext_resource type="Texture2D" uid="uid://bra3bx7gexxer" path="res://assets/CrabArm.png" id="2_kkvpj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_30eho"]
+radius = 48.0
+height = 200.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x5msr"]
+radius = 63.0
+height = 256.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pn441"]
+radius = 50.0306
+height = 343.341
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m7lxr"]
+radius = 800.0
+
+[node name="crab" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_idv05")
+
+[node name="crabCol" type="CollisionShape2D" parent="."]
+position = Vector2(-23, -27)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_30eho")
+
+[node name="crabSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_88f5m")
+
+[node name="crabHurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="crabHurtboxCol" type="CollisionShape2D" parent="crabHurtbox"]
+position = Vector2(-23, -23)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_x5msr")
+debug_color = Color(0.969853, 0.174665, 0, 0.42)
+
+[node name="crabClaw" type="Area2D" parent="."]
+position = Vector2(-66, 11)
+rotation = -0.872665
+collision_layer = 8
+collision_mask = 0
+
+[node name="crabClaw" type="Sprite2D" parent="crabClaw"]
+position = Vector2(-14.4151, -171.521)
+rotation = 0.438676
+texture = ExtResource("2_kkvpj")
+
+[node name="clawHitbox" type="CollisionShape2D" parent="crabClaw"]
+position = Vector2(-21.491, -171.882)
+rotation = 0.0289679
+shape = SubResource("CapsuleShape2D_pn441")
+
+[node name="bubbleLocArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bubbleLocArea"]
+shape = SubResource("CircleShape2D_m7lxr")
+
+[node name="attackTimer" type="Timer" parent="."]
+one_shot = true

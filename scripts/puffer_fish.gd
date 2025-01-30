@@ -71,7 +71,6 @@ func handleWaterSound(delta):
 	waterSound.volume_db = linear_to_db(pos_diff)
 	#bubbleTrail.amount = max(pos_diff * 100, 4)
 	#bubbleTrail.emitting = true
-	print(bubbleTrail.amount)
 	prev_pos = position
 
 func updateScale():
