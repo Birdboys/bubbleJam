@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dgh5irobvj0p2"]
+[gd_scene load_steps=21 format=4 uid="uid://dgh5irobvj0p2"]
 
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_m3m23"]
 [ext_resource type="Texture2D" uid="uid://b4ifcskqke5mi" path="res://assets/coral/CoralBackgroundFull.png" id="2_tuqfg"]
@@ -10,11 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://6i87n3ywxqsh" path="res://scenes/coral.tscn" id="8_3m5ur"]
 [ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="9_sbao0"]
 [ext_resource type="PackedScene" uid="uid://d2rgdjfvcte6g" path="res://scenes/kelp.tscn" id="9_u76f4"]
-[ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="10_4pg6t"]
+[ext_resource type="PackedScene" uid="uid://bxwvod3qldw07" path="res://scenes/coin.tscn" id="10_4pg6t"]
 [ext_resource type="PackedScene" uid="uid://cvuik8t15iku5" path="res://scenes/lion_fish.tscn" id="11_8hoiq"]
 [ext_resource type="PackedScene" uid="uid://caivuw1yrylwx" path="res://scenes/jelly_fish.tscn" id="11_lr1kq"]
 [ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="12_uxt3y"]
 [ext_resource type="Texture2D" uid="uid://du0mryqgg7c21" path="res://assets/Sanddollar.png" id="14_p1vhv"]
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="16_jotkw"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ekdma"]
 scenes/1/scene = ExtResource("7_tscci")
@@ -231,3 +232,44 @@ size_flags_vertical = 0
 theme_type_variation = &"subLabel"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "0"
+
+[node name="pauseMenu" type="ColorRect" parent="uiLayer"]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("6_pi57s")
+color = Color(0.054902, 0.0117647, 0.243137, 0.784314)
+script = ExtResource("16_jotkw")
+
+[node name="pauseTextCont" type="VBoxContainer" parent="uiLayer/pauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -20.0
+offset_right = 31.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="pauseLabel" type="Label" parent="uiLayer/pauseMenu/pauseTextCont"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"titleLabel"
+text = "PAUSED"
+
+[node name="tooltipLabel" type="Label" parent="uiLayer/pauseMenu/pauseTextCont"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"subLabel"
+text = "ESC TO CONTINUE"

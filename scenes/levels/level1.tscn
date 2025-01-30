@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://duew7u1ij35jj"]
+[gd_scene load_steps=18 format=4 uid="uid://duew7u1ij35jj"]
 
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_51e5y"]
 [ext_resource type="Texture2D" uid="uid://d1wufi0db30i8" path="res://assets/section1/background.png" id="2_qg5s7"]
@@ -9,8 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="7_r4k7q"]
 [ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="8_alxlb"]
 [ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="9_80bck"]
-[ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="10_jdby7"]
+[ext_resource type="PackedScene" uid="uid://bxwvod3qldw07" path="res://scenes/coin.tscn" id="10_jdby7"]
 [ext_resource type="Texture2D" uid="uid://du0mryqgg7c21" path="res://assets/Sanddollar.png" id="11_1cbo0"]
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="12_pfw0k"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ipsy5"]
 scenes/1/scene = ExtResource("7_r4k7q")
@@ -220,3 +221,91 @@ size_flags_vertical = 0
 theme_type_variation = &"subLabel"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "0"
+
+[node name="pauseMenu" type="ColorRect" parent="uiLayer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("6_xbwmr")
+color = Color(0.054902, 0.0117647, 0.243137, 0.784314)
+script = ExtResource("12_pfw0k")
+
+[node name="pauseMargin" type="MarginContainer" parent="uiLayer/pauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="pauseTextCont" type="VBoxContainer" parent="uiLayer/pauseMenu/pauseMargin"]
+layout_mode = 2
+alignment = 1
+
+[node name="pauseLabel" type="Label" parent="uiLayer/pauseMenu/pauseMargin/pauseTextCont"]
+layout_mode = 2
+theme_type_variation = &"titleLabel"
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tooltipLabel" type="Label" parent="uiLayer/pauseMenu/pauseMargin/pauseTextCont"]
+layout_mode = 2
+theme_type_variation = &"subLabel"
+text = "ESC TO CONTINUE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pauseSettingCont" type="VBoxContainer" parent="uiLayer/pauseMenu/pauseMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="music" type="HBoxContainer" parent="uiLayer/pauseMenu/pauseMargin/pauseSettingCont"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="musicLabel" type="Label" parent="uiLayer/pauseMenu/pauseMargin/pauseSettingCont/music"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"subLabel"
+text = "MUSIC:"
+
+[node name="musicSlider" type="HSlider" parent="uiLayer/pauseMenu/pauseMargin/pauseSettingCont/music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"hSlider"
+value = 50.0
+
+[node name="sound" type="HBoxContainer" parent="uiLayer/pauseMenu/pauseMargin/pauseSettingCont"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="soundLabel" type="Label" parent="uiLayer/pauseMenu/pauseMargin/pauseSettingCont/sound"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"subLabel"
+text = "SOUND:"
+
+[node name="soundSlider" type="HSlider" parent="uiLayer/pauseMenu/pauseMargin/pauseSettingCont/sound"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"hSlider"
+value = 50.0

@@ -5,6 +5,7 @@ extends Node2D
 @onready var cam := $playerCam
 @onready var timerLabel := $uiLayer/uiMargin/uiCont/timerLabel
 @onready var coinLabel := $uiLayer/uiMargin/uiCont/coinLabel
+@onready var pauseMenu := $uiLayer/pauseMenu
 @onready var winZone := $winZone
 @onready var death_bubble_scene := preload("res://scenes/death_bubble.tscn")
 @onready var death_puffer_scene := preload("res://scenes/death_puffer.tscn")
@@ -17,6 +18,7 @@ var game_time := 0.0
 var coins_collected := 0
 var current_level
 var puffer_hp := 0
+var pauseable := true
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
@@ -26,7 +28,7 @@ func _ready() -> void:
 	bubble.death.connect(handleDeath)
 	winZone.body_entered.connect(handleWin)
 	game_time = DeathScreen.game_time
-	get_tree().create_timer(2.0).timeout.connect(startGame)
+	get_tree().create_timer(2.0, false).timeout.connect(startGame)
 
 func _process(delta: float) -> void:
 	if is_playing:
@@ -35,6 +37,16 @@ func _process(delta: float) -> void:
 		puffer.handleRotation(bubble.position)
 		cam.position = cam.position.move_toward(bubble.position, cam_move_speed*delta)
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_pressed("pause") and pauseable: 
+		pauseable = false
+		pauseMenu.openMenu()
+		get_tree().create_timer(0.1, false).timeout.connect(unpaused)
+		
+func unpaused():
+	print("AND I OOP")
+	pauseable = true
+	
 func initializeGame(t):
 	game_time = t
 

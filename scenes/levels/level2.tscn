@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bkkietp58s1r2"]
+[gd_scene load_steps=20 format=4 uid="uid://bkkietp58s1r2"]
 
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_es6tv"]
 [ext_resource type="Texture2D" uid="uid://d1wufi0db30i8" path="res://assets/section1/background.png" id="2_v87gk"]
@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="8_xwok7"]
 [ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="9_gfmp2"]
 [ext_resource type="PackedScene" uid="uid://caivuw1yrylwx" path="res://scenes/jelly_fish.tscn" id="9_u8caq"]
-[ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="10_bhyfi"]
+[ext_resource type="PackedScene" uid="uid://bxwvod3qldw07" path="res://scenes/coin.tscn" id="10_bhyfi"]
 [ext_resource type="PackedScene" uid="uid://6agdkbsdai4d" path="res://scenes/eel.tscn" id="11_m5se4"]
 [ext_resource type="Texture2D" uid="uid://du0mryqgg7c21" path="res://assets/Sanddollar.png" id="13_r1gad"]
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="14_myv6k"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ipsy5"]
 scenes/1/scene = ExtResource("7_f6f65")
@@ -240,3 +241,44 @@ size_flags_vertical = 0
 theme_type_variation = &"subLabel"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "0"
+
+[node name="pauseMenu" type="ColorRect" parent="uiLayer"]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("6_ct6c7")
+color = Color(0.054902, 0.0117647, 0.243137, 0.784314)
+script = ExtResource("14_myv6k")
+
+[node name="pauseTextCont" type="VBoxContainer" parent="uiLayer/pauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -20.0
+offset_right = 31.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="pauseLabel" type="Label" parent="uiLayer/pauseMenu/pauseTextCont"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"titleLabel"
+text = "PAUSED"
+
+[node name="tooltipLabel" type="Label" parent="uiLayer/pauseMenu/pauseTextCont"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"subLabel"
+text = "ESC TO CONTINUE"

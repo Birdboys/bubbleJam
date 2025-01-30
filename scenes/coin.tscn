@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://68d53l1ufr01"]
+[gd_scene load_steps=10 format=3 uid="uid://bxwvod3qldw07"]
 
 [ext_resource type="Script" path="res://scripts/coin.gd" id="1_5lhaj"]
 [ext_resource type="Texture2D" uid="uid://du0mryqgg7c21" path="res://assets/Sanddollar.png" id="1_kibbw"]

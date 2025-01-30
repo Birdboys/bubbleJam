@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://da6ke420c6aw0"]
 
 [ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="1_whtj7"]
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_8f0e4"]
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="2_8f0e4"]
 [ext_resource type="Script" path="res://scripts/ui/main_stuff.gd" id="3_u8u57"]
 [ext_resource type="Script" path="res://scripts/ui/setting_stuff.gd" id="4_hkfs7"]
 [ext_resource type="Script" path="res://scripts/ui/credit_stuff.gd" id="5_ijyop"]
@@ -74,7 +74,6 @@ theme_type_variation = &"mainButton"
 text = "CREDITS"
 
 [node name="settingStuff" type="VBoxContainer" parent="uiMargin"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 32
 script = ExtResource("4_hkfs7")
@@ -132,6 +131,7 @@ theme_type_variation = &"subButton"
 text = "BACK"
 
 [node name="creditStuff" type="VBoxContainer" parent="uiMargin"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 32
 script = ExtResource("5_ijyop")
