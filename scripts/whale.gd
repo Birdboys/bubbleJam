@@ -7,7 +7,7 @@ extends Node2D
 @onready var open_sprite := preload("res://assets/orca_open.png")
 @onready var closed_sprite := preload("res://assets/orca_closed.png")
 
-var suck_strength := 700.0
+@export var suck_strength := 700.0
 var open := false
 var bubble : CharacterBody2D
 
