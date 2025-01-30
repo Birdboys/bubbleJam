@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bdnuy2d08bnon"]
+[gd_scene load_steps=19 format=4 uid="uid://bdnuy2d08bnon"]
 
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_r2461"]
 [ext_resource type="Texture2D" uid="uid://b4ifcskqke5mi" path="res://assets/coral/CoralBackgroundFull.png" id="2_ch25b"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="9_rqsvn"]
 [ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scripts/coin.tscn" id="10_18xrt"]
 [ext_resource type="PackedScene" uid="uid://cvuik8t15iku5" path="res://scenes/lion_fish.tscn" id="11_jixip"]
+[ext_resource type="Texture2D" uid="uid://du0mryqgg7c21" path="res://assets/Sanddollar.png" id="13_1mx4p"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ekdma"]
 scenes/1/scene = ExtResource("7_hnimg")
@@ -47,7 +48,7 @@ region_rect = Rect2(0, 0, 4200, 7800)
 [node name="midgroundPara" type="Parallax2D" parent="."]
 z_index = -1
 scroll_scale = Vector2(0.45, 0.45)
-scroll_offset = Vector2(0, -1400)
+scroll_offset = Vector2(0, -1100)
 
 [node name="midground" type="Sprite2D" parent="midgroundPara"]
 texture = ExtResource("3_3ve2e")
@@ -246,7 +247,25 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="timerLabel" type="Label" parent="uiLayer/uiMargin"]
+[node name="uiCont" type="HBoxContainer" parent="uiLayer/uiMargin"]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 2
+
+[node name="coinIcon" type="TextureRect" parent="uiLayer/uiMargin/uiCont"]
+layout_mode = 2
+texture = ExtResource("13_1mx4p")
+expand_mode = 3
+
+[node name="coinLabel" type="Label" parent="uiLayer/uiMargin/uiCont"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_type_variation = &"subLabel"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "0/3"
+
+[node name="timerLabel" type="Label" parent="uiLayer/uiMargin/uiCont"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
