@@ -92,4 +92,4 @@ func handleDeath():
 	get_tree().create_timer(1.0).timeout.connect(deathScreen.bind(false))
 
 func deathScreen(win:bool):
-	DeathScreen.showDeathScreen(win, game_time, coins_collected, puffer_hp)
+	DeathScreen.showDeathScreen(win, game_time, coins_collected, puffer.hp)
