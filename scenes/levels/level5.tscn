@@ -126,7 +126,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="winCol" type="CollisionShape2D" parent="winZone"]
-position = Vector2(100, -5200)
+position = Vector2(111, -5415)
 shape = SubResource("RectangleShape2D_8w1gr")
 
 [node name="leftWall" type="StaticBody2D" parent="."]

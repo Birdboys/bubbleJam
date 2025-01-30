@@ -81,7 +81,7 @@ tile_set = SubResource("TileSet_tpv77")
 [node name="coins" type="Node2D" parent="obstacles"]
 
 [node name="coin" parent="obstacles/coins" instance=ExtResource("10_4pg6t")]
-position = Vector2(-100, 400)
+position = Vector2(-108, 521)
 
 [node name="coin2" parent="obstacles/coins" instance=ExtResource("10_4pg6t")]
 position = Vector2(828, -816)
