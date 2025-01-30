@@ -1,23 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://csutpt80tdl8k"]
+[gd_scene load_steps=4 format=3 uid="uid://csutpt80tdl8k"]
 
 [ext_resource type="Texture2D" uid="uid://djqljxeuoxj3m" path="res://assets/temp/bubble.png" id="1_uayfi"]
 
+[sub_resource type="Curve" id="Curve_6bdrt"]
+min_value = -500.0
+max_value = 500.0
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Curve" id="Curve_lcbfn"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.202247, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.247191, 1), 0.0, 0.0, 0, 0, Vector2(0.814607, 0.736264), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
-[node name="Node2D" type="Node2D"]
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="whirlpoolParticles" type="CPUParticles2D"]
+scale = Vector2(8, 8)
 lifetime = 3.0
 randomness = 1.0
-lifetime_randomness = 0.4
 texture = ExtResource("1_uayfi")
 emission_shape = 2
 emission_sphere_radius = 128.0
+spread = 0.0
 gravity = Vector2(0, -10)
 orbit_velocity_min = 0.2
-orbit_velocity_max = 0.7
-scale_amount_min = 0.1
+orbit_velocity_max = 0.3
+orbit_velocity_curve = SubResource("Curve_6bdrt")
+scale_amount_min = 0.3
 scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_lcbfn")
