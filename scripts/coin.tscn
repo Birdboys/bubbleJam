@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://68d53l1ufr01"]
 
-[ext_resource type="Script" path="res://scenes/coin.gd" id="1_5lhaj"]
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_5lhaj"]
 [ext_resource type="Texture2D" uid="uid://du0mryqgg7c21" path="res://assets/Sanddollar.png" id="1_kibbw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eiqkk"]
