@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwl48rps53nei"]
+[gd_scene load_steps=10 format=3 uid="uid://bwl48rps53nei"]
 
 [ext_resource type="Script" path="res://scripts/test_environment.gd" id="1_66d0o"]
 [ext_resource type="PackedScene" uid="uid://cvcffxxqrpo18" path="res://scenes/puffer_fish.tscn" id="1_nwbpb"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://rtqqgxot481" path="res://scenes/collect_bubble.tscn" id="6_cwxk8"]
 [ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scripts/coin.tscn" id="8_iknth"]
 [ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="8_vxrwr"]
+[ext_resource type="PackedScene" uid="uid://csutpt80tdl8k" path="res://scenes/whirlpool.tscn" id="9_ov3ib"]
 
 [node name="testEnvironment" type="Node2D"]
 script = ExtResource("1_66d0o")
@@ -86,3 +87,6 @@ position = Vector2(-671, -31)
 
 [node name="coin2" parent="." instance=ExtResource("8_iknth")]
 position = Vector2(-816, 1147)
+
+[node name="Node2D" parent="." instance=ExtResource("9_ov3ib")]
+position = Vector2(980, -852)

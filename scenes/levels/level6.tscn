@@ -1,0 +1,158 @@
+[gd_scene load_steps=16 format=4 uid="uid://dgh5irobvj0p2"]
+
+[ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_m3m23"]
+[ext_resource type="Texture2D" uid="uid://b4ifcskqke5mi" path="res://assets/coral/CoralBackgroundFull.png" id="2_tuqfg"]
+[ext_resource type="Texture2D" uid="uid://wd8wew24tpxs" path="res://assets/coral/CoralMiddlegroundFull.png" id="3_d2nu2"]
+[ext_resource type="PackedScene" uid="uid://cvcffxxqrpo18" path="res://scenes/puffer_fish.tscn" id="4_fq6vh"]
+[ext_resource type="PackedScene" uid="uid://da1y6457akk57" path="res://scenes/bubble.tscn" id="5_h60us"]
+[ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="6_pi57s"]
+[ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="7_tscci"]
+[ext_resource type="PackedScene" uid="uid://6i87n3ywxqsh" path="res://scenes/coral.tscn" id="8_3m5ur"]
+[ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="9_sbao0"]
+[ext_resource type="PackedScene" uid="uid://cvuik8t15iku5" path="res://scenes/lion_fish.tscn" id="11_8hoiq"]
+[ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="12_uxt3y"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ekdma"]
+scenes/1/scene = ExtResource("7_tscci")
+scenes/2/scene = ExtResource("8_3m5ur")
+scenes/3/scene = ExtResource("9_sbao0")
+
+[sub_resource type="TileSet" id="TileSet_tpv77"]
+tile_size = Vector2i(200, 200)
+sources/1 = SubResource("TileSetScenesCollectionSource_ekdma")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w1gr"]
+size = Vector2(4200, 390)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wk6w2"]
+size = Vector2(399, 10493)
+
+[node name="level4Coral" type="Node2D"]
+script = ExtResource("1_m3m23")
+
+[node name="bgLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="background" type="Sprite2D" parent="bgLayer"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(100, -1400)
+texture = ExtResource("2_tuqfg")
+region_enabled = true
+region_rect = Rect2(0, 0, 4200, 7800)
+
+[node name="midgroundPara" type="Parallax2D" parent="."]
+z_index = -1
+scroll_scale = Vector2(0.45, 0.45)
+scroll_offset = Vector2(0, -1400)
+
+[node name="midground" type="Sprite2D" parent="midgroundPara"]
+texture = ExtResource("3_d2nu2")
+
+[node name="pufferFish" parent="." instance=ExtResource("4_fq6vh")]
+position = Vector2(-1306, 2130)
+current_state = 3
+
+[node name="bubble" parent="." instance=ExtResource("5_h60us")]
+position = Vector2(-1092, 1660)
+bubble_scale = 0.75
+
+[node name="playerCam" type="Camera2D" parent="."]
+position = Vector2(-1000, 1200)
+zoom = Vector2(0.2, 0.2)
+limit_left = -2100
+limit_top = -5300
+limit_right = 2300
+limit_bottom = 2500
+
+[node name="uiLayer" type="CanvasLayer" parent="."]
+
+[node name="uiMargin" type="MarginContainer" parent="uiLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("6_pi57s")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="timerLabel" type="Label" parent="uiLayer/uiMargin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_type_variation = &"subLabel"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "0"
+
+[node name="obstacles" type="Node2D" parent="."]
+
+[node name="urchinLayer" type="TileMapLayer" parent="obstacles"]
+use_parent_material = true
+position = Vector2(0, 2100)
+tile_map_data = PackedByteArray("AAD2//v/AQAAAAAAAgD3//v/AQAAAAAAAgD2//z/AQAAAAAAAgD2//3/AQAAAAAAAgD3//z/AQAAAAAAAgD4//v/AQAAAAAAAgD8//v/AQAAAAAAAgABAAEAAQAAAAAAAgABAAAAAQAAAAAAAgABAP//AQAAAAAAAgABAP7/AQAAAAAAAgABAP3/AQAAAAAAAgABAPz/AQAAAAAAAgABAPv/AQAAAAAAAgABAPr/AQAAAAAAAgABAPn/AQAAAAAAAgABAPj/AQAAAAAAAgD8//z/AQAAAAAAAgD8//3/AQAAAAAAAgA=")
+tile_set = SubResource("TileSet_tpv77")
+
+[node name="coins" type="Node2D" parent="obstacles"]
+
+[node name="lionFish" parent="obstacles" instance=ExtResource("11_8hoiq")]
+position = Vector2(-485, 1590)
+path_points = Array[Vector2]([Vector2(0, 0), Vector2(500, 0)])
+
+[node name="winZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="winCol" type="CollisionShape2D" parent="winZone"]
+position = Vector2(100, -5200)
+shape = SubResource("RectangleShape2D_8w1gr")
+
+[node name="leftWall" type="StaticBody2D" parent="."]
+position = Vector2(-2181, -1172)
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="leftWall"]
+texture_repeat = 2
+texture = ExtResource("12_uxt3y")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="leftWall"]
+position = Vector2(-0.5, -521.5)
+shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="rightWall" type="StaticBody2D" parent="."]
+position = Vector2(2399, -1172)
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="rightWall"]
+texture_repeat = 2
+texture = ExtResource("12_uxt3y")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="rightWall"]
+shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="bottomWall" type="StaticBody2D" parent="."]
+position = Vector2(61, 2693)
+rotation = 1.57079
+collision_mask = 0
+
+[node name="wallSprite" type="Sprite2D" parent="bottomWall"]
+visible = false
+texture_repeat = 2
+texture = ExtResource("12_uxt3y")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 10000)
+
+[node name="wallCol" type="CollisionShape2D" parent="bottomWall"]
+shape = SubResource("RectangleShape2D_wk6w2")
+
+[node name="oceanModulate" type="CanvasModulate" parent="."]
+position = Vector2(0, 15)
+color = Color(0.551614, 0.813855, 1, 1)
