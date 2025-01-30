@@ -57,6 +57,7 @@ func handleWin(_bub):
 	print("WONNERTON")
 	if not is_playing: return
 	is_playing = false
+	puffer_hp = puffer.hp
 	var bubble_tween = get_tree().create_tween().set_ease(Tween.EASE_IN)
 	bubble_tween.tween_property(bubble, "position", bubble.position + Vector2.UP*3000, 2.0)
 	bubble_tween.tween_callback(deathScreen.bind(true))

@@ -1,7 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvcffxxqrpo18"]
+[gd_scene load_steps=20 format=3 uid="uid://cvcffxxqrpo18"]
 
 [ext_resource type="Script" path="res://scripts/puffer_fish.gd" id="1_6c7g5"]
+[ext_resource type="Texture2D" uid="uid://c247kxih562nj" path="res://assets/puffer/puffer_out.png" id="3_ne3tu"]
+[ext_resource type="Texture2D" uid="uid://0w7v1c2tnp2u" path="res://assets/puffer/puffer_in.png" id="4_8gr4l"]
 [ext_resource type="Texture2D" uid="uid://d3te3bf70bw4a" path="res://assets/puffer/puffer_neutral.png" id="4_auttx"]
+[ext_resource type="Texture2D" uid="uid://da12w6wwehsau" path="res://assets/puffer/puffer_hold.png" id="4_i6g0t"]
 [ext_resource type="Texture2D" uid="uid://djqljxeuoxj3m" path="res://assets/temp/bubble.png" id="5_j3ug5"]
 [ext_resource type="Texture2D" uid="uid://dv2fc7qbqeci0" path="res://assets/light.png" id="5_vqijx"]
 [ext_resource type="AudioStream" uid="uid://bo2eikoxpgv32" path="res://assets/sounds/water_woosh.mp3" id="6_w14c2"]
@@ -62,6 +65,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pufferSprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_auttx")]
+}
 
 [sub_resource type="Animation" id="Animation_5586f"]
 resource_name = "charge"
@@ -91,6 +106,18 @@ tracks/1/keys = {
 "args": [],
 "method": &"pufferFull"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pufferSprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_8gr4l"), ExtResource("4_i6g0t")]
 }
 
 [sub_resource type="Animation" id="Animation_n0wos"]
@@ -146,6 +173,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.25, 0.25, 1.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pufferSprite:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_ne3tu"), ExtResource("4_auttx")]
+}
 
 [sub_resource type="Animation" id="Animation_a7neg"]
 resource_name = "puff"
@@ -188,6 +227,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pufferSprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_ne3tu"), ExtResource("4_auttx")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jo76y"]
