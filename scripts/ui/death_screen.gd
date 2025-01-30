@@ -16,7 +16,7 @@ enum levels {LEVEL0, LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, NONE}
 var game_time : int
 var current_level := 1
 var coins_collected := 0
-var num_levels := 7
+var num_levels := 6
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	resetGameData()
