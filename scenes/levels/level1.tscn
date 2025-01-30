@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://duew7u1ij35jj"]
+[gd_scene load_steps=17 format=4 uid="uid://duew7u1ij35jj"]
 
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_51e5y"]
 [ext_resource type="Texture2D" uid="uid://d1wufi0db30i8" path="res://assets/section1/background.png" id="2_qg5s7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="8_alxlb"]
 [ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="9_80bck"]
 [ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scripts/coin.tscn" id="10_jdby7"]
+[ext_resource type="Texture2D" uid="uid://du0mryqgg7c21" path="res://assets/Sanddollar.png" id="11_1cbo0"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ipsy5"]
 scenes/1/scene = ExtResource("7_r4k7q")
@@ -45,7 +46,7 @@ region_rect = Rect2(0, 0, 4200, 7800)
 [node name="midgroundPara" type="Parallax2D" parent="."]
 z_index = -1
 scroll_scale = Vector2(0.45, 0.45)
-scroll_offset = Vector2(0, -1400)
+scroll_offset = Vector2(0, -1100)
 
 [node name="midground" type="Sprite2D" parent="midgroundPara"]
 texture = ExtResource("3_g15pv")
@@ -194,7 +195,25 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="timerLabel" type="Label" parent="uiLayer/uiMargin"]
+[node name="uiCont" type="HBoxContainer" parent="uiLayer/uiMargin"]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 2
+
+[node name="coinIcon" type="TextureRect" parent="uiLayer/uiMargin/uiCont"]
+layout_mode = 2
+texture = ExtResource("11_1cbo0")
+expand_mode = 3
+
+[node name="coinLabel" type="Label" parent="uiLayer/uiMargin/uiCont"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_type_variation = &"subLabel"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "0/3"
+
+[node name="timerLabel" type="Label" parent="uiLayer/uiMargin/uiCont"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0

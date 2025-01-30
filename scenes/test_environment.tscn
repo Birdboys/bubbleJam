@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://ddnak4xxamf6e" path="res://assets/temp/ocean.png" id="4_ctwtv"]
 [ext_resource type="PackedScene" uid="uid://dxhjqvqq6yi0m" path="res://scenes/urchin.tscn" id="5_ks4oj"]
 [ext_resource type="PackedScene" uid="uid://rtqqgxot481" path="res://scenes/collect_bubble.tscn" id="6_cwxk8"]
+[ext_resource type="PackedScene" uid="uid://d2rgdjfvcte6g" path="res://scenes/kelp.tscn" id="8_b8d31"]
 [ext_resource type="PackedScene" uid="uid://68d53l1ufr01" path="res://scripts/coin.tscn" id="8_iknth"]
-[ext_resource type="PackedScene" uid="uid://q0f6xfqtlwoc" path="res://scenes/whale.tscn" id="8_vxrwr"]
 
 [node name="testEnvironment" type="Node2D"]
 script = ExtResource("1_66d0o")
@@ -75,9 +75,6 @@ position = Vector2(-600, -600)
 [node name="collectBubble2" parent="collectBubbles" instance=ExtResource("6_cwxk8")]
 position = Vector2(400, -1400)
 
-[node name="whale" parent="." instance=ExtResource("8_vxrwr")]
-position = Vector2(990, -854)
-
 [node name="pufferFish" parent="." instance=ExtResource("1_nwbpb")]
 position = Vector2(-94, 80)
 
@@ -86,3 +83,6 @@ position = Vector2(-671, -31)
 
 [node name="coin2" parent="." instance=ExtResource("8_iknth")]
 position = Vector2(-816, 1147)
+
+[node name="kelp" parent="." instance=ExtResource("8_b8d31")]
+position = Vector2(-3, -206)

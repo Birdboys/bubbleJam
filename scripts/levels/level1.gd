@@ -3,7 +3,8 @@ extends Node2D
 @onready var puffer := $pufferFish
 @onready var bubble := $bubble
 @onready var cam := $playerCam
-@onready var timerLabel := $uiLayer/uiMargin/timerLabel
+@onready var timerLabel := $uiLayer/uiMargin/uiCont/timerLabel
+@onready var coinLabel := $uiLayer/uiMargin/uiCont/coinLabel
 @onready var winZone := $winZone
 @onready var death_bubble_scene := preload("res://scenes/death_bubble.tscn")
 @onready var death_puffer_scene := preload("res://scenes/death_puffer.tscn")
@@ -30,7 +31,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_playing:
 		game_time += delta
-		timerLabel.text = str(int(game_time))
+		timerLabel.text = "%ss" % str(int(game_time))
 		puffer.handleRotation(bubble.position)
 		cam.position = cam.position.move_toward(bubble.position, cam_move_speed*delta)
 
@@ -50,6 +51,7 @@ func startGame():
 
 func coinCollected():
 	coins_collected += 1
+	coinLabel.text = "%s/3" % coins_collected
 
 func handleWin(_bub):
 	print("WONNERTON")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://pt7due4xyqpn"]
+[gd_scene load_steps=18 format=4 uid="uid://pt7due4xyqpn"]
 
 [ext_resource type="Script" path="res://scripts/levels/level1.gd" id="1_avv6g"]
 [ext_resource type="Texture2D" uid="uid://d1wufi0db30i8" path="res://assets/section1/background.png" id="2_m0mxu"]
@@ -11,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://dqryax7e1nmkx" path="res://assets/bubbleJamTheme.tres" id="8_2l6m2"]
 [ext_resource type="PackedScene" uid="uid://caivuw1yrylwx" path="res://scenes/jelly_fish.tscn" id="8_8p7y0"]
 [ext_resource type="Texture2D" uid="uid://x0g7lywwxqcw" path="res://assets/rocks.png" id="9_h3aa6"]
+[ext_resource type="Texture2D" uid="uid://du0mryqgg7c21" path="res://assets/Sanddollar.png" id="12_i1vlp"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_cpj7o"]
 scenes/1/scene = ExtResource("7_d6l2b")
@@ -27,7 +28,7 @@ size = Vector2(1218, 233)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnwso"]
 size = Vector2(399, 10493)
 
-[node name="section1" type="Node2D"]
+[node name="level3" type="Node2D"]
 script = ExtResource("1_avv6g")
 
 [node name="bgLayer" type="CanvasLayer" parent="."]
@@ -44,7 +45,7 @@ region_rect = Rect2(0, 0, 4200, 7800)
 [node name="midgroundPara" type="Parallax2D" parent="."]
 z_index = -1
 scroll_scale = Vector2(0.45, 0.45)
-scroll_offset = Vector2(0, -1400)
+scroll_offset = Vector2(0, -1100)
 
 [node name="midground" type="Sprite2D" parent="midgroundPara"]
 texture = ExtResource("3_paafv")
@@ -96,30 +97,6 @@ time_off = 6.0
 position = Vector2(-811, -4592)
 scale = Vector2(-1, 1)
 electricity_length = 4
-
-[node name="uiLayer" type="CanvasLayer" parent="."]
-
-[node name="uiMargin" type="MarginContainer" parent="uiLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("8_2l6m2")
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="timerLabel" type="Label" parent="uiLayer/uiMargin"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_type_variation = &"subLabel"
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "0"
 
 [node name="winZone" type="Area2D" parent="."]
 position = Vector2(1402, -5218)
@@ -215,3 +192,45 @@ shape = SubResource("RectangleShape2D_fnwso")
 [node name="oceanModulate" type="CanvasModulate" parent="."]
 position = Vector2(0, 15)
 color = Color(0.706208, 0.735721, 0.996398, 1)
+
+[node name="uiLayer" type="CanvasLayer" parent="."]
+
+[node name="uiMargin" type="MarginContainer" parent="uiLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("8_2l6m2")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="uiCont" type="HBoxContainer" parent="uiLayer/uiMargin"]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 2
+
+[node name="coinIcon" type="TextureRect" parent="uiLayer/uiMargin/uiCont"]
+layout_mode = 2
+texture = ExtResource("12_i1vlp")
+expand_mode = 3
+
+[node name="coinLabel" type="Label" parent="uiLayer/uiMargin/uiCont"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_type_variation = &"subLabel"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "0/3"
+
+[node name="timerLabel" type="Label" parent="uiLayer/uiMargin/uiCont"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_type_variation = &"subLabel"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "0"
