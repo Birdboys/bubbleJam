@@ -238,7 +238,6 @@ text = "0"
 
 [node name="pauseMenu" type="ColorRect" parent="uiLayer"]
 process_mode = 3
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -250,29 +249,77 @@ theme = ExtResource("8_2l6m2")
 color = Color(0.054902, 0.0117647, 0.243137, 0.784314)
 script = ExtResource("13_d6vdg")
 
-[node name="pauseTextCont" type="VBoxContainer" parent="uiLayer/pauseMenu"]
+[node name="pauseMargin" type="MarginContainer" parent="uiLayer/pauseMenu"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -20.0
-offset_right = 31.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="pauseTextCont" type="VBoxContainer" parent="uiLayer/pauseMenu/pauseMargin"]
+layout_mode = 2
 alignment = 1
 
-[node name="pauseLabel" type="Label" parent="uiLayer/pauseMenu/pauseTextCont"]
+[node name="pauseLabel" type="Label" parent="uiLayer/pauseMenu/pauseMargin/pauseTextCont"]
 layout_mode = 2
-size_flags_vertical = 6
 theme_type_variation = &"titleLabel"
 text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="tooltipLabel" type="Label" parent="uiLayer/pauseMenu/pauseTextCont"]
+[node name="tooltipLabel" type="Label" parent="uiLayer/pauseMenu/pauseMargin/pauseTextCont"]
 layout_mode = 2
-size_flags_vertical = 6
 theme_type_variation = &"subLabel"
 text = "ESC TO CONTINUE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pauseSettingCont" type="VBoxContainer" parent="uiLayer/pauseMenu/pauseMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="music" type="HBoxContainer" parent="uiLayer/pauseMenu/pauseMargin/pauseSettingCont"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="musicLabel" type="Label" parent="uiLayer/pauseMenu/pauseMargin/pauseSettingCont/music"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"subLabel"
+text = "MUSIC:"
+
+[node name="musicSlider" type="HSlider" parent="uiLayer/pauseMenu/pauseMargin/pauseSettingCont/music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"hSlider"
+value = 50.0
+
+[node name="sound" type="HBoxContainer" parent="uiLayer/pauseMenu/pauseMargin/pauseSettingCont"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="soundLabel" type="Label" parent="uiLayer/pauseMenu/pauseMargin/pauseSettingCont/sound"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"subLabel"
+text = "SOUND:"
+
+[node name="soundSlider" type="HSlider" parent="uiLayer/pauseMenu/pauseMargin/pauseSettingCont/sound"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"hSlider"
+value = 50.0
