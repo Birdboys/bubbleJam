@@ -14,6 +14,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if visible and event.is_action_pressed("pause"): 
 		get_viewport().set_input_as_handled()
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 		closeMenu()
 	
 func openMenu():
@@ -25,7 +26,6 @@ func openMenu():
 func closeMenu():
 	get_tree().paused = false
 	visible = false
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 
 func setSliders():
 	musicSlider.value = 100 * db_to_linear(AudioServer.get_bus_volume_db(2))
